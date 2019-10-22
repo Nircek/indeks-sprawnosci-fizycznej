@@ -4,12 +4,47 @@
 	<title>PIK-ni i Sprawni</title>
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<script>
+		'use strict';
+		function onload() {
+			let go_next = document.createElement('button');
+			go_next.classList.add('go_next');
+			go_next.innerText = 'Go next!';
+			//panels.indexOf(this)+1
+			let go_back = document.createElement('button');
+			go_back.classList.add('go_back');
+			go_back.innerText = 'Go back!';
+			let panels = Array.from(document.getElementsByClassName('panel'));
+			for (let i=1; i<panels.length; ++i) {
+				panels[i].appendChild(go_back.cloneNode(true));
+				panels[i].lastChild.onclick = function(){
+					panels[i].classList.remove('current_panel');
+					panels[i-1].classList.add('current_panel');
+				};
+			}
+			for (let i=0; i<panels.length-1; ++i) {
+				panels[i].appendChild(go_next.cloneNode(true));
+				panels[i].lastChild.onclick = function(){
+					panels[i].classList.remove('current_panel');
+					panels[i+1].classList.add('current_panel');
+				};
+			}
+		}
+	</script>
 </head>
-<body>
+<body onload="onload()">
 	<header><nav>Tu będzie menu</nav>PIK-ni i Sprawni</header>
-	<div id="hello"> Cześć! <br /> 
-	Znudził Ci się kanapowy styl życia? A może po prstu chcesz się sprawdzić? <br />
-	Tak czy inaczej musisz zrobić indeks sprawności. Wprowadź swoje dane!
+	<div class="panels">
+		<div class="panel current_panel" id="hello">
+			<p>
+				Cześć! <br />
+				Znudził Ci się kanapowy styl życia? A może po prstu chcesz się sprawdzić? <br />
+				Tak czy inaczej musisz zrobić indeks sprawności. Wprowadź swoje dane!
+			</p>
+		<!--<button class="go_next">-->
+		</div>
+		<div class="panel"></div>
+		<div class="panel"></div>
 	</div>
 </body>
 </html>
