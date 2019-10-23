@@ -34,15 +34,6 @@ nav
 	margin-top: 10%;
 }
 
-#content
-{
-	width: 10%;
-	height: 8%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
 a
 {
 	text-decoration: none;
@@ -77,8 +68,10 @@ a:hover
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 5em;
+	margin-top: 3em;
 	text-align: center;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 18px;
 }
 
 
