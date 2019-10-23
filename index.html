@@ -35,7 +35,7 @@
 	</script>
 </head>
 <body onload="onload()">
-	<header><nav>Tu będzie menu</nav>PIK-ni i Sprawni</header>
+	<header><nav>Tu będzie menu</nav><a href="index.html">PIK-ni i Sprawni</a></header>
 	<div class="panels">
 		<div class="panel current_panel" id="hello">
 			<p>
@@ -43,48 +43,124 @@
 				Znudził Ci się kanapowy styl życia? A może po prstu chcesz się sprawdzić? <br />
 				Tak czy inaczej musisz zrobić indeks sprawności. Wprowadź swoje dane!
 			</p>
+			<br />
 		<!--<button class="go_next">-->
 		</div>
+		<center/>
 		<div class="panel" id="plec">
 			<h1>Płeć</h1>
 			<input type="radio" name="gender" id="male" value="male">
 			<label for="male">Mężczyzna</label>
 			<input type="radio" name="gender" id="female" value="female" disabled>
 			<label for="female">Kobieta</label>
-			<br/>
+			<br />
+			<br />
 		</div>
 		<div class="panel" id="wiek">
 			<h1>Wiek</h1>
-			<input type="number" id="i_wiek"/>
+			<input type="number" max="120" min="1" id="i_wiek"/>
+			<br />
+			<br />
 		</div>
 		<!-- http://g8opole.wodip.opole.pl/sport/zuchora.htm -->
-		<div class="panel" id="szybkosc">
+		<div class="panel">
 			<h1>Szybkość</h1>
-			<p>opis</p>
-			<input type="number" id="i_szybkosc"/>
+			<p>Szybki bieg w miejscu przez 10 sek. z wysokim unoszeniem kolan
+				i klaśnięciem pod uniesioną nogą. Liczymy liczbę klaśnięć.
+				<br />
+				<br />15 klaśnięć - 1
+				<br />20 klaśnięć - 2
+				<br />25 klaśnięć - 3
+				<br />30 klaśnięć - 4
+				<br />35 klaśnięć - 5
+				<br />40 klaśnięć - 6
+				
+			</p>
+			<input type="number" max="6" min="0" id="szybkosc"/>
+			<br/>
+			<br/>
 		</div>
-		<div class="panel" id="skocznosc">
+		<div class="panel">
 			<h1>Skoczność</h1>
-			<p>opis</p>
-			<input type="number" id="i_skocznosc"/>
+			<p>Skok w dal z miejsca. Odległość mierzy skaczący własnymi stopami.
+			(wynik zaokrągla się do "całej stopy")
+			<br />
+			<br />5 stóp - 1
+			<br />6 stóp - 2
+			<br />7 stóp - 3
+			<br />8 stóp - 4
+			<br />9 stóp - 5
+			<br />10 stóp - 6
+			</p>
+			<input type="number" max="6" min="0" id="skocznosc"/>
+			<br /><br />
+				
 		</div>
-		<div class="panel" id="sila_ramion">
-			<h1>Siła ramion</h1>
-			<p>opis</p>
-			<select name="i_sila_ramion" id="i_sila_ramion">
-				<option value="0">nic</option>
-				<option value="1">zawis na wyprostowanych rękach, wytrzymanie 5 sek.</option>
-				<option value="2">zawis na wyprostowanych rękach, wytrzymanie 10 sek.</option>
-				<option value="3">zawis na wyprostowanych rękach, podciągnięcie się oburącz, tak aby głowa była wyżej niż drążek, wytrzymanie 3 sek.</option>
-				<option value="4">zawis na wyprostowanych rękach, podciągnięcie się oburącz, tak aby głowa była wyżej niż drążek, wytrzymanie 10 sek.</option>
-				<option value="5">zawis, podciągnięcie się oburącz, wolne opuszczenie jednej ręki, wytrzymanie 10 sek.</option>
-				<option value="6">zawis, podciągnięcie się</option>
-			</select>
-		</div>
-		<div class="panel" id="wytrzymalosc">
+
+		<div class="panel">
 			<h1>Wytrzymałość</h1>
-			<p>opis</p>
-			<input type="number" id="i_wytrzymalosc"/>
+			<p>Bieg ciągły z kadencją 120 kroków/min
+			<br />
+			<br />02 min - 1
+			<br />05 min - 2
+			<br />10 min - 3
+			<br />15 min - 4
+			<br />20 min - 5
+			<br />30 min - 6
+			
+			</p>
+			<input type="number" max="6" min="0" id="skocznosc"/>
+			<br />
+			<br />
+		</div>
+		<div class="panel">
+			<h1>Six-pack</h1>
+			<p>Leżenie tyłem, uniesienie NN tuż nad podłożem.
+Wykonywanie jak najdłużej ćwiczenia - "nożyce poprzeczne".
+			<br />
+			<br />30 s - 1
+			<br />60 s - 2
+			<br />90 s - 3
+			<br />120 s - 4
+			<br />180 s - 5
+			<br />240 s - 6
+			
+			</p>
+			<input type="number" max="6" min="0" id="skocznosc"/>
+			<br />
+			<br />
+		</div>
+		<div class="panel">
+			<h1>Siła ramion</h1>
+			<p>Zwis na drążku (może być np. gałąź).
+			Wykonywanie ćwiczeń o narastającym stopniu trudnośi (patrz tabela).</p>
+			<select name="sila" id="sila">
+				<option value="0">nic</option>
+				<option value="1">Zawis na wyprostowanych rękach, wytrzymanie 5 sek.</option>
+				<option value="2">Zawis na wyprostowanych rękach, wytrzymanie 10 sek.</option>
+				<option value="3">Zawis na wyprostowanych rękach, podciągnięcie się oburącz, tak aby głowa była wyżej niż drążek, wytrzymanie 3 sek.</option>
+				<option value="4">Zawis na wyprostowanych rękach, podciągnięcie się oburącz, tak aby głowa była wyżej niż drążek, wytrzymanie 10 sek.</option>
+				<option value="5">Zawis, podciągnięcie się oburącz, wolne opuszczenie jednej ręki, wytrzymanie 10 sek.</option>
+				<option value="6">Zawis, podciągnięcie się</option>
+			</select>
+			<br />
+			<br />
+		</div>
+		<div class="panel">
+			<h1>Kocie ruchy</h1>
+			<p>Stanie w pozycji na baczność. Wykonanie ciągłym powolnym ruchem
+skłonu tułowia w przód bez zginania nóg w kolanach.(patrz tabela).</p>
+			<select name="sila" id="sila">
+				<option value="0">nic</option>
+				<option value="1">Chwyt oburącz za kostki</option>
+				<option value="2">Dotknięcie palcami obu rąk palców stóp</option>
+				<option value="3">Dotknięcie palcami obu rąk podłoża</option>
+				<option value="4">Dotknięcie wszystkimi palcami (obu rąk) podłoża</option>
+				<option value="5">Dotknięcie dłońmi podłoża</option>
+				<option value="6">Dotknięcie głową kolan</option>
+			</select>
+			<br />
+			<br />
 		</div>
 		<div class="panel"></div>
 	</div>
