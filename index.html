@@ -15,19 +15,21 @@
 			go_back.classList.add('go_back');
 			go_back.innerText = 'Go back!';
 			let panels = Array.from(document.getElementsByClassName('panel'));
-			for (let i=1; i<panels.length; ++i) {
-				panels[i].appendChild(go_back.cloneNode(true));
-				panels[i].lastChild.onclick = function(){
-					panels[i].classList.remove('current_panel');
-					panels[i-1].classList.add('current_panel');
-				};
-			}
-			for (let i=0; i<panels.length-1; ++i) {
-				panels[i].appendChild(go_next.cloneNode(true));
-				panels[i].lastChild.onclick = function(){
-					panels[i].classList.remove('current_panel');
-					panels[i+1].classList.add('current_panel');
-				};
+			for (let i=0; i<panels.length; ++i) {
+				if (i>0) {
+					panels[i].appendChild(go_back.cloneNode(true));
+					panels[i].lastChild.onclick = function(){
+						panels[i].classList.remove('current_panel');
+						panels[i-1].classList.add('current_panel');
+					};
+				}
+				if (i<panels.length-1) {
+					panels[i].appendChild(go_next.cloneNode(true));
+					panels[i].lastChild.onclick = function(){
+						panels[i].classList.remove('current_panel');
+						panels[i+1].classList.add('current_panel');
+					};
+				}
 			}
 		}
 	</script>
@@ -43,7 +45,47 @@
 			</p>
 		<!--<button class="go_next">-->
 		</div>
-		<div class="panel"></div>
+		<div class="panel" id="plec">
+			<h1>Płeć</h1>
+			<input type="radio" name="gender" id="male" value="male">
+			<label for="male">Mężczyzna</label>
+			<input type="radio" name="gender" id="female" value="female" disabled>
+			<label for="female">Kobieta</label>
+			<br/>
+		</div>
+		<div class="panel" id="wiek">
+			<h1>Wiek</h1>
+			<input type="number" id="i_wiek"/>
+		</div>
+		<!-- http://g8opole.wodip.opole.pl/sport/zuchora.htm -->
+		<div class="panel">
+			<h1>Szybkość</h1>
+			<p>opis</p>
+			<input type="number" id="szybkosc"/>
+		</div>
+		<div class="panel">
+			<h1>Skoczność</h1>
+			<p>opis</p>
+			<input type="number" id="skocznosc"/>
+		</div>
+		<div class="panel">
+			<h1>Siła ramion</h1>
+			<p>opis</p>
+			<select name="sila" id="sila">
+				<option value="0">nic</option>
+				<option value="1">zawis na wyprostowanych rękach, wytrzymanie 5 sek.</option>
+				<option value="2">zawis na wyprostowanych rękach, wytrzymanie 10 sek.</option>
+				<option value="3">zawis na wyprostowanych rękach, podciągnięcie się oburącz, tak aby głowa była wyżej niż drążek, wytrzymanie 3 sek.</option>
+				<option value="4">zawis na wyprostowanych rękach, podciągnięcie się oburącz, tak aby głowa była wyżej niż drążek, wytrzymanie 10 sek.</option>
+				<option value="5">zawis, podciągnięcie się oburącz, wolne opuszczenie jednej ręki, wytrzymanie 10 sek.</option>
+				<option value="6">zawis, podciągnięcie się</option>
+			</select>
+		</div>
+		<div class="panel">
+			<h1>Wytrzymałość</h1>
+			<p>opis</p>
+			<input type="number" id="skocznosc"/>
+		</div>
 		<div class="panel"></div>
 	</div>
 </body>
