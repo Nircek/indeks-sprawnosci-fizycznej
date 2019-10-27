@@ -41,6 +41,8 @@
 					};
 				}
 			}
+
+			calculate();
 		}
 		function getOcenaFromArray(x, arr) {
 			for(let i=arr.length;i>0;--i)
@@ -49,18 +51,29 @@
 			return 0;
 		}
 		function calculate() {
-			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_podsumowanie;
+			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_razem, v_ocena;
 			v_plec = document.querySelector('input[name="i_plec"]:checked').value;
-			v_wiek = document.getElementById('i_wiek').value;
+			v_wiek = parseInt(document.getElementById('i_wiek').value);
 			v_szybkosc = getOcenaFromArray(document.getElementById('i_szybkosc').value, [15, 20, 25, 30, 35, 40]);
 			v_skocznosc = getOcenaFromArray(document.getElementById('i_skocznosc').value, [5, 6, 7, 8, 9, 10]);
 			v_wytrzymalosc = getOcenaFromArray(document.getElementById('i_wytrzymalosc').value, [2, 5, 10, 15, 20, 30]);
 			v_sila_miesni_brzucha = getOcenaFromArray(document.getElementById('i_sila-miesni-brzucha').value, [30, 60, 90, 120, 180, 240]);
 			var e = document.getElementById("i_sila-ramion");
-			v_sila_ramion = e.options[e.selectedIndex].value;
+			v_sila_ramion = parseInt(e.options[e.selectedIndex].value);
 			e = document.getElementById("i_gibkosc");
-			v_gibkosc = e.options[e.selectedIndex].value;
-			console.log(v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc);
+			v_gibkosc = parseInt(e.options[e.selectedIndex].value);
+			v_razem = v_szybkosc+v_skocznosc+v_wytrzymalosc+v_sila_miesni_brzucha+v_sila_ramion+v_gibkosc;
+			v_ocena = "null";
+			document.getElementById('d_plec').innerText=v_plec;
+			document.getElementById('d_wiek').innerText=v_wiek;
+			document.getElementById('d_szybkosc').innerText=v_szybkosc;
+			document.getElementById('d_skocznosc').innerText=v_skocznosc;
+			document.getElementById('d_wytrzymalosc').innerText=v_wytrzymalosc;
+			document.getElementById('d_sila-miesni-brzucha').innerText=v_sila_miesni_brzucha;
+			document.getElementById('d_sila-ramion').innerText=v_sila_ramion;
+			document.getElementById('d_gibkosc').innerText=v_gibkosc;
+			document.getElementById('d_razem').innerText=v_razem;
+			document.getElementById('d_ocena').innerText=v_ocena;
 		}
 	</script>
 </head>
@@ -207,7 +220,7 @@
 					</tr>
 					<tr>
 						<td>Wiek</td>
-						<td></td>
+						<td id="d_wiek"></td>
 					</tr>
 					<tr>
 						<td>Szybkość</td>
