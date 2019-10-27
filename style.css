@@ -132,3 +132,11 @@ h5
 {
 	text-align: center;
 }
+@media (max-width: 1025px)
+{
+	body,html
+	{
+		height: 50%;
+		font-size: 2em;
+	}
+}
