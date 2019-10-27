@@ -51,7 +51,7 @@
 			return 0;
 		}
 		function calculate() {
-			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_razem, v_ocena;
+			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_razem, v_kategoria, v_ocena;
 			v_plec = document.querySelector('input[name="i_plec"]:checked').value;
 			v_wiek = parseInt(document.getElementById('i_wiek').value);
 			v_szybkosc = getOcenaFromArray(document.getElementById('i_szybkosc').value, [15, 20, 25, 30, 35, 40]);
@@ -63,7 +63,23 @@
 			e = document.getElementById("i_gibkosc");
 			v_gibkosc = parseInt(e.options[e.selectedIndex].value);
 			v_razem = v_szybkosc+v_skocznosc+v_wytrzymalosc+v_sila_miesni_brzucha+v_sila_ramion+v_gibkosc;
-			v_ocena = "null";
+			var v_kategoria = getOcenaFromArray(v_wiek, [6, 7, 8, 9, 11, 13, 16, 19, 26]);
+			if(v_kategoria==0||v_kategoria==9) {
+				v_ocena = "n/a (wiek poza zakresem)";
+			} else {
+				v_kategoria -= 1;
+				let kategorie = [[5,8,11,14,17,20],
+				[6,9,12,15,18,22],
+				[6,10,13,17,21,25],
+				[6,11,15,19,23,27],
+				[6,11,16,20,25,29],
+				[6,12,17,22,27,31],
+				[6,12,18,23,28,33],
+				[6,12,18,24,30,35]];
+				let oceny=["Poza wyobrażeniem autora", "Minimalna", "Dostateczna", "Dobra", "Bardzo dobra", "Wysoka", "Wybitna"];
+				v_ocena = oceny[getOcenaFromArray(v_razem, kategorie[v_kategoria])];
+
+			}
 			document.getElementById('d_plec').innerText=v_plec;
 			document.getElementById('d_wiek').innerText=v_wiek;
 			document.getElementById('d_szybkosc').innerText=v_szybkosc;
