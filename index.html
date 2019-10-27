@@ -42,6 +42,26 @@
 				}
 			}
 		}
+		function getOcenaFromArray(x, arr) {
+			for(let i=arr.length;i>0;--i)
+				if(x>=arr[i])
+					return i+1;
+			return 0;
+		}
+		function calculate() {
+			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_podsumowanie;
+			v_plec = document.querySelector('input[name="i_plec"]:checked').value;
+			v_wiek = document.getElementById('i_wiek').value;
+			v_szybkosc = getOcenaFromArray(document.getElementById('i_szybkosc').value, [15, 20, 25, 30, 35, 40]);
+			v_skocznosc = getOcenaFromArray(document.getElementById('i_skocznosc').value, [5, 6, 7, 8, 9, 10]);
+			v_wytrzymalosc = getOcenaFromArray(document.getElementById('i_wytrzymalosc').value, [2, 5, 10, 15, 20, 30]);
+			v_sila_miesni_brzucha = getOcenaFromArray(document.getElementById('i_sila-miesni-brzucha').value, [30, 60, 90, 120, 180, 240]);
+			var e = document.getElementById("i_sila-ramion");
+			v_sila_ramion = e.options[e.selectedIndex].value;
+			e = document.getElementById("i_gibkosc");
+			v_gibkosc = e.options[e.selectedIndex].value;
+			console.log(v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc);
+		}
 	</script>
 </head>
 <body onload="onload()">
@@ -58,9 +78,9 @@
 		<div class="panel" id="plec">
 			<h1>Płeć</h1>
 			<p>
-				<input type="radio" name="i_plec" id="mezczyzna" value="m">
+				<input type="radio" name="i_plec" id="mezczyzna" value="m" selected onchange="calculate()">
 				<label for="mezczyzna">Mężczyzna</label>
-				<input type="radio" name="i_plec" id="kobieta" value="k" disabled>
+				<input type="radio" name="i_plec" id="kobieta" value="k" disabled onchange="calculate()">
 				<label for="kobieta">Kobieta</label>
 			</p>
 		</div>
@@ -68,7 +88,7 @@
 		<div class="panel" id="wiek">
 			<h1>Wiek</h1>
 			<p>
-				<input type="number" max="120" min="1" id="i_wiek"/>
+				<input type="number" max="120" min="1" id="i_wiek" onchange="calculate()"/>
 			</p>
 		</div>
 
@@ -78,15 +98,16 @@
 			<p>
 				Szybki bieg w miejscu przez 10 sek. z wysokim unoszeniem kolan
 				i klaśnięciem pod uniesioną nogą. Liczymy liczbę klaśnięć.
-				<br />
+				Podaj uzyskaną liczbę klaśnięć poniżej:
+				<!--<br />
 				<br />15 klaśnięć - 1
 				<br />20 klaśnięć - 2
 				<br />25 klaśnięć - 3
 				<br />30 klaśnięć - 4
 				<br />35 klaśnięć - 5
 				<br />40 klaśnięć - 6
-				<br />
-				<input type="number" max="6" min="0" id="i_szybkosc"/>
+				<br />-->
+				<input type="number" min="0" id="i_szybkosc" onchange="calculate()"/>
 			</p>
 		</div>
 
@@ -103,7 +124,7 @@
 				<br />9 stóp - 5
 				<br />10 stóp - 6
 				<br />
-				<input type="number" max="6" min="0" id="i_skocznosc"/>
+				<input type="number" min="0" id="i_skocznosc" onchange="calculate()"/>
 			</p>
 		</div>
 
@@ -119,7 +140,7 @@
 				<br />20 min - 5
 				<br />30 min - 6
 				<br />
-				<input type="number" max="6" min="0" id="i_wytrzymalosc"/>
+				<input type="number" min="0" id="i_wytrzymalosc" onchange="calculate()"/>
 			</p>
 		</div>
 
@@ -136,7 +157,7 @@
 				<br />180 s - 5
 				<br />240 s - 6
 				<br />
-				<input type="number" max="6" min="0" id="i_sila-miesni-brzucha"/>
+				<input type="number" min="0" id="i_sila-miesni-brzucha" onchange="calculate()"/>
 			</p>
 		</div>
 
@@ -146,7 +167,7 @@
 				Zwis na drążku (może być np. gałąź).
 				Wykonywanie ćwiczeń o narastającym stopniu trudnośi (patrz tabela).
 				<br />
-				<select name="i_sila-ramion">
+				<select id="i_sila-ramion" onchange="calculate()">
 					<option value="0">nic</option>
 					<option value="1">Zawis na wyprostowanych rękach, wytrzymanie 5 sek.</option>
 					<option value="2">Zawis na wyprostowanych rękach, wytrzymanie 10 sek.</option>
@@ -157,13 +178,14 @@
 				</select>
 			</p>
 		</div>
+
 		<div class="panel" id="gibkosc">
 			<h1>Gibkość</h1>
 			<p>
 				Stanie w pozycji na baczność. Wykonanie ciągłym powolnym ruchem
 				skłonu tułowia w przód bez zginania nóg w kolanach.(patrz tabela).
 				<br />
-				<select name="i_gibkosc">
+				<select id="i_gibkosc" onchange="calculate()">
 					<option value="0">nic</option>
 					<option value="1">Chwyt oburącz za kostki</option>
 					<option value="2">Dotknięcie palcami obu rąk palców stóp</option>
@@ -175,7 +197,53 @@
 			</p>
 		</div>
 
-		<div class="panel" id="podsumowanie"></div>
+		<div class="panel" id="podsumowanie">
+			<p>
+				Podsumowanie:
+				<table>
+					<tr>
+						<td>Płeć</td>
+						<td id="d_plec"></td>
+					</tr>
+					<tr>
+						<td>Wiek</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Szybkość</td>
+						<td id="d_szybkosc"></td>
+					</tr>
+					<tr>
+						<td>Skoczność</td>
+						<td id="d_skocznosc"></td>
+					</tr>
+					<tr>
+						<td>Wytrzymałość</td>
+						<td id="d_wytrzymalosc"></td>
+					</tr>
+					<tr>
+						<td>Siła mięśni brzucha</td>
+						<td id="d_sila-miesni-brzucha"></td>
+					</tr>
+					<tr>
+						<td>Siła ramion</td>
+						<td id="d_sila-ramion"></td>
+					</tr>
+					<tr>
+						<td>Gibkość</td>
+						<td id="d_gibkosc"></td>
+					</tr>
+					<tr>
+						<td>Razem</td>
+						<td id="d_razem"></td>
+					</tr>
+					<tr>
+						<td>Ocena</td>
+						<td id="d_ocena"></td>
+					</tr>
+				</table>
+			</p>
+		</div>
 	</div>
 </body>
 </html>
