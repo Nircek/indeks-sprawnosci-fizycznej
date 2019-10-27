@@ -113,7 +113,9 @@
 			v_link_obj = [
 				v_plec, v_wiek, r_szybkosc, r_skocznosc, r_wytrzymalosc, r_sila_miesni_brzucha, v_sila_ramion, v_gibkosc];
 			v_link_obj_enc = btoa(JSON.stringify(v_link_obj)).replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
-			v_link = window.location.protocol+'//'+window.location.pathname+"?w="+v_link_obj_enc+"#podsumowanie";
+			let url = new URL(window.location);
+			url.search = 'w='+v_link_obj_enc;
+			v_link = url.toString();
 			document.getElementById('d_plec').innerText=v_plec;
 			document.getElementById('d_wiek').innerText=v_wiek;
 			document.getElementById('d_szybkosc').innerText=v_szybkosc;
