@@ -24,7 +24,6 @@
 			if(!panel_ids.includes(starting_panel))
 				starting_panel = '#hello';
 			document.getElementById(starting_panel.substr(1)).classList.add('current_panel');
-
 			// buttony
 			let go_next = document.createElement('button');
 			go_next.classList.add('go_next');
@@ -52,7 +51,6 @@
 					};
 				}
 			}
-
 			var wynik=getParameterByName('w');
 			if(wynik){
 				var wynik_obj = JSON.parse(atob(wynik.replace(/_/g, '/').replace(/-/g, '+')));
@@ -163,10 +161,12 @@
 			<h1>Szybkość</h1>
 			<p>
 				Szybki bieg w miejscu przez 10 sek. z wysokim unoszeniem kolan
-				i klaśnięciem pod uniesioną nogą. Liczymy liczbę klaśnięć.
+				i klaśnięciem pod uniesioną nogą. <br />Liczymy liczbę klaśnięć.
 				Podaj uzyskaną liczbę klaśnięć poniżej:
-				<!--<br />
-				<br />15 klaśnięć - 1
+				<br />
+				<br />
+				<br />
+				<!--<br />15 klaśnięć - 1
 				<br />20 klaśnięć - 2
 				<br />25 klaśnięć - 3
 				<br />30 klaśnięć - 4
@@ -180,15 +180,10 @@
 		<div class="panel" id="skocznosc">
 			<h1>Skoczność</h1>
 			<p>
-				Skok w dal z miejsca. Odległość mierzy skaczący własnymi stopami.
+				Skok w dal z miejsca. Odległość mierzy skaczący własnymi stopami
 				(wynik zaokrągla się do "całej stopy")
 				<br />
-				<br />5 stóp - 1
-				<br />6 stóp - 2
-				<br />7 stóp - 3
-				<br />8 stóp - 4
-				<br />9 stóp - 5
-				<br />10 stóp - 6
+				<br />
 				<br />
 				<input type="number" min="0" id="i_skocznosc" onchange="calculate()"/>
 			</p>
@@ -197,14 +192,9 @@
 		<div class="panel" id="wytrzymalosc">
 			<h1>Wytrzymałość</h1>
 			<p>
-				Bieg ciągły z kadencją 120 kroków/min
+				Biegnij bez przerwy z kadencją 120 kroków/min. Ile minut przebiegłeś? 
 				<br />
-				<br />02 min - 1
-				<br />05 min - 2
-				<br />10 min - 3
-				<br />15 min - 4
-				<br />20 min - 5
-				<br />30 min - 6
+				<br />
 				<br />
 				<input type="number" min="0" id="i_wytrzymalosc" onchange="calculate()"/>
 			</p>
@@ -214,14 +204,9 @@
 			<h1>Siła mięśni brzucha</h1>
 			<p>
 				Leżenie tyłem, uniesienie nóg tuż nad podłożem.
-				Wykonywanie jak najdłużej ćwiczenia - "nożyce poprzeczne".
+				Wykonywanie jak najdłużej ćwiczenia - "nożyce poprzeczne". <br />Wynik podaj w sekundach.
 				<br />
-				<br />30 s - 1
-				<br />60 s - 2
-				<br />90 s - 3
-				<br />120 s - 4
-				<br />180 s - 5
-				<br />240 s - 6
+				<br />
 				<br />
 				<input type="number" min="0" id="i_sila-miesni-brzucha" onchange="calculate()"/>
 			</p>
@@ -249,7 +234,7 @@
 			<h1>Gibkość</h1>
 			<p>
 				Stanie w pozycji na baczność. Wykonanie ciągłym powolnym ruchem
-				skłonu tułowia w przód bez zginania nóg w kolanach.(patrz tabela).
+				skłonu tułowia w przód bez zginania nóg w kolanach(patrz tabela).
 				<br />
 				<select id="i_gibkosc" onchange="calculate()">
 					<option value="0">nic</option>
@@ -265,50 +250,53 @@
 
 		<div class="panel" id="podsumowanie">
 			<p>
-				Podsumowanie:
+				<h6>Podsumowanie:</h6>
 				<table>
-					<tr>
+					<tr id="t1">
 						<td>Płeć</td>
 						<td id="d_plec"></td>
 					</tr>
-					<tr>
+					<tr id="t2">
 						<td>Wiek</td>
 						<td id="d_wiek"></td>
 					</tr>
-					<tr>
+					<tr id="t3">
 						<td>Szybkość</td>
 						<td id="d_szybkosc"></td>
 					</tr>
-					<tr>
+					<tr id="t4">
 						<td>Skoczność</td>
 						<td id="d_skocznosc"></td>
 					</tr>
-					<tr>
+					<tr id="t5">
 						<td>Wytrzymałość</td>
 						<td id="d_wytrzymalosc"></td>
 					</tr>
-					<tr>
+					<tr id="t6">
 						<td>Siła mięśni brzucha</td>
 						<td id="d_sila-miesni-brzucha"></td>
 					</tr>
-					<tr>
+					<tr id="t7">
 						<td>Siła ramion</td>
 						<td id="d_sila-ramion"></td>
 					</tr>
-					<tr>
+					<tr id="t8">
 						<td>Gibkość</td>
 						<td id="d_gibkosc"></td>
 					</tr>
-					<tr>
+					<tr id="t9">
 						<td>Razem</td>
 						<td id="d_razem"></td>
 					</tr>
-					<tr>
+					<tr id="t10">
 						<td>Ocena</td>
 						<td id="d_ocena"></td>
 					</tr>
+					
 				</table>
-				<input class="shareLink" type="text" id="d_link" readonly/>
+
+				<h5>Udostępnij twój wynik!<br />
+				<input class="shareLink" type="text" id="d_link" readonly/></h5>
 			</p>
 		</div>
 	</div>
