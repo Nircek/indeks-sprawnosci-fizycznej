@@ -6,6 +6,17 @@
 	<link rel="stylesheet" href="style.css" type="text/css"/>
 	<script>
 		'use strict';
+		function getParameterByName(name, url) {
+			// https://stackoverflow.com/a/901144/6732111
+			// opcja "pure JS", bo IE kompletnie nie wspiera URLSearchParams
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, '\\$&');
+			var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+					results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
 		function onload() {
 			// obsługa fragmentów
 			var panel_ids = Array.from(document.getElementsByClassName('panel')).map(x=>'#'+x.id);
@@ -42,6 +53,20 @@
 				}
 			}
 
+			var wynik=getParameterByName('w');
+			if(wynik){
+				var wynik_obj = JSON.parse(atob(wynik.replace(/_/g, '/').replace(/-/g, '+')));
+				console.log(wynik_obj);
+				//file:///home/nircek/GH/indeks-sprawnosci-fizycznej/index.html?w=WyJtIiwxNiwiMjciLCI3IiwiNyIsIjc0IiwyLDVd#podsumowanie
+				document.getElementById(wynik_obj[0]=='m'?'mezczyzna':'kobieta').checked = true;
+				document.getElementById('i_wiek').value = wynik_obj[1];
+				document.getElementById('i_szybkosc').value = wynik_obj[2];
+				document.getElementById('i_skocznosc').value = wynik_obj[3];
+				document.getElementById('i_wytrzymalosc').value = wynik_obj[4];
+				document.getElementById('i_sila-miesni-brzucha').value = wynik_obj[5];
+				document.getElementById('i_sila-ramion').value = wynik_obj[6];
+				document.getElementById('i_gibkosc').value = wynik_obj[7];
+			}
 			calculate();
 		}
 		function getOcenaFromArray(x, arr) {
@@ -54,10 +79,15 @@
 			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_razem, v_kategoria, v_ocena, v_link_obj, v_link_obj_enc, v_link;
 			v_plec = document.querySelector('input[name="i_plec"]:checked').value;
 			v_wiek = parseInt(document.getElementById('i_wiek').value);
-			v_szybkosc = getOcenaFromArray(document.getElementById('i_szybkosc').value, [15, 20, 25, 30, 35, 40]);
-			v_skocznosc = getOcenaFromArray(document.getElementById('i_skocznosc').value, [5, 6, 7, 8, 9, 10]);
-			v_wytrzymalosc = getOcenaFromArray(document.getElementById('i_wytrzymalosc').value, [2, 5, 10, 15, 20, 30]);
-			v_sila_miesni_brzucha = getOcenaFromArray(document.getElementById('i_sila-miesni-brzucha').value, [30, 60, 90, 120, 180, 240]);
+			var r_szybkosc, r_skocznosc, r_wytrzymalosc, r_sila_miesni_brzucha;
+			r_szybkosc = document.getElementById('i_szybkosc').value;
+			r_skocznosc = document.getElementById('i_skocznosc').value;
+			r_wytrzymalosc = document.getElementById('i_wytrzymalosc').value;
+			r_sila_miesni_brzucha = document.getElementById('i_sila-miesni-brzucha').value;
+			v_szybkosc = getOcenaFromArray(r_szybkosc, [15, 20, 25, 30, 35, 40]);
+			v_skocznosc = getOcenaFromArray(r_skocznosc, [5, 6, 7, 8, 9, 10]);
+			v_wytrzymalosc = getOcenaFromArray(r_wytrzymalosc, [2, 5, 10, 15, 20, 30]);
+			v_sila_miesni_brzucha = getOcenaFromArray(r_sila_miesni_brzucha, [30, 60, 90, 120, 180, 240]);
 			var e = document.getElementById("i_sila-ramion");
 			v_sila_ramion = parseInt(e.options[e.selectedIndex].value);
 			e = document.getElementById("i_gibkosc");
@@ -68,21 +98,22 @@
 				v_ocena = "n/a (wiek poza zakresem)";
 			} else {
 				v_kategoria -= 1;
-				let kategorie = [[5,8,11,14,17,20],
-				[6,9,12,15,18,22],
-				[6,10,13,17,21,25],
-				[6,11,15,19,23,27],
-				[6,11,16,20,25,29],
-				[6,12,17,22,27,31],
-				[6,12,18,23,28,33],
-				[6,12,18,24,30,35]];
+				let kategorie = [
+					[5,8, 11,14,17,20],
+					[6,9, 12,15,18,22],
+					[6,10,13,17,21,25],
+					[6,11,15,19,23,27],
+					[6,11,16,20,25,29],
+					[6,12,17,22,27,31],
+					[6,12,18,23,28,33],
+					[6,12,18,24,30,35]];
 				let oceny=["Poza wyobrażeniem autora", "Minimalna", "Dostateczna", "Dobra", "Bardzo dobra", "Wysoka", "Wybitna"];
 				v_ocena = oceny[getOcenaFromArray(v_razem, kategorie[v_kategoria])];
 			}
-			v_link_obj = [v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc];
+			v_link_obj = [
+				v_plec, v_wiek, r_szybkosc, r_skocznosc, r_wytrzymalosc, r_sila_miesni_brzucha, v_sila_ramion, v_gibkosc];
 			v_link_obj_enc = btoa(JSON.stringify(v_link_obj)).replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
 			v_link = window.location.protocol+'//'+window.location.pathname+"?w="+v_link_obj_enc+"#podsumowanie";
-			// JSON.parse(atob(v_link_obj_enc.replace(/_/g, '/').replace(/-/g, '+'))) -- decode
 			document.getElementById('d_plec').innerText=v_plec;
 			document.getElementById('d_wiek').innerText=v_wiek;
 			document.getElementById('d_szybkosc').innerText=v_szybkosc;
@@ -111,7 +142,7 @@
 		<div class="panel" id="plec">
 			<h1>Płeć</h1>
 			<p>
-				<input type="radio" name="i_plec" id="mezczyzna" value="m" selected onchange="calculate()">
+				<input type="radio" name="i_plec" id="mezczyzna" value="m" checked onchange="calculate()">
 				<label for="mezczyzna">Mężczyzna</label>
 				<input type="radio" name="i_plec" id="kobieta" value="k" disabled onchange="calculate()">
 				<label for="kobieta">Kobieta</label>
