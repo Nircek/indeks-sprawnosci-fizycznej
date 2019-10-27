@@ -50,6 +50,7 @@ a:hover
 	border: 2px solid #343434;
 	font-size: 18px;
 	margin: 2rem 1%;
+	margin-bottom: auto;
 }
 .go_next:hover, .go_back:hover
 {
@@ -62,6 +63,7 @@ a:hover
 	font-size: 18px;
 	margin: 2rem 1%;
 	color:white;
+	margin-bottom: auto;
 }
 
 .panel
@@ -104,6 +106,29 @@ input[type="radio"]
 	min-width: 6em;
 	text-align: center;
 }
-.shareLink {
+table
+{
+	max-width: 40%;
+	margin-bottom: 1em;
+}
 
+.shareLink
+{
+}
+
+h6
+{
+	postion: absolute;
+	float: left;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 2em;
+	margin-left: 7em;
+	margin-right: 1em;
+	align: center;
+	margin-top: 4em;
+}
+
+h5
+{
+	text-align: center;
 }
