@@ -51,7 +51,7 @@
 			return 0;
 		}
 		function calculate() {
-			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_razem, v_kategoria, v_ocena;
+			var v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc, v_razem, v_kategoria, v_ocena, v_link_obj, v_link_obj_enc, v_link;
 			v_plec = document.querySelector('input[name="i_plec"]:checked').value;
 			v_wiek = parseInt(document.getElementById('i_wiek').value);
 			v_szybkosc = getOcenaFromArray(document.getElementById('i_szybkosc').value, [15, 20, 25, 30, 35, 40]);
@@ -78,8 +78,11 @@
 				[6,12,18,24,30,35]];
 				let oceny=["Poza wyobrażeniem autora", "Minimalna", "Dostateczna", "Dobra", "Bardzo dobra", "Wysoka", "Wybitna"];
 				v_ocena = oceny[getOcenaFromArray(v_razem, kategorie[v_kategoria])];
-
 			}
+			v_link_obj = [v_plec, v_wiek, v_szybkosc, v_skocznosc, v_wytrzymalosc, v_sila_miesni_brzucha, v_sila_ramion, v_gibkosc];
+			v_link_obj_enc = btoa(JSON.stringify(v_link_obj)).replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
+			v_link = window.location.protocol+'//'+window.location.pathname+"?w="+v_link_obj_enc+"#podsumowanie";
+			// JSON.parse(atob(v_link_obj_enc.replace(/_/g, '/').replace(/-/g, '+'))) -- decode
 			document.getElementById('d_plec').innerText=v_plec;
 			document.getElementById('d_wiek').innerText=v_wiek;
 			document.getElementById('d_szybkosc').innerText=v_szybkosc;
@@ -90,6 +93,7 @@
 			document.getElementById('d_gibkosc').innerText=v_gibkosc;
 			document.getElementById('d_razem').innerText=v_razem;
 			document.getElementById('d_ocena').innerText=v_ocena;
+			document.getElementById('d_link').value=v_link;
 		}
 	</script>
 </head>
@@ -271,6 +275,7 @@
 						<td id="d_ocena"></td>
 					</tr>
 				</table>
+				<input class="shareLink" type="text" id="d_link" readonly/>
 			</p>
 		</div>
 	</div>

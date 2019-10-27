@@ -71,7 +71,7 @@ a:hover
 
 .current_panel
 {
-	
+
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -79,7 +79,7 @@ a:hover
 	text-align: center;
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	font-size: 18px;
-	-webkit-animation: fadein 2s; 
+	-webkit-animation: fadein 2s;
        -moz-animation: fadein 2s; /* Firefox  */
         -ms-animation: fadein 2s; /* Internet Explorer */
          -o-animation: fadein 2s; /* Opera  */
@@ -103,4 +103,7 @@ input[type="radio"]
 	min-height: 2em;
 	min-width: 6em;
 	text-align: center;
+}
+.shareLink {
+	
 }
