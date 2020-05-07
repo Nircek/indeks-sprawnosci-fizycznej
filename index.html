@@ -5,17 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PIKny Indeks Sprawności</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
   </head>
   <body>
     <div class="warn-outer">
       <div class="warn">
         <div class="warn-inner">
-          <div class="close" onclick="document.getElementsByClassName('close')[0].parentElement.parentElement.parentElement.remove();">&times;</div>
+          <div
+            class="close"
+            onclick="document.getElementsByClassName('close')[0].parentElement.parentElement.parentElement.remove();"
+          >
+            &times;
+          </div>
           Dostępna jest stara wersja strony na komputer. <br />
           Kliknij <a href="./computer.html">tutaj</a> by do niej przejść.
         </div>
       </div>
     </div>
-    <div></div>
+    <div id="prototypes" style="display: none;">
+      <!-- delete all comments when ready -->
+      <div id="prototype-submit">
+        {{title}} {{desc}} {{submit}}
+      </div>
+      <div id="prototype-radio">
+        {{title}}
+        <!-- .radio-options MUST be inside the #prototype-radio but doesn't need to be a child of it (can be a child, a grandchild...) -->
+        <div class="radio-options">
+          <!-- there will be pasted `prototype-option`s -->
+        </div>
+      </div>
+      <div id="prototype-option" onclick="select(this)">
+        {{title}}
+      </div>
+      <div id="prototype-desc">
+        {{title}} {{desc}}
+      </div>
+      <div id="prototype-int">
+        {{title}}
+        <input type="number" id="{{id}}" />
+        <!-- when input is submitted, call the submit({{id}}) -->
+      </div>
+      <div id="prototype-summary-chart">
+        {{rank}}
+        <canvas id="{{id}}"></canvas>
+      </div>
+      <div id="prototype-summary">
+        <div class="summary-ranks">
+          <!-- there will be pasted `prototype-summary-rank`s -->
+        </div>
+      </div>
+      <div id="prototype-summary-rank">
+        {{name}} {{rank}}
+      </div>
+    </div>
+    <div id="container">
+      <!-- there will be pasted next prototypes -->
+    </div>
   </body>
 </html>
