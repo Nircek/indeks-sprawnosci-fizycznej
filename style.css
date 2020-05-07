@@ -1,0 +1,39 @@
+a, a:visited, a:active {
+  color: inherit;
+  letter-spacing: .2ch;
+}
+.warn a:hover {
+  color: #6c0;
+}
+
+.warn-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+.warn {
+  color: chartreuse;
+  font-weight: bolder;
+  font-size: 3vw;
+  margin: 1em;
+  background-color: crimson;
+}
+.warn-inner {
+  position: relative;
+  padding: 1em;
+}
+.close {
+  position: absolute;
+  top: .7ch;
+  right: .7ch;
+  line-height: .8em;
+  font-weight: bolder;
+  transition: color .15s ease-out;
+  color: #6c0
+}
+
+.close:hover {
+  color: black;
+  cursor: pointer;
+}
