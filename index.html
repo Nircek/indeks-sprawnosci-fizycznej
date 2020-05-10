@@ -11,10 +11,8 @@
     <div class="warn-outer">
       <div class="warn">
         <div class="warn-inner">
-          <div
-            class="close"
-            onclick="document.getElementsByClassName('close')[0].parentElement.parentElement.parentElement.remove();"
-          >
+          <div class="close"
+            onclick="document.getElementsByClassName('close')[0].parentElement.parentElement.parentElement.remove();">
             &times;
           </div>
           Dostępna jest stara wersja strony na komputer. <br />
@@ -46,20 +44,32 @@
         <!-- when input is submitted, call the submit({{id}}) -->
       </div>
       <div id="prototype-summary-chart">
-        {{rank}}
+        {{mark}}
         <canvas id="{{id}}"></canvas>
       </div>
       <div id="prototype-summary">
-        <div class="summary-ranks">
-          <!-- there will be pasted `prototype-summary-rank`s -->
+        <div class="summary-marks">
+          <!-- there will be pasted `prototype-summary-mark`s -->
         </div>
       </div>
-      <div id="prototype-summary-rank">
-        {{name}} {{rank}}
+      <div id="prototype-summary-mark">
+        {{name}} {{mark}}
       </div>
     </div>
-    <div id="container">
-      <!-- there will be pasted next prototypes -->
+    <div id="content">
+      <div class="topbar">
+        <div class="logo"></div>
+        <h1>PIKni i sprawni</h1>
+      </div>
+      <div class="sheet">
+        <div class="latch"></div>
+        <div id="container">
+          <!--prototypes will be pasted here-->
+        </div>
+      </div>
+      <div class="leftarrow">&#x1F814;</div>
+      </iv>
     </div>
+    <div id="timer" class="thrown-in"></div>
   </body>
 </html>
