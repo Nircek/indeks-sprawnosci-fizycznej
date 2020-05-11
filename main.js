@@ -8,3 +8,11 @@ var tsubmit = submit.cloneNode(true);
 tsubmit.setAttribute('id', 'submit1');
 tsubmit.innerHTML = tsubmit.innerHTML.replaceAll('{{title}}', 'Tytuł');
 document.getElementById('container').appendChild(tsubmit);
+let checkbox = document.getElementsByClassName("checkbox");
+checkbox[1].addEventListener('click', draw);
+function draw()
+{
+  let tick = document.getElementsByClassName("check");
+  tick[1].style.display = "block";
+  checkbox[1].style.cursor = "default";
+}

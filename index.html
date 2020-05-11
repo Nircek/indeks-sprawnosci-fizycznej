@@ -11,8 +11,10 @@
     <div class="warn-outer">
       <div class="warn">
         <div class="warn-inner">
-          <div class="close"
-            onclick="document.getElementsByClassName('close')[0].parentElement.parentElement.parentElement.remove();">
+          <div
+            class="close"
+            onclick="document.getElementsByClassName('close')[0].parentElement.parentElement.parentElement.remove();"
+          >
             &times;
           </div>
           Dostępna jest stara wersja strony na komputer. <br />
@@ -24,6 +26,18 @@
       <!-- delete all comments when ready -->
       <div id="prototype-submit">
         {{title}} {{desc}} {{submit}}
+        <div class="checkbox">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="check"
+            width="5vh"
+            height="6vh"
+            viewBox="0 0 121 180"
+            display="none"
+          >
+            <path d="M0.3 140l62.4 60.1L165.6 0.3" />
+          </svg>
+        </div>
       </div>
       <div id="prototype-radio">
         {{title}}
@@ -68,7 +82,7 @@
         </div>
       </div>
       <div class="leftarrow">&#x1F814;</div>
-      </iv>
+      <!--I need a function-->
     </div>
     <div id="timer" class="thrown-in"></div>
   </body>

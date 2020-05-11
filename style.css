@@ -150,3 +150,44 @@ h1
   -o-transition:      top 1s ease-in-out;
   transition:         top 1s ease-in-out;
 }
+
+.check path {
+    fill:none;
+    stroke: #444;
+    stroke-miterlimit: 20;
+    stroke-width: 20%;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: draw 1.5s linear forwards;
+}
+
+svg
+{
+  overflow: visible;
+  position: relative;
+  bottom: 50%;
+  left: -20%;
+}
+
+@keyframes draw {
+    from {
+        stroke-linecap: round;
+    }
+    to {
+        stroke-linecap: round;
+        stroke-dashoffset: 0;
+    }
+}
+
+.checkbox
+{
+  border: 0.4vh solid black;
+  width: 5vh;
+  height: 5vh;
+  margin-top: 10vh;
+  margin-left: 5vh;
+}
+.checkbox:hover
+{
+  cursor: pointer;
+}
