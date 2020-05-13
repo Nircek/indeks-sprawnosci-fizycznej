@@ -49,7 +49,7 @@ var data = [
   {
     title: 'Szybkość',
     desc:
-      'Biegnij szybko w miejscu przez 10 sekund wysoko unosząc kolana i klaszcząc' +
+      'Biegnij szybko w miejscu przez 10 sekund wysoko unosząc kolana i klaszcząc ' +
       'pod unoszoną nogą. Policz liczbę klaśnięć.',
     img: null,
     type: 'int',
@@ -77,8 +77,9 @@ var data = [
   },
   {
     title: 'Skoczność',
-    desc: 'Skocz w dla obunóż z miejsca. Rezultat zmierz własnymi stopami.' + 
-    'Wynik zaokrąglij do całej stopy.', // tylko chciałbym, żeby te descriptiony wszystkie były jakoś sensowne podzielone (patrz przykład wyżej), żeby nie było takich długich linijek w kodzie jak ten komentarz na przykład, bo się to średnio czyta...
+    desc:
+      'Skocz w dal obunóż z miejsca. Rezultat zmierz własnymi stopami. ' +
+      'Wynik zaokrąglij do całej stopy.',
     img: null,
     type: 'int',
     timer: null,
@@ -98,9 +99,10 @@ var data = [
   {
     title: 'Siła ramion',
     desc: 'Siła ramion - Poziom minimalny',
-    desc: 'Uchwyć się drążka lub gałęzi, tak aby swobodnie zwisać.' + 
-    'Nie dotykaj podłoża nogami. Próbuj wykonać kolejne ćwiczenia' +
-    'o wzrastającej trudności.',
+    desc:
+      'Uchwyć się drążka lub gałęzi, tak aby swobodnie zwisać. ' +
+      'Nie dotykaj podłoża nogami. Próbuj wykonać kolejne ćwiczenia ' +
+      'o wzrastającej trudności.',
     img: null,
     type: 'multi',
     progressive: true,
@@ -127,8 +129,9 @@ var data = [
         },
         3: {
           title: 'Siła ramion - Poziom dobry',
-          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
-                + 'była wyżej niż drążek, i wytrzymaj 3 sek.',
+          desc:
+            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
+            'była wyżej niż drążek, i wytrzymaj 3 sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -137,8 +140,9 @@ var data = [
         },
         4: {
           title: 'Siła ramion - Poziom bardzo dobry',
-          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
-              + 'była wyżej niż drążek i wytrzymaj 10 sek.',
+          desc:
+            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
+            'była wyżej niż drążek i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -147,7 +151,8 @@ var data = [
         },
         5: {
           title: 'Siła ramion - Poziom wysoki',
-          desc: 'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, wytrzymaj 10 sek.',
+          desc:
+            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -156,8 +161,9 @@ var data = [
         },
         6: {
           title: 'Siła ramion - Poziom wybitny',
-          desc: 'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, utrzymuj się kolejno na'
-                + 'lewej i prawej ręce po 10 sek.',
+          desc:
+            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, utrzymuj się kolejno na ' +
+            'lewej i prawej ręce po 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -204,8 +210,9 @@ var data = [
         },
         5: {
           title: 'Siła ramion - Poziom wysoki',
-          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
-          + 'była wyżej niż drążek i wytrzymaj 3 sek.',
+          desc:
+            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
+            'była wyżej niż drążek i wytrzymaj 3 sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -214,8 +221,9 @@ var data = [
         },
         6: {
           title: 'Siła ramion - Poziom wybitny',
-          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
-          + 'była wyżej niż drążek i wytrzymaj 10 sek.',
+          desc:
+            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
+            'była wyżej niż drążek i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -227,8 +235,9 @@ var data = [
   },
   {
     title: 'Gibkość',
-    desc: 'Stań w pozycji na baczność, nie zginając nóg w kolanach. Wykonaj ruchem ciągłym powolny skłon'
-          + 'tułowia w przód. Nogi proste. Liczy się poprawne wykonanie zadania.',
+    desc:
+      'Stań w pozycji na baczność, nie zginając nóg w kolanach. Wykonaj ruchem ciągłym powolny skłon ' +
+      'tułowia w przód. Nogi proste. Liczy się poprawne wykonanie zadania.',
     type: 'multi',
     progressive: true,
     test: true,
@@ -261,7 +270,8 @@ var data = [
         },
         4: {
           title: 'Gibkość - Poziom bardzo dobry',
-          desc: 'Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.',
+          desc:
+            'Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.',
           img: null,
           type: 'radio',
           var: null,
@@ -288,15 +298,18 @@ var data = [
   },
   {
     title: 'Wytrzymałość',
-    desc: 'Spróbuj jak długo możesz biec. Próbę możesz wykonać w dwojaki sposób: w miejscu w tempie ok.'
-          + '120 kroków na minutę lub na odległość. W pierwszym przypadku decyduje czas trwania biegu,' 
-          + 'w drugim pokonany dystans.',
+    desc:
+      'Spróbuj jak długo możesz biec. Próbę możesz wykonać w dwojaki sposób: w miejscu w tempie ok. ' +
+      '120 kroków na minutę lub na odległość. W pierwszym przypadku decyduje czas trwania biegu, ' +
+      'w drugim pokonany dystans.',
     img: null,
     type: 'choice',
+    question: 'Jak chcesz wykonać test?',
     choices: [
       {
+        label: 'na czas',
         title: 'Wytrzymałość - czas',
-        desc: 'Postaraj się biegać tak długo, jak tylko potrafisz. Do pomiaru czasu możesz użyć np. zegarka.',
+        desc: 'Postaraj się biegać tak długo, jak tylko potrafisz.',
         img: null,
         type: 'int',
         timer: 0,
@@ -322,9 +335,11 @@ var data = [
         },
       },
       {
+        label: 'na dystans',
         title: 'Wytrzymałość - dystans',
-        desc: 'Postaraj się pokanać tak duży dystans jak potrafisz, do pomiaru możesz wykorzystać' 
-            + 'np. aplikację w telefonie.',
+        desc:
+          'Postaraj się pokonać tak duży dystans jak potrafisz. Do pomiaru możesz wykorzystać ' +
+          'np. aplikację w telefonie.',
         img: null,
         type: 'int',
         timer: null,
@@ -353,8 +368,9 @@ var data = [
   },
   {
     title: 'Siła mięśni brzucha',
-    desc: 'Połóż się na plecach, z dowolnie ułożonymi rękami. Unieś nogi tuż nad podłoże i wykonuj nożyce' 
-          + 'nożyce poprzeczne tak długo, jak możesz. O wyniku decyduje czas trwania próby.',
+    desc:
+      'Połóż się na plecach, z dowolnie ułożonymi rękami. Unieś nogi tuż nad podłoże i wykonuj ' +
+      'nożyce poprzeczne tak długo, jak możesz. O wyniku decyduje czas trwania próby.',
     type: 'int',
     timer: 0,
     test: true,
@@ -380,7 +396,7 @@ var data = [
   },
   {
     title: 'Podsumowanie',
-    desc: 'Brawo! Ukończyłeś indeks sprawności! Oto twoja ocena: ',
+    desc: '',
     type: 'summary-overall',
   },
   {
@@ -400,11 +416,10 @@ var tsubmit = submit.cloneNode(true);
 tsubmit.setAttribute('id', 'submit1');
 tsubmit.innerHTML = tsubmit.innerHTML.replaceAll('{{title}}', 'Tytuł');
 document.getElementById('container').appendChild(tsubmit);
-let checkbox = document.getElementsByClassName("checkbox");
+let checkbox = document.getElementsByClassName('checkbox');
 checkbox[1].addEventListener('click', draw);
-function draw()
-{
-  let tick = document.getElementsByClassName("check");
-  tick[1].style.display = "block";
-  checkbox[1].style.cursor = "default";
+function draw() {
+  let tick = document.getElementsByClassName('check');
+  tick[1].style.display = 'block';
+  checkbox[1].style.cursor = 'default';
 }
