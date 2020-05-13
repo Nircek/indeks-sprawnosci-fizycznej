@@ -77,7 +77,8 @@ var data = [
   },
   {
     title: 'Skoczność',
-    desc: '', // tylko chciałbym, żeby te descriptiony wszystkie były jakoś sensowne podzielone (patrz przykład wyżej), żeby nie było takich długich linijek w kodzie jak ten komentarz na przykład, bo się to średnio czyta...
+    desc: 'Skocz w dla obunóż z miejsca. Rezultat zmierz własnymi stopami.' + 
+    'Wynik zaokrąglij do całej stopy.', // tylko chciałbym, żeby te descriptiony wszystkie były jakoś sensowne podzielone (patrz przykład wyżej), żeby nie było takich długich linijek w kodzie jak ten komentarz na przykład, bo się to średnio czyta...
     img: null,
     type: 'int',
     timer: null,
@@ -96,7 +97,10 @@ var data = [
   },
   {
     title: 'Siła ramion',
-    desc: '',
+    desc: 'Siła ramion - Poziom minimalny',
+    desc: 'Uchwyć się drążka lub gałęzi, tak aby swobodnie zwisać.' + 
+    'Nie dotykaj podłoża nogami. Próbuj wykonać kolejne ćwiczenia' +
+    'o wzrastającej trudności.',
     img: null,
     type: 'multi',
     progressive: true,
@@ -105,8 +109,7 @@ var data = [
     marks: {
       m: {
         1: {
-          title: 'Siła ramion - Poziom minimalny',
-          desc: '',
+          title: 'Zawiśnij na wyprostowanych rękach i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -115,7 +118,7 @@ var data = [
         },
         2: {
           title: 'Siła ramion - Poziom dostateczny',
-          desc: '',
+          desc: 'Zawiśnij na wyprostowanej jednej ręce i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -124,7 +127,8 @@ var data = [
         },
         3: {
           title: 'Siła ramion - Poziom dobry',
-          desc: '',
+          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
+                + 'była wyżej niż drążek, i wytrzymaj 3 sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -133,7 +137,8 @@ var data = [
         },
         4: {
           title: 'Siła ramion - Poziom bardzo dobry',
-          desc: '',
+          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
+              + 'była wyżej niż drążek i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -142,7 +147,7 @@ var data = [
         },
         5: {
           title: 'Siła ramion - Poziom wysoki',
-          desc: '',
+          desc: 'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -151,7 +156,8 @@ var data = [
         },
         6: {
           title: 'Siła ramion - Poziom wybitny',
-          desc: '',
+          desc: 'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, utrzymuj się kolejno na'
+                + 'lewej i prawej ręce po 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -162,7 +168,7 @@ var data = [
       f: {
         1: {
           title: 'Siła ramion - Poziom minimalny',
-          desc: '',
+          desc: 'Zawiśnij na wyprostowanych rękach i wytrzymaj 3 sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -171,7 +177,7 @@ var data = [
         },
         2: {
           title: 'Siła ramion - Poziom dostateczny',
-          desc: '',
+          desc: 'Zawiśnij na wyprostowanych rękach i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -180,7 +186,7 @@ var data = [
         },
         3: {
           title: 'Siła ramion - Poziom dobry',
-          desc: '',
+          desc: 'Zawiśnij na jednej ręce i wytrzymaj 3 sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -189,7 +195,7 @@ var data = [
         },
         4: {
           title: 'Siła ramion - Poziom bardzo dobry',
-          desc: '',
+          desc: 'Zawiśnij na jednej ręce i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -198,7 +204,8 @@ var data = [
         },
         5: {
           title: 'Siła ramion - Poziom wysoki',
-          desc: '',
+          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
+          + 'była wyżej niż drążek i wytrzymaj 3 sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -207,7 +214,8 @@ var data = [
         },
         6: {
           title: 'Siła ramion - Poziom wybitny',
-          desc: '',
+          desc: 'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa'
+          + 'była wyżej niż drążek i wytrzymaj 10 sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -219,7 +227,8 @@ var data = [
   },
   {
     title: 'Gibkość',
-    desc: '',
+    desc: 'Stań w pozycji na baczność, nie zginając nóg w kolanach. Wykonaj ruchem ciągłym powolny skłon'
+          + 'tułowia w przód. Nogi proste. Liczy się poprawne wykonanie zadania.',
     type: 'multi',
     progressive: true,
     test: true,
@@ -228,7 +237,7 @@ var data = [
       a: {
         1: {
           title: 'Gibkość - Poziom minimalny',
-          desc: '',
+          desc: 'Chwyć oburącz za kostki.',
           img: null,
           type: 'radio',
           var: null,
@@ -236,7 +245,7 @@ var data = [
         },
         2: {
           title: 'Gibkość - Poziom dostateczny',
-          desc: '',
+          desc: 'Dotknij palcami obu rąk palców stóp.',
           img: null,
           type: 'radio',
           var: null,
@@ -244,7 +253,7 @@ var data = [
         },
         3: {
           title: 'Gibkość - Poziom dobry',
-          desc: '',
+          desc: 'Dotknij palcami obu rąk podłoża.',
           img: null,
           type: 'radio',
           var: null,
@@ -252,7 +261,7 @@ var data = [
         },
         4: {
           title: 'Gibkość - Poziom bardzo dobry',
-          desc: '',
+          desc: 'Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.',
           img: null,
           type: 'radio',
           var: null,
@@ -260,7 +269,7 @@ var data = [
         },
         5: {
           title: 'Gibkość - Poziom wysoki',
-          desc: '',
+          desc: 'Dotknij obiema dłońmi podłoża.',
           img: null,
           type: 'radio',
           var: null,
@@ -268,7 +277,7 @@ var data = [
         },
         6: {
           title: 'Gibkość - Poziom wybitny',
-          desc: '',
+          desc: 'Dotknij głową kolan.',
           img: null,
           type: 'radio',
           var: null,
@@ -279,13 +288,15 @@ var data = [
   },
   {
     title: 'Wytrzymałość',
-    desc: '',
+    desc: 'Spróbuj jak długo możesz biec. Próbę możesz wykonać w dwojaki sposób: w miejscu w tempie ok.'
+          + '120 kroków na minutę lub na odległość. W pierwszym przypadku decyduje czas trwania biegu,' 
+          + 'w drugim pokonany dystans.',
     img: null,
     type: 'choice',
     choices: [
       {
         title: 'Wytrzymałość - czas',
-        desc: '',
+        desc: 'Postaraj się biegać tak długo, jak tylko potrafisz. Do pomiaru czasu możesz użyć np. zegarka.',
         img: null,
         type: 'int',
         timer: 0,
@@ -312,7 +323,8 @@ var data = [
       },
       {
         title: 'Wytrzymałość - dystans',
-        desc: '',
+        desc: 'Postaraj się pokanać tak duży dystans jak potrafisz, do pomiaru możesz wykorzystać' 
+            + 'np. aplikację w telefonie.',
         img: null,
         type: 'int',
         timer: null,
@@ -341,7 +353,8 @@ var data = [
   },
   {
     title: 'Siła mięśni brzucha',
-    desc: '',
+    desc: 'Połóż się na plecach, z dowolnie ułożonymi rękami. Unieś nogi tuż nad podłoże i wykonuj nożyce' 
+          + 'nożyce poprzeczne tak długo, jak możesz. O wyniku decyduje czas trwania próby.',
     type: 'int',
     timer: 0,
     test: true,
@@ -367,7 +380,7 @@ var data = [
   },
   {
     title: 'Podsumowanie',
-    desc: '',
+    desc: 'Brawo! Ukończyłeś indeks sprawności! Oto twoja ocena: ',
     type: 'summary-overall',
   },
   {
