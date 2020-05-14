@@ -411,21 +411,52 @@ String.prototype.replaceAll = function (search, replacement) {
   return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-function prot(type, id, obj) {
+String.prototype.protInject = function (id, value) {
+  var target = this;
+  return target.replaceAll(`{{${id}}}`, value);
+};
+
+function prot(type, id, obj, cont = document.getElementById('container')) {
   let prot = document.getElementById('prototype-' + type).cloneNode(true);
   prot.setAttribute('id', id);
   Object.keys(obj).every((x) => {
-    prot.innerHTML = prot.innerHTML.replaceAll(`{{${x}}}`, obj[x]);
+    prot.innerHTML = prot.innerHTML.protInject(x, obj[x]);
     return true;
   });
-  document.getElementById('container').appendChild(prot);
+  cont.appendChild(prot);
+  return prot;
 }
 
 function protSubmit(title, desc, submit) {
   prot('submit', 'submit1', { title: title, desc: desc, submit: submit });
 }
 
+function select(el) {}
+
+function protRadio(title, desc, options) {
+  let p = prot('radio', 'radio1', { title: title, desc: desc });
+  options.every(x => prot('option', 'radio1-1', { title: x }, p.getElementsByClassName('radio-options')[0]));
+}
+
+function protDesc(title, desc) {}
+
+function submit(id) {
+  // when int is submitted
+}
+
+function protInt(title, desc, id) {}
+
+function protSummaryChart(title, mark, id) {
+  // id of canvas
+}
+
+function protSummary(title, mark) {
+  // .summary-marks
+  // prototype-summary-mark {{name}} {{mark}}
+}
+
 protSubmit('Title', 'Description', 'Submit');
+protRadio('Sex', 'Who are you?', ['female', 'male']);
 
 function check(checkbox) {
   checkbox.getElementsByClassName('check')[0].style.display = 'block';
