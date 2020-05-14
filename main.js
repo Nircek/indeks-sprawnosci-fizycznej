@@ -411,11 +411,23 @@ String.prototype.replaceAll = function (search, replacement) {
   return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-var submit = document.getElementById('prototype-submit');
-var tsubmit = submit.cloneNode(true);
-tsubmit.setAttribute('id', 'submit1');
-tsubmit.innerHTML = tsubmit.innerHTML.replaceAll('{{title}}', 'Tytuł');
-document.getElementById('container').appendChild(tsubmit);
+function prot(type, id, obj) {
+  let prot = document.getElementById('prototype-' + type).cloneNode(true);
+  prot.setAttribute('id', id);
+  console.log(obj);
+  Object.keys(obj).every((x) => {
+    prot.innerHTML = prot.innerHTML.replaceAll(`{{${x}}}`, obj[x]);
+    return true;
+  });
+  document.getElementById('container').appendChild(prot);
+}
+
+function protSubmit(title, desc, submit) {
+  prot('submit', 'submit1', { title: title, desc: desc, submit: submit });
+}
+
+protSubmit('Title', 'Description', 'Submit');
+
 let checkbox = document.getElementsByClassName('checkbox');
 checkbox[1].addEventListener('click', draw);
 function draw() {
