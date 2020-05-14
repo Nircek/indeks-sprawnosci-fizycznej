@@ -414,7 +414,6 @@ String.prototype.replaceAll = function (search, replacement) {
 function prot(type, id, obj) {
   let prot = document.getElementById('prototype-' + type).cloneNode(true);
   prot.setAttribute('id', id);
-  console.log(obj);
   Object.keys(obj).every((x) => {
     prot.innerHTML = prot.innerHTML.replaceAll(`{{${x}}}`, obj[x]);
     return true;
@@ -428,10 +427,7 @@ function protSubmit(title, desc, submit) {
 
 protSubmit('Title', 'Description', 'Submit');
 
-let checkbox = document.getElementsByClassName('checkbox');
-checkbox[1].addEventListener('click', draw);
-function draw() {
-  let tick = document.getElementsByClassName('check');
-  tick[1].style.display = 'block';
-  checkbox[1].style.cursor = 'default';
+function check(checkbox) {
+  checkbox.getElementsByClassName('check')[0].style.display = 'block';
+  checkbox.style.cursor = 'default';
 }
