@@ -489,11 +489,16 @@ function protSummary(title, desc, marks) {
 }
 
 protSubmit('Title', 'Description', 'Submit');
+protSubmit('Title', 'Description', 'Submit');
 protRadio('Sex', 'Who are you?', ['female', 'male']);
 protDesc('Desc', 'desc');
 protInt('Int', 'int');
 protSummaryChart('Summary', 'summary', 'good');
 protSummary('Detailed summary', 'details:', { a: 'A', b: 'B' });
+
+document.getElementsByClassName('checkbox').every((x) => {
+  x.addEventListener('click', check);
+});
 
 function check(checkbox) {
   checkbox.getElementsByClassName('check')[0].style.display = 'block';
