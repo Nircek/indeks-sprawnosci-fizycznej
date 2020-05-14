@@ -416,6 +416,13 @@ String.prototype.protInject = function (id, value) {
   return target.replaceAll(`{{${id}}}`, value);
 };
 
+var dynamicIds = {};
+
+function getDynamicId(id) {
+  if (!dynamicIds.hasOwnProperty(id)) dynamicIds[id] = 0;
+  return id + ++dynamicIds[id];
+}
+
 function prot(type, id, obj, cont = document.getElementById('container')) {
   let prot = document.getElementById('prototype-' + type).cloneNode(true);
   prot.setAttribute('id', id);
@@ -428,35 +435,65 @@ function prot(type, id, obj, cont = document.getElementById('container')) {
 }
 
 function protSubmit(title, desc, submit) {
-  prot('submit', 'submit1', { title: title, desc: desc, submit: submit });
+  prot('submit', getDynamicId('submit'), {
+    title: title,
+    desc: desc,
+    submit: submit,
+  });
 }
 
 function select(el) {}
 
 function protRadio(title, desc, options) {
-  let p = prot('radio', 'radio1', { title: title, desc: desc });
-  options.every(x => prot('option', 'radio1-1', { title: x }, p.getElementsByClassName('radio-options')[0]));
+  let id = getDynamicId('radio');
+  let p = prot('radio', id, { title: title, desc: desc });
+  options.every((x) =>
+    prot(
+      'option',
+      getDynamicId(id + '-'),
+      { title: x },
+      p.getElementsByClassName('radio-options')[0]
+    )
+  );
 }
 
-function protDesc(title, desc) {}
+function protDesc(title, desc) {
+  prot('desc', getDynamicId('desc'), { title: title, desc: desc });
+}
 
 function submit(id) {
   // when int is submitted
 }
 
-function protInt(title, desc, id) {}
-
-function protSummaryChart(title, mark, id) {
-  // id of canvas
+function protInt(title, desc) {
+  let id = getDynamicId('int');
+  prot('int', id, { title: title, desc: desc, id: id + 'in' });
 }
 
-function protSummary(title, mark) {
-  // .summary-marks
-  // prototype-summary-mark {{name}} {{mark}}
+function protSummaryChart(title, desc, mark) {
+  let id = getDynamicId('summary-chart');
+  prot('int', id, { title: title, desc: desc, mark: mark, id: id + 'canvas' });
+}
+
+function protSummary(title, desc, marks) {
+  let id = getDynamicId('summary');
+  let p = prot('summary', id, { title: title, desc: desc });
+  Object.keys(marks).every((x) =>
+    prot(
+      'summary-mark',
+      getDynamicId(id + '-'),
+      { name: x, mark: marks[x] },
+      p.getElementsByClassName('summary-marks')[0]
+    )
+  );
 }
 
 protSubmit('Title', 'Description', 'Submit');
 protRadio('Sex', 'Who are you?', ['female', 'male']);
+protDesc('Desc', 'desc');
+protInt('Int', 'int');
+protSummaryChart('Summary', 'summary', 'good');
+protSummary('Detailed summary', 'details:', { a: 'A', b: 'B' });
 
 function check(checkbox) {
   checkbox.getElementsByClassName('check')[0].style.display = 'block';
