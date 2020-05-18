@@ -496,11 +496,11 @@ protInt('Int', 'int');
 protSummaryChart('Summary', 'summary', 'good');
 protSummary('Detailed summary', 'details:', { a: 'A', b: 'B' });
 
-document.getElementsByClassName('checkbox').every((x) => {
+[...document.getElementsByClassName('checkbox')].map((x) => {
   x.addEventListener('click', check);
 });
 
-function check(checkbox) {
-  checkbox.getElementsByClassName('check')[0].style.display = 'block';
-  checkbox.style.cursor = 'default';
+function check(event) {
+  event.srcElement.getElementsByClassName('check')[0].style.display = 'block';
+  event.srcElement.style.cursor = 'default';
 }
