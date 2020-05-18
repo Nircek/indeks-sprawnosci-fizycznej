@@ -426,9 +426,8 @@ function getDynamicId(id) {
 function prot(type, id, obj, cont = document.getElementById('container')) {
   let prot = document.getElementById('prototype-' + type).cloneNode(true);
   prot.setAttribute('id', id);
-  Object.keys(obj).every((x) => {
+  Object.keys(obj).map((x) => {
     prot.innerHTML = prot.innerHTML.protInject(x, obj[x]);
-    return true;
   });
   cont.appendChild(prot);
   return prot;
@@ -501,6 +500,9 @@ protSummary('Detailed summary', 'details:', { a: 'A', b: 'B' });
 });
 
 function check(event) {
-  event.srcElement.getElementsByClassName('check')[0].style.display = 'block';
-  event.srcElement.style.cursor = 'default';
+  let caller = event.srcElement;
+  caller.getElementsByClassName('check')[0].style.display = 'block';
+  caller.style.cursor = 'default';
+  while (caller.parentElement.id != 'container') caller = caller.parentElement;
+  setInterval(() => caller.classList.add('thrown-out'), 2500);
 }
