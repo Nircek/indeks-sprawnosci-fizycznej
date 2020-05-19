@@ -24,50 +24,42 @@
     </div>
     <div id="prototypes" style="display: none;">
       <!-- delete all comments when ready -->
-      <div id="prototype-submit">
+      <div class="sheet" id="prototype-submit">
         {{title}} {{desc}} {{submit}}
-        <div class="checkbox">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="check"
-            width="5vh"
-            height="6vh"
-            viewBox="0 0 121 180"
-            display="none"
-          >
-            <path d="M0.3 140l62.4 60.1L165.6 0.3" />
-          </svg>
+        <div class="checkbox"> <svg xmlns="http://www.w3.org/2000/svg" class="check" viewBox="0 0 121 180" display = "none">
+          <path d="M0.3 140l62.4 60.1L165.6 0.3"/></svg>
         </div>
       </div>
-      <div id="prototype-radio">
+      <div class="sheet" id="prototype-radio">
         {{title}}
         <!-- .radio-options MUST be inside the #prototype-radio but doesn't need to be a child of it (can be a child, a grandchild...) -->
         <div class="radio-options">
           <!-- there will be pasted `prototype-option`s -->
         </div>
       </div>
-      <div id="prototype-option">
+      <div class="sheet" id="prototype-option">
         {{title}}
       </div>
-      <div id="prototype-desc">
+      <div class="sheet" id="prototype-desc">
         {{title}} {{desc}}
       </div>
-      <div id="prototype-int">
+      <div class="sheet" id="prototype-int">
         {{title}}
         <input type="number" id="{{id}}" />
         <!-- when input is submitted, call the submit({{id}}) -->
       </div>
-      <div id="prototype-summary-chart">
+      <div class="sheet" id="prototype-summary-chart">
         {{mark}}
         <canvas id="{{id}}"></canvas>
       </div>
-      <div id="prototype-summary">
+      <div class="sheet" id="prototype-summary">
         <div class="summary-marks">
           <!-- there will be pasted `prototype-summary-mark`s -->
         </div>
       </div>
-      <div id="prototype-summary-mark">
+      <div class="sheet" id="prototype-summary-mark">
         {{name}} {{mark}}
+        </div>
       </div>
     </div>
     <div id="content">
@@ -75,14 +67,13 @@
         <div class="logo"></div>
         <h1>PIKni i sprawni</h1>
       </div>
-      <div class="sheet">
         <div class="latch"></div>
         <div id="container">
           <!--prototypes will be pasted here-->
         </div>
-      </div>
-      <div class="leftarrow">&#x1F814;</div>
+        <div class="leftarrow">&#x1F814;</div>
       <!--I need a function-->
+      </div>
     </div>
     <div id="timer" class="thrown-in"></div>
   </body>
