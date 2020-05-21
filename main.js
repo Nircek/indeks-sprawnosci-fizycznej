@@ -1,5 +1,6 @@
-DONE = 'Udało mi się!';
-NOTDONE = 'Niestety, nie umiem tego zrobić...';
+'use strict';
+let DONE = 'Udało mi się!';
+let NOTDONE = 'Niestety, nie umiem tego zrobić...';
 
 var data = [
   /*
@@ -434,26 +435,36 @@ function prot(type, id, obj, cont = document.getElementById('container')) {
 }
 
 function protSubmit(title, desc, submit) {
-  prot('submit', getDynamicId('submit'), {
+  return prot('submit', getDynamicId('submit'), {
     title: title,
     desc: desc,
     submit: submit,
   });
 }
 
-function select(el) {}
+var translation = {};
 
-function protRadio(title, desc, options) {
+function select(el) {
+  if (nextVar) vars[nextVar] = translation[el.id];
+  if (nextTest) tests[nextTest] = translation[el.id];
+  next();
+}
+
+function protRadio(title, desc, options, callback) {
   let id = getDynamicId('radio');
   let p = prot('radio', id, { title: title, desc: desc });
-  options.every((x) =>
+  translation = {};
+  Object.keys(options).map((x) => {
+    let did = getDynamicId(id + '-');
+    translation[did] = x;
     prot(
       'option',
-      getDynamicId(id + '-'),
-      { title: x },
+      did,
+      { title: options[x] },
       p.getElementsByClassName('radio-options')[0]
-    )
-  );
+    );
+  });
+  return p;
 }
 
 function protDesc(title, desc) {
@@ -487,13 +498,29 @@ function protSummary(title, desc, marks) {
   );
 }
 
-protSubmit('Title', 'Description', 'Submit');
-protSubmit('Title', 'Description', 'Submit');
-protRadio('Sex', 'Who are you?', ['female', 'male']);
-protDesc('Desc', 'desc');
-protInt('Int', 'int');
-protSummaryChart('Summary', 'summary', 'good');
-protSummary('Detailed summary', 'details:', { a: 'A', b: 'B' });
+var iterator = [-1];
+var vars = {},
+  tests = {};
+var nextVar = null,
+  nextTest = null;
+var lastSheet = null;
+function next() {
+  iterator[iterator.length - 1]++;
+  let current = data[iterator[0]];
+  let sheet = null;
+  for (let level = 1; level < iterator.length; ++level) {}
+  switch (current.type) {
+    case 'radio':
+      // img
+      nextVar = current.var;
+      nextTest = current.test ? current.var : null;
+      sheet = protRadio(current.title, current.desc, current.marks);
+      break;
+  }
+  if (lastSheet) lastSheet.classList.add('thrown-out');
+  lastSheet = sheet;
+}
+next();
 
 [...document.getElementsByClassName('checkbox')].map((x) => {
   x.addEventListener('click', check);

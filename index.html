@@ -37,14 +37,14 @@
           <!-- there will be pasted `prototype-option`s -->
         </div>
       </div>
-      <div class="sheet" id="prototype-option">
+      <div id="prototype-option" onclick="select(this)">
         {{title}}
       </div>
       <div class="sheet" id="prototype-desc">
         {{title}} {{desc}}
       </div>
       <div class="sheet" id="prototype-int">
-        {{title}}
+        {{title}} {{desc}}
         <input type="number" id="{{id}}" />
         <!-- when input is submitted, call the submit({{id}}) -->
       </div>
@@ -53,7 +53,7 @@
         <canvas id="{{id}}"></canvas>
       </div>
       <div id="prototype-summary" class = "sheet">
-        {{title}}
+        {{title}} {{desc}}
         <div class="summary-marks sheet">
           <!-- there will be pasted `prototype-summary-mark`s -->
         </div>
