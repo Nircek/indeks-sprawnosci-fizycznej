@@ -471,12 +471,29 @@ function protDesc(title, desc) {
   prot('desc', getDynamicId('desc'), { title: title, desc: desc });
 }
 
+var intTranslation = {};
+
 function submit(id) {
-  // when int is submitted
+  let ovalue = document.getElementById(id).value,
+    value = null;
+  let keys = Object.keys(intTranslation).map((x) => parseInt(x));
+  keys.sort((a, b) => b - a);
+  if (ovalue <= keys[keys.length - 1])
+    value = intTranslation[keys[keys.length - 1]];
+  else
+    for (let e of keys)
+      if (ovalue >= e) {
+        value = intTranslation[e];
+        break;
+      }
+  if (nextVar) vars[nextVar] = value;
+  if (nextTest) tests[nextTest] = value;
+  next();
 }
 
-function protInt(title, desc) {
+function protInt(title, desc, marks) {
   let id = getDynamicId('int');
+  intTranslation = marks;
   prot('int', id, { title: title, desc: desc, id: id + 'in' });
 }
 
@@ -509,12 +526,15 @@ function next() {
   let current = data[iterator[0]];
   let sheet = null;
   for (let level = 1; level < iterator.length; ++level) {}
+  nextVar = current.var;
+  nextTest = current.test ? current.var : null;
   switch (current.type) {
     case 'radio':
       // img
-      nextVar = current.var;
-      nextTest = current.test ? current.var : null;
       sheet = protRadio(current.title, current.desc, current.marks);
+      break;
+    case 'int':
+      sheet = protInt(current.title, current.desc, current.marks);
       break;
   }
   if (lastSheet) lastSheet.classList.add('thrown-out');
