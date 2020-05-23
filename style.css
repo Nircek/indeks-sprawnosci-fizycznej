@@ -4,7 +4,7 @@ body {
   padding: 0;
   overflow: hidden;
   font-family: 'Sriracha', cursive;
-  font-size: 2.7vh;
+  font-size: 2.5vh;
 }
 
 a,
@@ -62,6 +62,7 @@ a:active {
   left: 50%;
   margin-left: -24.5vh;
   padding: 2vh 2vh;
+  /* TODO: add here a little #eee7 border please*/
 }
 
 #container {
@@ -81,6 +82,7 @@ a:active {
   color: black;
   margin: 1vh auto;
   border: solid 0.5vh;
+  overflow: hidden;
 }
 .topbar {
   width: 100%;
@@ -134,6 +136,7 @@ h2 {
 
 p {
   margin: 0;
+  margin-bottom: 1.5em;
 }
 
 .option {
@@ -151,7 +154,7 @@ p {
   stroke-width: 20%;
   stroke-dasharray: 500;
   stroke-dashoffset: 500;
-  animation: draw 1.5s linear forwards;
+  animation: draw 1s linear forwards;
 }
 
 svg {
@@ -193,8 +196,6 @@ svg {
 
 .thrown-out {
   top: 100vh;
-  /* z-index: 10; -- ok, I know why but just don't add random z-index...
-     I have started to add sheets in reverse order so this line is not necessary anymore */
 }
 
 /* SRC: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */

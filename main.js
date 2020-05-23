@@ -11,6 +11,15 @@ var data = [
     Content-Length: 477575
   */
   {
+    title: 'Cześć!',
+    desc:
+      'Znudził Ci się kanapowy styl życia? A&nbsp;może po prostu chcesz się sprawdzić? ' +
+      'Tak czy inaczej musisz zrobić indeks sprawności.',
+    submit: 'Zróbmy to!',
+    img: null,
+    type: 'submit',
+  },
+  {
     title: 'Płeć',
     desc: 'Kim jesteś?',
     img: null,
@@ -50,8 +59,8 @@ var data = [
   {
     title: 'Szybkość',
     desc:
-      'Biegnij szybko w miejscu przez 10 sekund wysoko unosząc kolana i klaszcząc ' +
-      'pod unoszoną nogą. Policz liczbę klaśnięć.',
+      'Biegnij szybko w&nbsp;miejscu przez 10&nbsp;sekund wysoko unosząc kolana i&nbsp;klaszcząc ' +
+      'pod&nbsp;unoszoną nogą. Policz liczbę klaśnięć.',
     img: null,
     type: 'int',
     timer: 10,
@@ -79,8 +88,8 @@ var data = [
   {
     title: 'Skoczność',
     desc:
-      'Skocz w dal obunóż z miejsca. Rezultat zmierz własnymi stopami. ' +
-      'Wynik zaokrąglij do całej stopy.',
+      'Skocz w&nbsp;dal obunóż z&nbsp;miejsca. Rezultat zmierz własnymi stopami. ' +
+      'Wynik zaokrąglij do&nbsp;całej stopy.',
     img: null,
     type: 'int',
     timer: null,
@@ -103,7 +112,7 @@ var data = [
     desc:
       'Uchwyć się drążka lub gałęzi, tak aby swobodnie zwisać. ' +
       'Nie dotykaj podłoża nogami. Próbuj wykonać kolejne ćwiczenia ' +
-      'o wzrastającej trudności.',
+      'o&nbsp;wzrastającej trudności.',
     img: null,
     type: 'multi',
     progressive: true,
@@ -112,7 +121,8 @@ var data = [
     marks: {
       m: {
         1: {
-          title: 'Zawiśnij na wyprostowanych rękach i wytrzymaj 10 sek.',
+          title:
+            'Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -121,7 +131,8 @@ var data = [
         },
         2: {
           title: 'Siła ramion - Poziom dostateczny',
-          desc: 'Zawiśnij na wyprostowanej jednej ręce i wytrzymaj 10 sek.',
+          desc:
+            'Zawiśnij na wyprostowanej jednej ręce i&nbsp;wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -132,7 +143,7 @@ var data = [
           title: 'Siła ramion - Poziom dobry',
           desc:
             'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek, i wytrzymaj 3 sek.',
+            'była wyżej niż drążek, i&nbsp;wytrzymaj 3&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -143,7 +154,7 @@ var data = [
           title: 'Siła ramion - Poziom bardzo dobry',
           desc:
             'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek i wytrzymaj 10 sek.',
+            'była wyżej niż drążek i&nbsp;wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -153,7 +164,7 @@ var data = [
         5: {
           title: 'Siła ramion - Poziom wysoki',
           desc:
-            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, wytrzymaj 10 sek.',
+            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -163,8 +174,8 @@ var data = [
         6: {
           title: 'Siła ramion - Poziom wybitny',
           desc:
-            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, utrzymuj się kolejno na ' +
-            'lewej i prawej ręce po 10 sek.',
+            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, utrzymuj się kolejno na&nbsp;' +
+            'lewej i&nbsp;prawej ręce po 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -175,7 +186,8 @@ var data = [
       f: {
         1: {
           title: 'Siła ramion - Poziom minimalny',
-          desc: 'Zawiśnij na wyprostowanych rękach i wytrzymaj 3 sek.',
+          desc:
+            'Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 3&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -184,7 +196,8 @@ var data = [
         },
         2: {
           title: 'Siła ramion - Poziom dostateczny',
-          desc: 'Zawiśnij na wyprostowanych rękach i wytrzymaj 10 sek.',
+          desc:
+            'Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -193,7 +206,7 @@ var data = [
         },
         3: {
           title: 'Siła ramion - Poziom dobry',
-          desc: 'Zawiśnij na jednej ręce i wytrzymaj 3 sek.',
+          desc: 'Zawiśnij na jednej ręce i&nbsp;wytrzymaj 3&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -202,7 +215,7 @@ var data = [
         },
         4: {
           title: 'Siła ramion - Poziom bardzo dobry',
-          desc: 'Zawiśnij na jednej ręce i wytrzymaj 10 sek.',
+          desc: 'Zawiśnij na jednej ręce i&nbsp;wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -213,7 +226,7 @@ var data = [
           title: 'Siła ramion - Poziom wysoki',
           desc:
             'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek i wytrzymaj 3 sek.',
+            'była wyżej niż drążek i&nbsp;wytrzymaj 3&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 3,
@@ -224,7 +237,7 @@ var data = [
           title: 'Siła ramion - Poziom wybitny',
           desc:
             'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek i wytrzymaj 10 sek.',
+            'była wyżej niż drążek i&nbsp;wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
@@ -237,8 +250,8 @@ var data = [
   {
     title: 'Gibkość',
     desc:
-      'Stań w pozycji na baczność, nie zginając nóg w kolanach. Wykonaj ruchem ciągłym powolny skłon ' +
-      'tułowia w przód. Nogi proste. Liczy się poprawne wykonanie zadania.',
+      'Stań w&nbsp;pozycji na&nbsp;baczność, nie zginając nóg w&nbsp;kolanach. Wykonaj ruchem ciągłym powolny skłon ' +
+      'tułowia w&nbsp;przód. Nogi&nbsp;proste. Liczy się poprawne wykonanie zadania.',
     type: 'multi',
     progressive: true,
     test: true,
@@ -300,9 +313,9 @@ var data = [
   {
     title: 'Wytrzymałość',
     desc:
-      'Spróbuj jak długo możesz biec. Próbę możesz wykonać w dwojaki sposób: w miejscu w tempie ok. ' +
-      '120 kroków na minutę lub na odległość. W pierwszym przypadku decyduje czas trwania biegu, ' +
-      'w drugim pokonany dystans.',
+      'Spróbuj jak długo możesz biec. Próbę możesz wykonać w&nbsp;dwojaki sposób: w&nbsp;miejscu w&nbsp;tempie ok. ' +
+      '120&nbsp;kroków na&nbsp;minutę lub na&nbsp;odległość. W&nbsp;pierwszym przypadku decyduje czas trwania biegu, ' +
+      'w&nbsp;drugim pokonany dystans.',
     img: null,
     type: 'choice',
     question: 'Jak chcesz wykonać test?',
@@ -340,7 +353,7 @@ var data = [
         title: 'Wytrzymałość - dystans',
         desc:
           'Postaraj się pokonać tak duży dystans jak potrafisz. Do pomiaru możesz wykorzystać ' +
-          'np. aplikację w telefonie.',
+          'np.&nbsp;aplikację w&nbsp;telefonie.',
         img: null,
         type: 'int',
         timer: null,
@@ -370,8 +383,8 @@ var data = [
   {
     title: 'Siła mięśni brzucha',
     desc:
-      'Połóż się na plecach, z dowolnie ułożonymi rękami. Unieś nogi tuż nad podłoże i wykonuj ' +
-      'nożyce poprzeczne tak długo, jak możesz. O wyniku decyduje czas trwania próby.',
+      'Połóż się na plecach, z&nbsp;dowolnie ułożonymi rękami. Unieś nogi tuż nad podłoże i&nbsp;wykonuj ' +
+      'nożyce poprzeczne tak długo, jak możesz. O&nbsp;wyniku decyduje czas trwania próby.',
     type: 'int',
     timer: 0,
     test: true,
@@ -417,6 +430,11 @@ String.prototype.protInject = function (id, value) {
   return target.replaceAll(`{{${id}}}`, value);
 };
 
+function getSheet(el) {
+  while (el.parentElement.id != 'container') el = el.parentElement;
+  return el;
+}
+
 var dynamicIds = {};
 
 function getDynamicId(id) {
@@ -447,7 +465,7 @@ var translation = {};
 function select(el) {
   if (nextVar) vars[nextVar] = translation[el.id];
   if (nextTest) tests[nextTest] = translation[el.id];
-  next();
+  next(el);
 }
 
 function protRadio(title, desc, options, callback) {
@@ -473,8 +491,8 @@ function protDesc(title, desc) {
 
 var intTranslation = {};
 
-function submit(id) {
-  let ovalue = document.getElementById(id).value,
+function submit(el) {
+  let ovalue = el.value,
     value = null;
   let keys = Object.keys(intTranslation).map((x) => parseInt(x));
   keys.sort((a, b) => b - a);
@@ -488,13 +506,13 @@ function submit(id) {
       }
   if (nextVar) vars[nextVar] = value;
   if (nextTest) tests[nextTest] = value;
-  next();
+  next(el);
 }
 
 function protInt(title, desc, marks) {
   let id = getDynamicId('int');
   intTranslation = marks;
-  return prot('int', id, { title: title, desc: desc, id: id + 'in' });
+  return prot('int', id, { title: title, desc: desc });
 }
 
 function protSummaryChart(title, desc, mark) {
@@ -521,13 +539,18 @@ function protSummary(title, desc, marks) {
   return p;
 }
 
+[...document.getElementsByClassName('checkbox')].map((x) => {
+  x.innerHTML = document.getElementById('prototype-checkbox').innerHTML;
+});
+
 var iterator = [-1];
 var vars = {},
   tests = {};
 var nextVar = null,
   nextTest = null;
 var lastSheet = null;
-function next() {
+function next(caller) {
+  if (caller && getSheet(caller) != lastSheet) throw 'not a lastSheet';
   iterator[iterator.length - 1]++;
   let current = data[iterator[0]];
   let sheet = null;
@@ -535,6 +558,9 @@ function next() {
   nextVar = current.var;
   nextTest = current.test ? current.var : null;
   switch (current.type) {
+    case 'submit':
+      sheet = protSubmit(current.title, current.desc, current.submit);
+      break;
     case 'radio':
       // img
       sheet = protRadio(current.title, current.desc, current.marks);
@@ -546,14 +572,13 @@ function next() {
   if (lastSheet) lastSheet.classList.add('thrown-out');
   lastSheet = sheet;
 }
-next();
+function back() {}
+next(null);
 
 function check(caller) {
-  return new Promise(function (resolve) {
+  return new Promise((resolve) => {
     caller.getElementsByClassName('check')[0].style.display = 'block';
     caller.style.cursor = 'default';
-    while (caller.parentElement.id != 'container')
-      caller = caller.parentElement;
-    setInterval(resolve, 2500);
+    setInterval(resolve, 1500);
   });
 }

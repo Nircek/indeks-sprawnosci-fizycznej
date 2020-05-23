@@ -27,38 +27,37 @@
       </div>
     </div>
     <div id="prototypes" style="display: none;">
+      <div class="checkbox" id="prototype-checkbox">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="check"
+          viewBox="0 0 121 180"
+          display="none"
+        >
+          <path d="M0.3 140l62.4 60.1L165.6 0.3" />
+        </svg>
+      </div>
       <div class="sheet" id="prototype-submit">
         <h2>{{title}}</h2>
-        <h3>{{desc}}</h3>
-        {{submit}}
-        <div class="checkbox" onclick="check(this).then(next)">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="check"
-            viewBox="0 0 121 180"
-            display="none"
-          >
-            <path d="M0.3 140l62.4 60.1L165.6 0.3" />
-          </svg>
-        </div>
+        <p>{{desc}}</p>
+        <div
+          class="checkbox"
+          onclick="this.removeAttribute('onclick');check(this).then(()=>next(this))"
+        ></div>
+        <p class="check-desc">{{submit}}</p>
       </div>
       <div class="sheet" id="prototype-radio">
         <h2>{{title}}</h2>
+        <p>{{desc}}</p>
         <div class="radio-options"></div>
       </div>
       <div id="prototype-option">
-        <div class="checkbox" onclick="check(this).then(()=>select(this))">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="check"
-            viewBox="0 0 121 180"
-            display="none"
-          >
-            <path d="M0.3 140l62.4 60.1L165.6 0.3" />
-          </svg>
-        </div>
+        <div
+          class="checkbox"
+          onclick="this.removeAttribute('onclick');check(this).then(()=>select(this))"
+        ></div>
         <p class="check-desc">{{title}}</p>
-        <div style="clear:both;"></div>
+        <div style="clear: both;"></div>
       </div>
       <div class="sheet" id="prototype-desc">
         <h2>{{title}}</h2>
@@ -69,9 +68,12 @@
         <h2>{{title}}</h2>
         <img src="https://via.placeholder.com/1600x900" alt="PLACEHOLDER" />
         <p>{{desc}}</p>
-        <br />
         <div id="input">
-          <input type="number" id="{{id}}" min="0" oninput="submit('{{id}}')" />
+          <input
+            type="number"
+            min="0"
+            oninput="this.blur();this.removeAttribute('oninput');submit(this)"
+          />
         </div>
         <!--I think we are targeting submitting on clickineg "enter" on a keyboard. And I decided in order not to destroy layout to delete checkbox or button. Currently it can be oninput. Because we are not testing resukts yet, we can afford this inacceptable from practical point of view solution-->
       </div>
@@ -97,8 +99,7 @@
       </div>
       <div class="latch"></div>
       <div id="container"></div>
-      <div class="leftarrow">&#x1F814;</div>
-      <!--I need a function-->
+      <div class="leftarrow" oninput="back()">&#x1F814;</div>
     </div>
     <div id="timer"></div>
   </body>
