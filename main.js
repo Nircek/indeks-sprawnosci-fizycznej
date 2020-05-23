@@ -499,7 +499,12 @@ function protInt(title, desc, marks) {
 
 function protSummaryChart(title, desc, mark) {
   let id = getDynamicId('summary-chart');
-  return prot('int', id, { title: title, desc: desc, mark: mark, id: id + 'canvas' });
+  return prot('int', id, {
+    title: title,
+    desc: desc,
+    mark: mark,
+    id: id + 'canvas',
+  });
 }
 
 function protSummary(title, desc, marks) {
@@ -543,14 +548,12 @@ function next() {
 }
 next();
 
-[...document.getElementsByClassName('checkbox')].map((x) => {
-  x.addEventListener('click', check);
-});
-
-function check(event) {
-  let caller = event.srcElement;
-  caller.getElementsByClassName('check')[0].style.display = 'block';
-  caller.style.cursor = 'default';
-  while (caller.parentElement.id != 'container') caller = caller.parentElement;
-  setInterval(() => caller.classList.add('thrown-out'), 2500);
+function check(caller) {
+  return new Promise(function (resolve) {
+    caller.getElementsByClassName('check')[0].style.display = 'block';
+    caller.style.cursor = 'default';
+    while (caller.parentElement.id != 'container')
+      caller = caller.parentElement;
+    setInterval(resolve, 2500);
+  });
 }

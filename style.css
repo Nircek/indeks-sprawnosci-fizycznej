@@ -4,7 +4,7 @@ body {
   padding: 0;
   overflow: hidden;
   font-family: 'Sriracha', cursive;
-  font-size: 2vh;
+  font-size: 2.7vh;
 }
 
 a,
@@ -61,8 +61,7 @@ a:active {
   margin-left: 0.5vw;
   left: 50%;
   margin-left: -24.5vh;
-  padding: 3vh 2vh;
-  text-align: center;
+  padding: 2vh 2vh;
 }
 
 #container {
@@ -96,7 +95,7 @@ a:active {
   left: 30%;
   width: 40%;
   height: 6%;
-  /* z-index: 99; -- why? just don't add random z-index */
+  z-index: 1;
 }
 
 .logo {
@@ -127,11 +126,14 @@ h1 {
   font-weight: 700;
 }
 h2 {
-  font-size: 3vh;
+  margin: 0;
+  margin-bottom: 0.5em;
+  font-size: 4vh;
+  text-align: center;
 }
-h3 {
-  font-size: 2vh;
-  font-weight: 300;
+
+p {
+  margin: 0;
 }
 
 .option {
@@ -172,16 +174,21 @@ svg {
 }
 
 .checkbox {
+  margin: 1vh 1vh;
   border: 0.4vh solid black;
   width: 5vh;
   height: 5vh;
-  margin-top: 10vh;
-  margin-left: 5vh;
-  margin-right: 100%;
   float: left;
 }
 .checkbox:hover {
   cursor: pointer;
+}
+
+.check-desc {
+  margin: 1.4vh 1vh;
+  height: 5vh;
+  line-height: 5vh;
+  float: left;
 }
 
 .thrown-out {
@@ -190,25 +197,28 @@ svg {
      I have started to add sheets in reverse order so this line is not necessary anymore */
 }
 
+/* SRC: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 input[type='number'] {
+  -moz-appearance: textfield;
+  display: block;
   border: 0;
+  margin: 0 auto;
   border-bottom: dotted;
   text-align: center;
   font-family: 'Sriracha', cursive;
-  width: 12vw;
+  width: 18vw;
   font-size: 3vh;
 }
 
-.image {
-  width: 95%;
-  /* height: 35%; -- I am pretty sure images will be in proper resolution
-     but if they weren't, this line would mess the rendering up. */
-  margin-top: 5%;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.image > img {
-  width: 100%;
+.sheet > img {
+  max-width: 100%;
   height: auto;
+  margin: 0 auto;
 }

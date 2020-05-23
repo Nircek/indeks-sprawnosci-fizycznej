@@ -31,7 +31,7 @@
         <h2>{{title}}</h2>
         <h3>{{desc}}</h3>
         {{submit}}
-        <div class="checkbox" onclick="check">
+        <div class="checkbox" onclick="check(this).then(next)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="check"
@@ -46,8 +46,19 @@
         <h2>{{title}}</h2>
         <div class="radio-options"></div>
       </div>
-      <div id="prototype-option" onclick="select(this)">
-        <h3>{{title}}</h3>
+      <div id="prototype-option">
+        <div class="checkbox" onclick="check(this).then(()=>select(this))">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="check"
+            viewBox="0 0 121 180"
+            display="none"
+          >
+            <path d="M0.3 140l62.4 60.1L165.6 0.3" />
+          </svg>
+        </div>
+        <p class="check-desc">{{title}}</p>
+        <div style="clear:both;"></div>
       </div>
       <div class="sheet" id="prototype-desc">
         <h2>{{title}}</h2>
@@ -55,11 +66,9 @@
       </div>
       <div class="sheet" id="prototype-int">
         <!--I need an exception for the age prototype. However we can always find a fancy picture ;)-->
-        <div class="image">
-          <img src="https://via.placeholder.com/1600x900" alt="PLACEHOLDER" />
-        </div>
         <h2>{{title}}</h2>
-        <h3>{{desc}}</h3>
+        <img src="https://via.placeholder.com/1600x900" alt="PLACEHOLDER" />
+        <p>{{desc}}</p>
         <br />
         <div id="input">
           <input type="number" id="{{id}}" min="0" oninput="submit('{{id}}')" />
