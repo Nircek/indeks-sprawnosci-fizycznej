@@ -52,7 +52,8 @@ a:active {
 
 .sheet {
   position: absolute;
-  top: 100;
+  top: 0;
+  transition: top 2s ease-in;
   background-color: white;
   width: 100%;
   max-width: 45vh;
@@ -65,6 +66,7 @@ a:active {
 }
 
 #container {
+  position: relative;
   width: 100%;
   max-width: 50vh;
   height: 75vh;
@@ -94,7 +96,7 @@ a:active {
   left: 30%;
   width: 40%;
   height: 6%;
-  z-index: 99;
+  /* z-index: 99; -- why? just don't add random z-index */
 }
 
 .logo {
@@ -182,20 +184,10 @@ svg {
   cursor: pointer;
 }
 
-@keyframes moving {
-  from {
-    top: 15vh;
-  }
-  to {
-    top: 100vh;
-  }
-}
-
 .thrown-out {
-  position: absolute;
-  animation: moving 2s ease-in;
   top: 100vh;
-  z-index: 10;
+  /* z-index: 10; -- ok, I know why but just don't add random z-index...
+     I have started to add sheets in reverse order so this line is not necessary anymore */
 }
 
 input[type='number'] {
@@ -209,7 +201,8 @@ input[type='number'] {
 
 .image {
   width: 95%;
-  height: 35%;
+  /* height: 35%; -- I am pretty sure images will be in proper resolution
+     but if they weren't, this line would mess the rendering up. */
   margin-top: 5%;
   margin-right: auto;
   margin-left: auto;
