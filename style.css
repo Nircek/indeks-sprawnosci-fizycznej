@@ -3,6 +3,8 @@ html, body
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: 'Sriracha', cursive;
+  font-size: 2vh;
 }
 
 a, a:visited, a:active {
@@ -52,11 +54,13 @@ a, a:visited, a:active {
   top: 100;
   background-color: white;
   width: 100%;
-  max-width: 50vh;
-  height: 75vh;
+  max-width: 45vh;
+  height: 69vh;
   margin-left: 0.5vw;
   left: 50%;
-  margin-left: -25vh;
+  margin-left: -24.5vh;
+  padding: 3vh 2vh;
+  text-align: center;
 }
 
 #container
@@ -111,7 +115,7 @@ a, a:visited, a:active {
 {
   position:relative;
   color: white;
-  bottom: 1%;
+  bottom: 2%;
   left: 0;
   font-size: 7vh;
   margin-bottom: 0;
@@ -126,6 +130,15 @@ h1
   font-size: 5.2vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*temporary*/
   font-weight: 700;
+}
+h2
+{
+  font-size: 3vh;
+}
+h3
+{
+  font-size: 2vh;
+  font-weight: 300;
 }
 
 .option
@@ -174,6 +187,8 @@ svg
   height: 5vh;
   margin-top: 10vh;
   margin-left: 5vh;
+  margin-right: 100%;
+  float: left;
 }
 .checkbox:hover
 {
@@ -181,13 +196,33 @@ svg
 }
 
 @keyframes moving {
-  from {top: 0;}
+  from {top: 15vh;}
   to {top: 100vh;}
 }
 
 .thrown-out
 {
-  position: relative !important;
+  position: absolute;
   animation: moving 2s ease-in;
   top: 100vh;
+  z-index: 10;
+}
+
+input[type=number]
+{
+  border: 0;
+  border-bottom: dotted;
+  text-align: center;
+  font-family: 'Sriracha', cursive;
+  width: 12vw;
+  font-size: 3vh;
+}
+
+.image
+{
+  width: 95%;
+  height: 35%;
+  margin-top: 5%;
+  margin-right: auto;
+  margin-left: auto;
 }
