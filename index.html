@@ -6,6 +6,7 @@
     <title>PIKny Indeks Sprawności</title>
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="warn-outer">
@@ -23,37 +24,37 @@
       </div>
     </div>
     <div id="prototypes" style="display: none;">
-      <!-- delete all comments when ready -->
       <div class="sheet" id="prototype-submit">
-        {{title}} {{desc}} {{submit}}
-        <div class="checkbox"> <svg xmlns="http://www.w3.org/2000/svg" class="check" viewBox="0 0 121 180" display = "none">
+        <h2>{{title}}</h2 ><h3>{{desc}}</h3> {{submit}}
+        <div class="checkbox" onclick="check"> <svg xmlns="http://www.w3.org/2000/svg" class="check" viewBox="0 0 121 180" display = "none">
           <path d="M0.3 140l62.4 60.1L165.6 0.3"/></svg>
         </div>
       </div>
       <div class="sheet" id="prototype-radio">
-        {{title}}
-        <!-- .radio-options MUST be inside the #prototype-radio but doesn't need to be a child of it (can be a child, a grandchild...) -->
+        <h2>{{title}}</h2>
         <div class="radio-options">
-          <!-- there will be pasted `prototype-option`s -->
         </div>
       </div>
       <div id="prototype-option" onclick="select(this)">
-        {{title}}
+        <h3>{{title}}</h3>
       </div>
       <div class="sheet" id="prototype-desc">
-        {{title}} {{desc}}
+        <h2>{{title}}</h2><h3>{{desc}}</h3>
       </div>
       <div class="sheet" id="prototype-int">
-        {{title}} {{desc}}
-        <input type="number" id="{{id}}" />
-        <!-- when input is submitted, call the submit({{id}}) -->
+        <!--I need an exception for the age prototype. However we can always find a fancy picture ;)-->
+        <div class="image">Tu będzie gif</div>
+        <h2>{{title}}</h2> <h3>{{desc}}</h3>
+        <br />
+        <div id="input"><input type="number" id="{{id}}" min="0" oninput="submit('{{id}}')"/></div>
+        <!--I think we are targeting submitting on clickineg "enter" on a keyboard. And I decided in order not to destroy layout to delete checkbox or button. Currently it can be oninput. Because we are not testing resukts yet, we can afford this inacceptable from practical point of view solution-->
       </div>
       <div class="sheet" id="prototype-summary-chart">
         {{mark}}
         <canvas id="{{id}}"></canvas>
       </div>
       <div id="prototype-summary" class = "sheet">
-        {{title}} {{desc}}
+        <h2>{{title}}</h2><h3>{{desc}}</h3>
         <div class="summary-marks sheet">
           <!-- there will be pasted `prototype-summary-mark`s -->
         </div>
@@ -70,7 +71,6 @@
       </div>
         <div class="latch"></div>
         <div id="container">
-          <!--prototypes will be pasted here-->
         </div>
         <div class="leftarrow">&#x1F814;</div>
       <!--I need a function-->
