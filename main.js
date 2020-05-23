@@ -468,7 +468,7 @@ function protRadio(title, desc, options, callback) {
 }
 
 function protDesc(title, desc) {
-  prot('desc', getDynamicId('desc'), { title: title, desc: desc });
+  return prot('desc', getDynamicId('desc'), { title: title, desc: desc });
 }
 
 var intTranslation = {};
@@ -494,12 +494,12 @@ function submit(id) {
 function protInt(title, desc, marks) {
   let id = getDynamicId('int');
   intTranslation = marks;
-  prot('int', id, { title: title, desc: desc, id: id + 'in' });
+  return prot('int', id, { title: title, desc: desc, id: id + 'in' });
 }
 
 function protSummaryChart(title, desc, mark) {
   let id = getDynamicId('summary-chart');
-  prot('int', id, { title: title, desc: desc, mark: mark, id: id + 'canvas' });
+  return prot('int', id, { title: title, desc: desc, mark: mark, id: id + 'canvas' });
 }
 
 function protSummary(title, desc, marks) {
@@ -513,6 +513,7 @@ function protSummary(title, desc, marks) {
       p.getElementsByClassName('summary-marks')[0]
     )
   );
+  return p;
 }
 
 var iterator = [-1];
