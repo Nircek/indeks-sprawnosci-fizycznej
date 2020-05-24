@@ -117,6 +117,7 @@ a:active {
   font-size: 7vh;
   margin-bottom: 0;
   max-width: 10%;
+  cursor: pointer;
 }
 
 h1 {

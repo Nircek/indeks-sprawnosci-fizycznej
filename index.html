@@ -54,7 +54,7 @@
       <div id="prototype-option">
         <div
           class="checkbox"
-          onclick="this.removeAttribute('onclick');check(this).then(()=>select(this))"
+          onclick="this.removeAttribute('onclick');check(this).then(()=>select(this.parentElement))"
         ></div>
         <p class="check-desc">{{title}}</p>
         <div style="clear: both;"></div>
@@ -99,7 +99,7 @@
       </div>
       <div class="latch"></div>
       <div id="container"></div>
-      <div class="leftarrow" oninput="back()">&#x1F814;</div>
+      <div class="leftarrow" onclick="back()">&#x1F814;</div>
     </div>
     <div id="timer"></div>
   </body>

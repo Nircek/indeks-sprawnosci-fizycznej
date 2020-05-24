@@ -66,22 +66,23 @@ var data = [
     timer: 10,
     test: true,
     var: 'speed',
+    marks_split: 'gender',
     marks: {
       m: {
-        1: 15,
-        2: 20,
-        3: 25,
-        4: 30,
-        5: 35,
-        6: 40,
+        15: 1,
+        20: 2,
+        25: 3,
+        30: 4,
+        35: 5,
+        40: 6,
       },
       f: {
-        1: 12,
-        2: 16,
-        3: 20,
-        4: 25,
-        5: 30,
-        6: 35,
+        12: 1,
+        16: 2,
+        20: 3,
+        25: 4,
+        30: 5,
+        35: 6,
       },
     },
   },
@@ -96,14 +97,12 @@ var data = [
     test: true,
     var: 'jump',
     marks: {
-      a: {
-        1: 5,
-        2: 6,
-        3: 7,
-        4: 8,
-        5: 9,
-        6: 10,
-      },
+      5: 1,
+      6: 2,
+      7: 3,
+      8: 4,
+      9: 5,
+      10: 6,
     },
   },
   {
@@ -118,6 +117,7 @@ var data = [
     progressive: true,
     test: true,
     var: 'arms',
+    marks_split: 'gender',
     marks: {
       m: {
         1: {
@@ -257,56 +257,53 @@ var data = [
     test: true,
     var: 'supple',
     marks: {
-      a: {
-        1: {
-          title: 'Gibkość - Poziom minimalny',
-          desc: 'Chwyć oburącz za kostki.',
-          img: null,
-          type: 'radio',
-          var: null,
-          marks: { true: DONE, false: NOTDONE },
-        },
-        2: {
-          title: 'Gibkość - Poziom dostateczny',
-          desc: 'Dotknij palcami obu rąk palców stóp.',
-          img: null,
-          type: 'radio',
-          var: null,
-          marks: { true: DONE, false: NOTDONE },
-        },
-        3: {
-          title: 'Gibkość - Poziom dobry',
-          desc: 'Dotknij palcami obu rąk podłoża.',
-          img: null,
-          type: 'radio',
-          var: null,
-          marks: { true: DONE, false: NOTDONE },
-        },
-        4: {
-          title: 'Gibkość - Poziom bardzo dobry',
-          desc:
-            'Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.',
-          img: null,
-          type: 'radio',
-          var: null,
-          marks: { true: DONE, false: NOTDONE },
-        },
-        5: {
-          title: 'Gibkość - Poziom wysoki',
-          desc: 'Dotknij obiema dłońmi podłoża.',
-          img: null,
-          type: 'radio',
-          var: null,
-          marks: { true: DONE, false: NOTDONE },
-        },
-        6: {
-          title: 'Gibkość - Poziom wybitny',
-          desc: 'Dotknij głową kolan.',
-          img: null,
-          type: 'radio',
-          var: null,
-          marks: { true: DONE, false: NOTDONE },
-        },
+      1: {
+        title: 'Gibkość - Poziom minimalny',
+        desc: 'Chwyć oburącz za kostki.',
+        img: null,
+        type: 'radio',
+        var: null,
+        marks: { true: DONE, false: NOTDONE },
+      },
+      2: {
+        title: 'Gibkość - Poziom dostateczny',
+        desc: 'Dotknij palcami obu rąk palców stóp.',
+        img: null,
+        type: 'radio',
+        var: null,
+        marks: { true: DONE, false: NOTDONE },
+      },
+      3: {
+        title: 'Gibkość - Poziom dobry',
+        desc: 'Dotknij palcami obu rąk podłoża.',
+        img: null,
+        type: 'radio',
+        var: null,
+        marks: { true: DONE, false: NOTDONE },
+      },
+      4: {
+        title: 'Gibkość - Poziom bardzo dobry',
+        desc: 'Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.',
+        img: null,
+        type: 'radio',
+        var: null,
+        marks: { true: DONE, false: NOTDONE },
+      },
+      5: {
+        title: 'Gibkość - Poziom wysoki',
+        desc: 'Dotknij obiema dłońmi podłoża.',
+        img: null,
+        type: 'radio',
+        var: null,
+        marks: { true: DONE, false: NOTDONE },
+      },
+      6: {
+        title: 'Gibkość - Poziom wybitny',
+        desc: 'Dotknij głową kolan.',
+        img: null,
+        type: 'radio',
+        var: null,
+        marks: { true: DONE, false: NOTDONE },
       },
     },
   },
@@ -329,22 +326,23 @@ var data = [
         timer: 0,
         test: true,
         var: 'stamina-time',
+        marks_split: 'gender',
         marks: {
           m: {
-            1: 2 * 60,
-            2: 5 * 60,
-            3: 10 * 60,
-            4: 15 * 60,
-            5: 20 * 60,
-            6: 30 * 60,
+            120: 1,
+            300: 2,
+            600: 3,
+            900: 4,
+            1200: 5,
+            1800: 6,
           },
           f: {
-            1: 1 * 60,
-            2: 3 * 60,
-            3: 6 * 60,
-            4: 10 * 60,
-            5: 15 * 60,
-            6: 20 * 60,
+            60: 1,
+            180: 2,
+            360: 3,
+            600: 4,
+            900: 5,
+            1200: 6,
           },
         },
       },
@@ -359,22 +357,23 @@ var data = [
         timer: null,
         test: true,
         var: 'stamina-distance',
+        marks_split: 'gender',
         marks: {
           m: {
-            1: 400,
-            2: 1000,
-            3: 2000,
-            4: 2500,
-            5: 3000,
-            6: 4000,
+            400: 1,
+            1000: 2,
+            2000: 3,
+            2500: 4,
+            3000: 5,
+            4000: 6,
           },
           f: {
-            1: 200,
-            2: 500,
-            3: 1000,
-            4: 1500,
-            5: 2000,
-            6: 2500,
+            200: 1,
+            500: 2,
+            1000: 3,
+            1500: 4,
+            2000: 5,
+            2500: 6,
           },
         },
       },
@@ -389,22 +388,23 @@ var data = [
     timer: 0,
     test: true,
     var: 'stomach',
+    marks_split: 'gender',
     marks: {
       m: {
-        1: 30,
-        2: 1 * 60,
-        3: 90,
-        4: 2 * 60,
-        5: 3 * 60,
-        6: 4 * 60,
+        30: 1,
+        60: 2,
+        90: 3,
+        120: 4,
+        180: 5,
+        240: 6,
       },
       f: {
-        1: 10,
-        2: 30,
-        3: 1 * 60,
-        4: 90,
-        5: 2 * 60,
-        6: 3 * 60,
+        10: 1,
+        30: 2,
+        60: 3,
+        90: 4,
+        120: 5,
+        180: 6,
       },
     },
   },
@@ -468,7 +468,7 @@ function select(el) {
   next(el);
 }
 
-function protRadio(title, desc, options, callback) {
+function protRadio(title, desc, options) {
   let id = getDynamicId('radio');
   let p = prot('radio', id, { title: title, desc: desc });
   translation = {};
@@ -548,15 +548,24 @@ var vars = {},
   tests = {};
 var nextVar = null,
   nextTest = null;
-var lastSheet = null;
+var sheets = [{ goBack: () => restore([-1], {}, {}) }];
+function restore(_iterator, _vars, _tests) {
+  iterator = _iterator;
+  vars = _vars;
+  tests = _tests;
+}
 function next(caller) {
-  if (caller && getSheet(caller) != lastSheet) throw 'not a lastSheet';
+  if (caller && sheets.length && getSheet(caller) != sheets[sheets.length - 1])
+    throw 'not a lastSheet';
+  let lastIterator = [...iterator];
   iterator[iterator.length - 1]++;
   let current = data[iterator[0]];
   let sheet = null;
   for (let level = 1; level < iterator.length; ++level) {}
   nextVar = current.var;
   nextTest = current.test ? current.var : null;
+  if (current.marks_split)
+    current.marks = current.marks[vars[current.marks_split]];
   switch (current.type) {
     case 'submit':
       sheet = protSubmit(current.title, current.desc, current.submit);
@@ -569,10 +578,24 @@ function next(caller) {
       sheet = protInt(current.title, current.desc, current.marks);
       break;
   }
-  if (lastSheet) lastSheet.classList.add('thrown-out');
-  lastSheet = sheet;
+  if (sheets.length > 1) sheets[sheets.length - 1].classList.add('thrown-out');
+  let _vars = Object.assign({}, vars);
+  let _tests = Object.assign({}, tests);
+  sheet.goBack = () => restore(lastIterator, _vars, _tests);
+  sheets.push(sheet);
 }
-function back() {}
+function back() {
+  if (sheets.length < 3) throw 'cannot go back: last sheet';
+  let l = sheets.pop();
+  let pl = sheets.pop();
+  pl.goBack();
+  pl.classList.remove('thrown-out');
+  setTimeout(() => {
+    next();
+    pl.parentNode.removeChild(pl);
+    l.parentNode.removeChild(l);
+  }, 2100);
+}
 next(null);
 
 function check(caller) {
