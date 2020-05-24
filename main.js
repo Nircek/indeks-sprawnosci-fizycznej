@@ -1,6 +1,6 @@
 'use strict';
 let DONE = 'Udało mi się!';
-let NOTDONE = 'Niestety, nie umiem tego zrobić...';
+let NOTDONE = 'Nie umiem tego zrobić...';
 
 var data = [
   /*
@@ -431,12 +431,31 @@ var data = [
   {
     title: 'Podsumowanie',
     desc: '',
+    submit: 'Przejdź do szczegółów',
     type: 'summary-overall',
+    marks: {
+      0: 'Klęska pedagogiczna',
+      1: 'Minimalny',
+      2: 'Dostateczny',
+      3: 'Dobry',
+      4: 'Bardzo dobry',
+      5: 'Wysoki',
+      6: 'Wybitny',
+    },
   },
   {
     title: 'Podsumowanie szczegółowe',
     desc: '',
     type: 'summary',
+    marks: {
+      0: 'Klęska pedagogiczna',
+      1: 'Minimalny',
+      2: 'Dostateczny',
+      3: 'Dobry',
+      4: 'Bardzo dobry',
+      5: 'Wysoki',
+      6: 'Wybitny',
+    },
   },
 ];
 
@@ -511,9 +530,8 @@ function protDesc(title, desc) {
 
 var intTranslation = {};
 
-function submit(el) {
-  let ovalue = el.value,
-    value = null;
+function intTranslate(ovalue) {
+  let value = null;
   let keys = Object.keys(intTranslation).map((x) => parseInt(x));
   keys.sort((a, b) => b - a);
   if (ovalue <= keys[keys.length - 1])
@@ -524,6 +542,11 @@ function submit(el) {
         value = intTranslation[e];
         break;
       }
+  return value;
+}
+
+function submit(el) {
+  let value = intTranslate(el.value);
   if (nextVar) vars[nextVar] = value;
   if (nextTest) tests[nextTest] = value;
   next(el);
@@ -535,14 +558,19 @@ function protInt(title, desc, marks) {
   return prot('int', id, { title: title, desc: desc });
 }
 
-function protSummaryChart(title, desc, mark) {
+function protSummaryChart(title, desc, curr, max, mark, submit) {
   let id = getDynamicId('summary-chart');
-  return prot('int', id, {
+  let p = prot('summary-chart', id, {
     title: title,
     desc: desc,
     mark: mark,
     id: id + 'canvas',
+    submit: submit,
   });
+  let ctx = document.getElementById(id + 'canvas').getContext('2d');
+  ctx.font = '100px';
+  ctx.fillText(curr + '/' + max, 0, 10);
+  return p;
 }
 
 function protSummary(title, desc, marks) {
@@ -655,6 +683,22 @@ function next(caller) {
         Object.assign({}, ...current.choices.map((x, i) => ({ [i]: x.label })))
       );
       iterator.push(-1);
+      break;
+    case 'summary-overall':
+      let curr = Object.values(tests).reduce((a, b) => a + parseInt(b), 0);
+      let max = Object.values(tests).length * 6;
+      intTranslation = current.marks;
+      let mark = intTranslate(curr); //TODO
+      sheet = protSummaryChart(
+        current.title,
+        current.desc,
+        curr,
+        max,
+        mark,
+        current.submit
+      );
+      break;
+    case 'summary':
       break;
   }
   if (sheets.length > 1) sheets[sheets.length - 1].classList.add('thrown-out');
