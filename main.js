@@ -39,21 +39,21 @@ var data = [
     test: false,
     var: 'overall-mark',
     marks: {
-      6: [5, 8, 11, 14, 17, 20],
-      7: [6, 9, 12, 15, 28, 22],
-      8: [6, 10, 13, 17, 31, 25],
-      9: [6, 11, 15, 19, 33, 27],
-      11: [6, 11, 16, 20, 35, 29],
-      13: [6, 12, 17, 22, 37, 31],
-      16: [6, 12, 18, 23, 38, 33],
-      19: [6, 12, 18, 24, 30, 35],
-      26: [6, 12, 18, 23, 38, 33],
-      36: [6, 12, 17, 22, 37, 31],
-      46: [6, 11, 16, 20, 35, 29],
-      56: [6, 11, 15, 19, 33, 27],
-      61: [6, 10, 13, 17, 31, 25],
-      66: [6, 9, 12, 15, 28, 22],
-      71: [5, 8, 11, 14, 27, 20],
+      6: [0, 5, 8, 11, 14, 17, 20],
+      7: [0, 6, 9, 12, 15, 18, 22],
+      8: [0, 6, 10, 13, 17, 21, 25],
+      9: [0, 6, 11, 15, 19, 23, 27],
+      11: [0, 6, 11, 16, 20, 25, 29],
+      13: [0, 6, 12, 17, 22, 27, 31],
+      16: [0, 6, 12, 18, 23, 28, 33],
+      19: [0, 6, 12, 18, 24, 30, 35],
+      26: [0, 6, 12, 18, 23, 28, 33],
+      36: [0, 6, 12, 17, 22, 27, 31],
+      46: [0, 6, 11, 16, 20, 25, 29],
+      56: [0, 6, 11, 15, 19, 23, 27],
+      61: [0, 6, 10, 13, 17, 21, 25],
+      66: [0, 6, 9, 12, 15, 18, 22],
+      71: [0, 5, 8, 11, 14, 17, 20],
     },
   },
   {
@@ -611,7 +611,7 @@ function next(caller) {
   let sheet = null;
   for (let level = 1; level < iterator.length; ++level) {
     nextVar = current.var;
-    nextTest = current.test ? current.var : null;
+    nextTest = current.test ? current.title : null;
     switch (current.type) {
       case 'multi':
         let marks = current.marks;
@@ -656,7 +656,7 @@ function next(caller) {
     return next(caller);
   }
   nextVar = current.var;
-  nextTest = current.test ? current.var : null;
+  nextTest = current.test ? current.title : null;
   let marks = current.marks;
   if (current.marks_split) marks = current.marks[vars[current.marks_split]];
   switch (current.type) {
@@ -687,8 +687,13 @@ function next(caller) {
     case 'summary-overall':
       let curr = Object.values(tests).reduce((a, b) => a + parseInt(b), 0);
       let max = Object.values(tests).length * 6;
+      intTranslation = Object.assign(
+        {},
+        ...vars['overall-mark'].map((x, i) => ({ [x]: i }))
+      );
+      let mark = intTranslate(curr);
       intTranslation = current.marks;
-      let mark = intTranslate(curr); //TODO
+      mark = intTranslate(mark);
       sheet = protSummaryChart(
         current.title,
         current.desc,
@@ -699,6 +704,17 @@ function next(caller) {
       );
       break;
     case 'summary':
+      intTranslation = current.marks;
+      sheet = protSummary(
+        current.title,
+        current.desc,
+        Object.assign(
+          {},
+          ...Object.entries(tests).map((x) => {
+            return { [x[0]]: intTranslate(x[1]) };
+          })
+        )
+      );
       break;
   }
   if (sheets.length > 1) sheets[sheets.length - 1].classList.add('thrown-out');
