@@ -321,9 +321,15 @@ var data = [
       'Spróbuj jak długo możesz biec. Próbę możesz wykonać w&nbsp;dwojaki sposób: w&nbsp;miejscu w&nbsp;tempie ok. ' +
       '120&nbsp;kroków na&nbsp;minutę lub na&nbsp;odległość. W&nbsp;pierwszym przypadku decyduje czas trwania biegu, ' +
       'w&nbsp;drugim pokonany dystans.',
+    submit: 'Podejmij wybór!',
+    img: null,
+    type: 'submit',
+  },
+  {
+    title: 'Wytrzymałość - wybór',
+    desc: 'Jak chcesz wykonać test?',
     img: null,
     type: 'choice',
-    question: 'Jak chcesz wykonać test?',
     choices: [
       {
         label: 'na czas',
@@ -588,7 +594,7 @@ function next(caller) {
         if (level + 1 == iterator.length) {
           if (!iterator[level]) {
             // first execution
-          } else if (vars[true]=="true") {
+          } else if (vars[true] == 'true') {
             if (nextVar) vars[nextVar] = ms[iterator[level] - 1];
             if (nextTest) tests[nextTest] = ms[iterator[level] - 1];
           } else if (current.progressive) {
@@ -601,10 +607,24 @@ function next(caller) {
         }
         current = marks[ms[iterator[level]]];
         break;
+      case 'choice':
+        if (level + 1 == iterator.length) {
+          if (!iterator[level]) {
+            // first execution
+            iterator[level] = vars[true];
+            iterator.push(0);
+            --level;
+          }
+        } else {
+          if (iterator[level + 1] != 0) {
+            iterator.splice(level);
+            return next(caller);
+          } else current = current.choices[iterator[level++]];
+        }
     }
   }
   if (current === true) {
-    vars[true] = "true";
+    vars[true] = 'true';
     return next(caller);
   }
   nextVar = current.var;
@@ -625,7 +645,16 @@ function next(caller) {
     case 'multi':
       sheet = protSubmit(current.title, current.desc, current.submit);
       iterator.push(-1);
-      vars[true] = "true";
+      vars[true] = 'true';
+      break;
+    case 'choice':
+      nextVar = true;
+      sheet = protRadio(
+        current.title,
+        current.desc,
+        Object.assign({}, ...current.choices.map((x, i) => ({ [i]: x.label })))
+      );
+      iterator.push(-1);
       break;
   }
   if (sheets.length > 1) sheets[sheets.length - 1].classList.add('thrown-out');
