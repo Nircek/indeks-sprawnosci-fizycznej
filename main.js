@@ -69,6 +69,7 @@ var data = [
     marks_split: 'gender',
     marks: {
       m: {
+        0: 0,
         15: 1,
         20: 2,
         25: 3,
@@ -77,6 +78,7 @@ var data = [
         40: 6,
       },
       f: {
+        0: 0,
         12: 1,
         16: 2,
         20: 3,
@@ -97,6 +99,7 @@ var data = [
     test: true,
     var: 'jump',
     marks: {
+      0: 0,
       5: 1,
       6: 2,
       7: 3,
@@ -107,11 +110,11 @@ var data = [
   },
   {
     title: 'Siła ramion',
-    desc: 'Siła ramion - Poziom minimalny',
     desc:
       'Uchwyć się drążka lub gałęzi, tak aby swobodnie zwisać. ' +
       'Nie dotykaj podłoża nogami. Próbuj wykonać kolejne ćwiczenia ' +
       'o&nbsp;wzrastającej trudności.',
+    submit: 'Zróbmy to!',
     img: null,
     type: 'multi',
     progressive: true,
@@ -120,13 +123,15 @@ var data = [
     marks_split: 'gender',
     marks: {
       m: {
+        0: true,
         1: {
-          title:
+          title: 'Siła ramion - Poziom minimalny',
+          desc:
             'Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 10&nbsp;sek.',
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         2: {
@@ -136,7 +141,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         3: {
@@ -147,7 +152,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 3,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         4: {
@@ -158,7 +163,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         5: {
@@ -168,7 +173,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         6: {
@@ -179,11 +184,12 @@ var data = [
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
       },
       f: {
+        0: true,
         1: {
           title: 'Siła ramion - Poziom minimalny',
           desc:
@@ -191,7 +197,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 3,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         2: {
@@ -201,7 +207,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         3: {
@@ -210,7 +216,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 3,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         4: {
@@ -219,7 +225,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         5: {
@@ -230,7 +236,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 3,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         6: {
@@ -241,7 +247,7 @@ var data = [
           img: null,
           type: 'radio',
           timer: 10,
-          var: null,
+          var: true,
           marks: { true: DONE, false: NOTDONE },
         },
       },
@@ -252,17 +258,19 @@ var data = [
     desc:
       'Stań w&nbsp;pozycji na&nbsp;baczność, nie zginając nóg w&nbsp;kolanach. Wykonaj ruchem ciągłym powolny skłon ' +
       'tułowia w&nbsp;przód. Nogi&nbsp;proste. Liczy się poprawne wykonanie zadania.',
+    submit: 'Zróbmy to!',
     type: 'multi',
     progressive: true,
     test: true,
     var: 'supple',
     marks: {
+      0: true,
       1: {
         title: 'Gibkość - Poziom minimalny',
         desc: 'Chwyć oburącz za kostki.',
         img: null,
         type: 'radio',
-        var: null,
+        var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       2: {
@@ -270,7 +278,7 @@ var data = [
         desc: 'Dotknij palcami obu rąk palców stóp.',
         img: null,
         type: 'radio',
-        var: null,
+        var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       3: {
@@ -278,7 +286,7 @@ var data = [
         desc: 'Dotknij palcami obu rąk podłoża.',
         img: null,
         type: 'radio',
-        var: null,
+        var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       4: {
@@ -286,7 +294,7 @@ var data = [
         desc: 'Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.',
         img: null,
         type: 'radio',
-        var: null,
+        var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       5: {
@@ -294,7 +302,7 @@ var data = [
         desc: 'Dotknij obiema dłońmi podłoża.',
         img: null,
         type: 'radio',
-        var: null,
+        var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       6: {
@@ -302,7 +310,7 @@ var data = [
         desc: 'Dotknij głową kolan.',
         img: null,
         type: 'radio',
-        var: null,
+        var: true,
         marks: { true: DONE, false: NOTDONE },
       },
     },
@@ -329,6 +337,7 @@ var data = [
         marks_split: 'gender',
         marks: {
           m: {
+            0: 0,
             120: 1,
             300: 2,
             600: 3,
@@ -337,6 +346,7 @@ var data = [
             1800: 6,
           },
           f: {
+            0: 0,
             60: 1,
             180: 2,
             360: 3,
@@ -360,6 +370,7 @@ var data = [
         marks_split: 'gender',
         marks: {
           m: {
+            0: 0,
             400: 1,
             1000: 2,
             2000: 3,
@@ -368,6 +379,7 @@ var data = [
             4000: 6,
           },
           f: {
+            0: 0,
             200: 1,
             500: 2,
             1000: 3,
@@ -391,6 +403,7 @@ var data = [
     marks_split: 'gender',
     marks: {
       m: {
+        0: 0,
         30: 1,
         60: 2,
         90: 3,
@@ -399,6 +412,7 @@ var data = [
         240: 6,
       },
       f: {
+        0: 0,
         10: 1,
         30: 2,
         60: 3,
@@ -561,21 +575,57 @@ function next(caller) {
   iterator[iterator.length - 1]++;
   let current = data[iterator[0]];
   let sheet = null;
-  for (let level = 1; level < iterator.length; ++level) {}
+  for (let level = 1; level < iterator.length; ++level) {
+    nextVar = current.var;
+    nextTest = current.test ? current.var : null;
+    switch (current.type) {
+      case 'multi':
+        let marks = current.marks;
+        if (current.marks_split)
+          marks = current.marks[vars[current.marks_split]];
+        let ms = Object.keys(marks);
+        ms.sort();
+        if (level + 1 == iterator.length) {
+          if (!iterator[level]) {
+            // first execution
+          } else if (vars[true]=="true") {
+            if (nextVar) vars[nextVar] = ms[iterator[level] - 1];
+            if (nextTest) tests[nextTest] = ms[iterator[level] - 1];
+          } else if (current.progressive) {
+            iterator[level] = ms.length;
+          }
+          if (iterator[level] == ms.length) {
+            iterator.pop();
+            return next(caller);
+          }
+        }
+        current = marks[ms[iterator[level]]];
+        break;
+    }
+  }
+  if (current === true) {
+    vars[true] = "true";
+    return next(caller);
+  }
   nextVar = current.var;
   nextTest = current.test ? current.var : null;
-  if (current.marks_split)
-    current.marks = current.marks[vars[current.marks_split]];
+  let marks = current.marks;
+  if (current.marks_split) marks = current.marks[vars[current.marks_split]];
   switch (current.type) {
     case 'submit':
       sheet = protSubmit(current.title, current.desc, current.submit);
       break;
     case 'radio':
       // img
-      sheet = protRadio(current.title, current.desc, current.marks);
+      sheet = protRadio(current.title, current.desc, marks);
       break;
     case 'int':
-      sheet = protInt(current.title, current.desc, current.marks);
+      sheet = protInt(current.title, current.desc, marks);
+      break;
+    case 'multi':
+      sheet = protSubmit(current.title, current.desc, current.submit);
+      iterator.push(-1);
+      vars[true] = "true";
       break;
   }
   if (sheets.length > 1) sheets[sheets.length - 1].classList.add('thrown-out');
