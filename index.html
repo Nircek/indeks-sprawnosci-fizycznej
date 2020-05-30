@@ -63,19 +63,14 @@
         <h2>{{title}}</h2>
         <h3>{{desc}}</h3>
       </div>
-      <div class="sheet" id="prototype-int">
+      <div class="sheet" id="prototype-int" onload="intAddHandler(this)">
         <!--I need an exception for the age prototype. However we can always find a fancy picture ;)-->
         <h2>{{title}}</h2>
         <img src="https://via.placeholder.com/1600x900" alt="PLACEHOLDER" />
         <p>{{desc}}</p>
         <div id="input">
-          <input
-            type="number"
-            min="0"
-            oninput="this.blur();this.removeAttribute('oninput');submit(this)"
-          />
+          <input type="number" min="0" />
         </div>
-        <!--I think we are targeting submitting on clickineg "enter" on a keyboard. And I decided in order not to destroy layout to delete checkbox or button. Currently it can be oninput. Because we are not testing resukts yet, we can afford this inacceptable from practical point of view solution-->
       </div>
       <div class="sheet" id="prototype-summary-chart">
         {{mark}}

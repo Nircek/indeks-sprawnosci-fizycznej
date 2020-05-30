@@ -488,6 +488,7 @@ function prot(type, id, obj, cont = document.getElementById('container')) {
     prot.innerHTML = prot.innerHTML.protInject(x, obj[x]);
   });
   cont.prepend(prot);
+  prot.dispatchEvent(new Event('load'));
   return prot;
 }
 
@@ -743,4 +744,20 @@ function check(caller) {
     caller.style.cursor = 'default';
     setInterval(resolve, 1500);
   });
+}
+
+function intAddHandler(self) {
+  self
+    .getElementsByTagName('input')[0]
+    .addEventListener('keydown', intEventHandler);
+}
+
+function intEventHandler(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    let t = event.target;
+    t.blur();
+    t.removeEventListener('keydown', intEventHandler);
+    submit(t);
+  }
 }
