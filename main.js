@@ -559,7 +559,9 @@ function submit(value) {
 function protInt(title, desc, marks) {
   let id = getDynamicId('int');
   intTranslation = marks;
-  return prot('int', id, { title: title, desc: desc });
+  let p = prot('int', id, { title: title, desc: desc });
+  p.getElementsByTagName('input')[0].focus();
+  return p;
 }
 
 function protSummaryChart(title, desc, curr, max, mark, submit) {
