@@ -508,6 +508,8 @@ function select(el) {
   next(el);
 }
 
+var radioOptions = [];
+
 function protRadio(title, desc, options) {
   let id = getDynamicId('radio');
   let p = prot('radio', id, { title: title, desc: desc });
@@ -515,12 +517,14 @@ function protRadio(title, desc, options) {
   Object.keys(options).map((x) => {
     let did = getDynamicId(id + '-');
     translation[did] = x;
-    prot(
+    let o = prot(
       'option',
       did,
       { title: options[x] },
       p.getElementsByClassName('radio-options')[0]
-    );
+    ).getElementsByClassName('checkbox')[0];
+    radioAddListener(o);
+    radioOptions.push(o);
   });
   return p;
 }
@@ -746,18 +750,34 @@ function check(caller) {
   });
 }
 
-function intAddHandler(self) {
+function intAddListener(self) {
   self
     .getElementsByTagName('input')[0]
-    .addEventListener('keydown', intEventHandler);
+    .addEventListener('keydown', intEventListener);
 }
 
-function intEventHandler(event) {
+function intEventListener(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     let t = event.target;
     t.blur();
-    t.removeEventListener('keydown', intEventHandler);
+    t.removeEventListener('keydown', intEventListener);
     submit(t);
   }
+}
+
+function radioAddListener(self) {
+  self.addEventListener('click', radioEventListener);
+}
+
+function radioEventListener(event) {
+  let t = event.target;
+  if (!radioOptions.includes(t)) {
+    console.log('WARN: this not in radioOptions');
+    radioOptions.push(t);
+  }
+  radioOptions.forEach((e) => {
+    e.removeEventListener('click', radioEventListener);
+  });
+  check(t).then(() => select(t.parentElement));
 }

@@ -52,10 +52,7 @@
         <div class="radio-options"></div>
       </div>
       <div id="prototype-option">
-        <div
-          class="checkbox"
-          onclick="this.removeAttribute('onclick');check(this).then(()=>select(this.parentElement))"
-        ></div>
+        <div class="checkbox"></div>
         <p class="check-desc">{{title}}</p>
         <div style="clear: both;"></div>
       </div>
@@ -63,7 +60,7 @@
         <h2>{{title}}</h2>
         <h3>{{desc}}</h3>
       </div>
-      <div class="sheet" id="prototype-int" onload="intAddHandler(this)">
+      <div class="sheet" id="prototype-int" onload="intAddListener(this)">
         <!--I need an exception for the age prototype. However we can always find a fancy picture ;)-->
         <h2>{{title}}</h2>
         <img src="https://via.placeholder.com/1600x900" alt="PLACEHOLDER" />
