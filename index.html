@@ -42,7 +42,7 @@
         <p>{{desc}}</p>
         <div
           class="checkbox"
-          onclick="this.removeAttribute('onclick');check(this).then(()=>next(this))"
+          onclick="this.removeAttribute('onclick');next(this, ()=>check(this))"
         ></div>
         <p class="check-desc">{{submit}}</p>
       </div>

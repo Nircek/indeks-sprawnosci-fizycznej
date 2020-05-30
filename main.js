@@ -550,11 +550,10 @@ function intTranslate(ovalue) {
   return value;
 }
 
-function submit(el) {
-  let value = intTranslate(el.value);
+function submit(value) {
+  value = intTranslate(value);
   if (nextVar) vars[nextVar] = value;
   if (nextTest) tests[nextTest] = value;
-  next(el);
 }
 
 function protInt(title, desc, marks) {
@@ -607,7 +606,28 @@ function restore(_iterator, _vars, _tests) {
   vars = _vars;
   tests = _tests;
 }
-function next(caller) {
+
+var nextQueue = new Promise((r) => r());
+
+function next(caller, forecall = null, backwards = false) {
+  if (!forecall) forecall = () => new Promise((r) => r());
+  return (nextQueue = nextQueue
+    .then(() => forecall())
+    .then(() => nextNow(caller, backwards))
+    .catch((e) => console.log(e)));
+}
+
+function nextNow(caller, backwards = false) {
+  let l, pl;
+  if (backwards) {
+    if (sheets.length < 3) {
+      console.log('ERR:cannot go back: last sheet');
+      return;
+    }
+    l = sheets.pop();
+    pl = sheets.pop();
+    pl.goBack();
+  }
   if (caller && sheets.length && getSheet(caller) != sheets[sheets.length - 1])
     throw 'not a lastSheet';
   let lastIterator = [...iterator];
@@ -635,7 +655,7 @@ function next(caller) {
           }
           if (iterator[level] == ms.length) {
             iterator.pop();
-            return next(caller);
+            return nextNow(caller);
           }
         }
         current = marks[ms[iterator[level]]];
@@ -651,14 +671,14 @@ function next(caller) {
         } else {
           if (iterator[level + 1] != 0) {
             iterator.splice(level);
-            return next(caller);
+            return nextNow(caller);
           } else current = current.choices[iterator[level++]];
         }
     }
   }
   if (current === true) {
     vars[true] = 'true';
-    return next(caller);
+    return nextNow(caller);
   }
   nextVar = current.var;
   nextTest = current.test ? current.title : null;
@@ -722,31 +742,30 @@ function next(caller) {
       );
       break;
   }
-  if (sheets.length > 1) sheets[sheets.length - 1].classList.add('thrown-out');
+  if (!backwards && sheets.length > 1) threwOut(sheets[sheets.length - 1]);
   let _vars = Object.assign({}, vars);
   let _tests = Object.assign({}, tests);
   sheet.goBack = () => restore(lastIterator, _vars, _tests);
   sheets.push(sheet);
+  if (backwards) {
+    threwIn(pl).then(() => {
+      pl.parentNode.removeChild(pl);
+      l.parentNode.removeChild(l);
+    });
+  }
 }
+
 function back() {
-  if (sheets.length < 3) throw 'cannot go back: last sheet';
-  let l = sheets.pop();
-  let pl = sheets.pop();
-  pl.goBack();
-  pl.classList.remove('thrown-out');
-  setTimeout(() => {
-    next();
-    pl.parentNode.removeChild(pl);
-    l.parentNode.removeChild(l);
-  }, 2100);
+  return next(null, null, true);
 }
+
 next(null);
 
 function check(caller) {
   return new Promise((resolve) => {
     caller.getElementsByClassName('check')[0].style.display = 'block';
     caller.style.cursor = 'default';
-    setInterval(resolve, 1500);
+    setTimeout(resolve, 1500);
   });
 }
 
@@ -762,7 +781,14 @@ function intEventListener(event) {
     let t = event.target;
     t.blur();
     t.removeEventListener('keydown', intEventListener);
-    submit(t);
+    next(
+      t,
+      () =>
+        new Promise((r) => {
+          submit(t.value);
+          r();
+        })
+    );
   }
 }
 
@@ -780,4 +806,41 @@ function radioEventListener(event) {
     e.removeEventListener('click', radioEventListener);
   });
   check(t).then(() => select(t.parentElement));
+}
+
+function threwOutNow(self) {
+  return (self.moving = new Promise((resolve) => {
+    let s = self.style;
+    s.transition = 'top 2s ease-in';
+    s.top = '100vh';
+    self.ontransitionend = () => {
+      self.ontransitionend = null;
+      s.transition = '';
+      s.left = ((Math.random() * 201) | 0) - 100 + 'vw';
+      s.top = '100vh';
+      resolve();
+    };
+  }));
+}
+function threwInNow(self) {
+  return (self.moving = new Promise((resolve) => {
+    let s = self.style;
+    s.transition = 'top 2s linear, left 2s ease-out';
+    s.left = '';
+    s.top = '';
+    self.ontransitionend = () => {
+      self.ontransitionend = null;
+      s.transition = '';
+      resolve();
+    };
+  }));
+}
+
+function threwOut(self) {
+  if (self.moving) return self.moving.then(() => threwOutNow(self));
+  else return threwOutNow(self);
+}
+function threwIn(self) {
+  if (self.moving) return self.moving.then(() => threwInNow(self));
+  else return threwInNow(self);
 }

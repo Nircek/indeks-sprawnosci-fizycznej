@@ -53,7 +53,6 @@ a:active {
 .sheet {
   position: absolute;
   top: 0;
-  transition: top 2s ease-in;
   background-color: white;
   width: 100%;
   max-width: 45vh;
@@ -82,7 +81,6 @@ a:active {
   color: black;
   margin: 1vh auto;
   border: solid 0.5vh;
-  overflow: hidden;
 }
 .topbar {
   width: 100%;
@@ -193,10 +191,6 @@ svg {
   height: 5vh;
   line-height: 5vh;
   float: left;
-}
-
-.thrown-out {
-  top: 100vh;
 }
 
 /* SRC: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
