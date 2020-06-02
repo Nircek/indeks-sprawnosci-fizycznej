@@ -846,3 +846,107 @@ function threwIn(self) {
   if (self.moving) return self.moving.then(() => threwInNow(self));
   else return threwInNow(self);
 }
+
+window.onload = function () {
+  let seconds = 10;
+  let tens = 0;
+  let appendTens = document.getElementById("tens");
+  let appendSeconds = document.getElementById("seconds");
+  let buttonStart = document.getElementById("start");
+  let buttonStop = document.getElementById("stop");
+  let buttonReset = document.getElementById("reset");
+  let Interval;
+
+  buttonStart.onclick = function () {
+    clearInterval(Interval);
+    Interval = setInterval(startTimer, 100);
+  };
+
+  buttonStop.onclick = function () {
+    clearInterval(Interval);
+  };
+
+  buttonReset.onclick = function () {
+    clearInterval(Interval);
+    tens = "0";
+    seconds = "10";
+    appendTens.innerHTML = tens;
+    appendSeconds.innerHTML = seconds;
+    buttonStart.onclick = function () {
+      clearInterval(Interval);
+      Interval = setInterval(startTimer, 100);
+    };
+  };
+
+  //timer function
+  function startTimer() {
+    --tens;
+
+    if (tens > 0) appendTens.innerHTML = tens;
+    else {
+      --seconds;
+      appendSeconds.innerHTML = "0" + seconds;
+      tens = 9;
+      appendTens.innerHTML = 9;
+    }
+
+    if (seconds > 9) {
+      appendSeconds.innerHTML = seconds;
+    }
+
+    if (seconds == 0 && tens == 1) {
+      appendTens.innerHTML = 0;
+      beep();
+      alert("Czas się skończył");
+      clearInterval(Interval);
+      buttonStart.onclick = function () {
+        alert("Jeśli chcesz spróbować jeszcze raz kliknij reset");
+      };
+    }
+  }
+};
+
+//stopwatch function
+window.onload = function () {
+  let seconds = 0;
+  let tens = 0;
+  let appendTens = document.getElementById("tens");
+  let appendSeconds = document.getElementById("seconds");
+  let buttonStart = document.getElementById("start");
+  let buttonStop = document.getElementById("stop");
+  let buttonReset = document.getElementById("reset");
+  let Interval;
+
+  buttonStart.onclick = function () {
+    clearInterval(Interval);
+    Interval = setInterval(startTimer, 100);
+  };
+
+  buttonStop.onclick = function () {
+    clearInterval(Interval);
+  };
+
+  buttonReset.onclick = function () {
+    clearInterval(Interval);
+    tens = "0";
+    seconds = "00";
+    appendTens.innerHTML = tens;
+    appendSeconds.innerHTML = seconds;
+  };
+
+  function startTimer() {
+    ++tens;
+
+    if (tens < 10) appendTens.innerHTML = tens;
+    else {
+      ++seconds;
+      appendSeconds.innerHTML = "0" + seconds;
+      tens = 0;
+      appendTens.innerHTML = 0;
+    }
+
+    if (seconds > 9) {
+      appendSeconds.innerHTML = seconds;
+    }
+  }
+};
