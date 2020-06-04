@@ -1,6 +1,6 @@
-'use strict';
-let DONE = 'Udało mi się!';
-let NOTDONE = 'Nie umiem tego zrobić...';
+"use strict";
+let DONE = "Udało mi się!";
+let NOTDONE = "Nie umiem tego zrobić...";
 
 var data = [
   /*
@@ -11,33 +11,33 @@ var data = [
     Content-Length: 477575
   */
   {
-    title: 'Cześć!',
+    title: "Cześć!",
     desc:
-      'Znudził Ci się kanapowy styl życia? A&nbsp;może po prostu chcesz się sprawdzić? ' +
-      'Tak czy inaczej musisz zrobić indeks sprawności.',
-    submit: 'Zróbmy to!',
+      "Znudził Ci się kanapowy styl życia? A&nbsp;może po prostu chcesz się sprawdzić? " +
+      "Tak czy inaczej musisz zrobić indeks sprawności.",
+    submit: "Zróbmy to!",
     img: null,
-    type: 'submit',
+    type: "submit",
   },
   {
-    title: 'Płeć',
-    desc: 'Kim jesteś?',
+    title: "Płeć",
+    desc: "Kim jesteś?",
     img: null,
-    type: 'radio',
+    type: "radio",
     test: false,
-    var: 'gender',
+    var: "gender",
     marks: {
-      m: 'mężczyzną',
-      f: 'kobietą',
+      m: "mężczyzną",
+      f: "kobietą",
     },
   },
   {
-    title: 'Wiek',
-    desc: 'Ile masz lat?',
+    title: "Wiek",
+    desc: "Ile masz lat?",
     img: null,
-    type: 'int',
+    type: "int",
     test: false,
-    var: 'overall-mark',
+    var: "overall-mark",
     marks: {
       6: [0, 5, 8, 11, 14, 17, 20],
       7: [0, 6, 9, 12, 15, 18, 22],
@@ -57,16 +57,16 @@ var data = [
     },
   },
   {
-    title: 'Szybkość',
+    title: "Szybkość",
     desc:
-      'Biegnij szybko w&nbsp;miejscu przez 10&nbsp;sekund wysoko unosząc kolana i&nbsp;klaszcząc ' +
-      'pod&nbsp;unoszoną nogą. Policz liczbę klaśnięć.',
+      "Biegnij szybko w&nbsp;miejscu przez 10&nbsp;sekund wysoko unosząc kolana i&nbsp;klaszcząc " +
+      "pod&nbsp;unoszoną nogą. Policz liczbę klaśnięć.",
     img: null,
-    type: 'int',
+    type: "int",
     timer: 10,
     test: true,
-    var: 'speed',
-    marks_split: 'gender',
+    var: "speed",
+    marks_split: "gender",
     marks: {
       m: {
         0: 0,
@@ -89,15 +89,15 @@ var data = [
     },
   },
   {
-    title: 'Skoczność',
+    title: "Skoczność",
     desc:
-      'Skocz w&nbsp;dal obunóż z&nbsp;miejsca. Rezultat zmierz własnymi stopami. ' +
-      'Wynik zaokrąglij do&nbsp;całej stopy.',
+      "Skocz w&nbsp;dal obunóż z&nbsp;miejsca. Rezultat zmierz własnymi stopami. " +
+      "Wynik zaokrąglij do&nbsp;całej stopy.",
     img: null,
-    type: 'int',
+    type: "int",
     timer: null,
     test: true,
-    var: 'jump',
+    var: "jump",
     marks: {
       0: 0,
       5: 1,
@@ -109,80 +109,80 @@ var data = [
     },
   },
   {
-    title: 'Siła ramion',
+    title: "Siła ramion",
     desc:
-      'Uchwyć się drążka lub gałęzi, tak aby swobodnie zwisać. ' +
-      'Nie dotykaj podłoża nogami. Próbuj wykonać kolejne ćwiczenia ' +
-      'o&nbsp;wzrastającej trudności.',
-    submit: 'Zróbmy to!',
+      "Uchwyć się drążka lub gałęzi, tak aby swobodnie zwisać. " +
+      "Nie dotykaj podłoża nogami. Próbuj wykonać kolejne ćwiczenia " +
+      "o&nbsp;wzrastającej trudności.",
+    submit: "Zróbmy to!",
     img: null,
-    type: 'multi',
+    type: "multi",
     progressive: true,
     test: true,
-    var: 'arms',
-    marks_split: 'gender',
+    var: "arms",
+    marks_split: "gender",
     marks: {
       m: {
         0: true,
         1: {
-          title: 'Siła ramion - Poziom minimalny',
+          title: "Siła ramion - Poziom minimalny",
           desc:
-            'Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 10&nbsp;sek.',
+            "Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         2: {
-          title: 'Siła ramion - Poziom dostateczny',
+          title: "Siła ramion - Poziom dostateczny",
           desc:
-            'Zawiśnij na wyprostowanej jednej ręce i&nbsp;wytrzymaj 10&nbsp;sek.',
+            "Zawiśnij na wyprostowanej jednej ręce i&nbsp;wytrzymaj 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         3: {
-          title: 'Siła ramion - Poziom dobry',
+          title: "Siła ramion - Poziom dobry",
           desc:
-            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek, i&nbsp;wytrzymaj 3&nbsp;sek.',
+            "Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa " +
+            "była wyżej niż drążek, i&nbsp;wytrzymaj 3&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 3,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         4: {
-          title: 'Siła ramion - Poziom bardzo dobry',
+          title: "Siła ramion - Poziom bardzo dobry",
           desc:
-            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek i&nbsp;wytrzymaj 10&nbsp;sek.',
+            "Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa " +
+            "była wyżej niż drążek i&nbsp;wytrzymaj 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         5: {
-          title: 'Siła ramion - Poziom wysoki',
+          title: "Siła ramion - Poziom wysoki",
           desc:
-            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, wytrzymaj 10&nbsp;sek.',
+            "Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, wytrzymaj 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         6: {
-          title: 'Siła ramion - Poziom wybitny',
+          title: "Siła ramion - Poziom wybitny",
           desc:
-            'Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, utrzymuj się kolejno na&nbsp;' +
-            'lewej i&nbsp;prawej ręce po 10&nbsp;sek.',
+            "Zawiśnij, podciągnij się oburącz, jedną rękę wolno opuść, utrzymuj się kolejno na&nbsp;" +
+            "lewej i&nbsp;prawej ręce po 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
@@ -191,61 +191,61 @@ var data = [
       f: {
         0: true,
         1: {
-          title: 'Siła ramion - Poziom minimalny',
+          title: "Siła ramion - Poziom minimalny",
           desc:
-            'Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 3&nbsp;sek.',
+            "Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 3&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 3,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         2: {
-          title: 'Siła ramion - Poziom dostateczny',
+          title: "Siła ramion - Poziom dostateczny",
           desc:
-            'Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 10&nbsp;sek.',
+            "Zawiśnij na wyprostowanych rękach i&nbsp;wytrzymaj 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         3: {
-          title: 'Siła ramion - Poziom dobry',
-          desc: 'Zawiśnij na jednej ręce i&nbsp;wytrzymaj 3&nbsp;sek.',
+          title: "Siła ramion - Poziom dobry",
+          desc: "Zawiśnij na jednej ręce i&nbsp;wytrzymaj 3&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 3,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         4: {
-          title: 'Siła ramion - Poziom bardzo dobry',
-          desc: 'Zawiśnij na jednej ręce i&nbsp;wytrzymaj 10&nbsp;sek.',
+          title: "Siła ramion - Poziom bardzo dobry",
+          desc: "Zawiśnij na jednej ręce i&nbsp;wytrzymaj 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         5: {
-          title: 'Siła ramion - Poziom wysoki',
+          title: "Siła ramion - Poziom wysoki",
           desc:
-            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek i&nbsp;wytrzymaj 3&nbsp;sek.',
+            "Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa " +
+            "była wyżej niż drążek i&nbsp;wytrzymaj 3&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 3,
           var: true,
           marks: { true: DONE, false: NOTDONE },
         },
         6: {
-          title: 'Siła ramion - Poziom wybitny',
+          title: "Siła ramion - Poziom wybitny",
           desc:
-            'Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa ' +
-            'była wyżej niż drążek i&nbsp;wytrzymaj 10&nbsp;sek.',
+            "Zawiśnij, podciągnij się oburącz, uginając mocno ramiona, tak, aby głowa " +
+            "była wyżej niż drążek i&nbsp;wytrzymaj 10&nbsp;sek.",
           img: null,
-          type: 'radio',
+          type: "radio",
           timer: 10,
           var: true,
           marks: { true: DONE, false: NOTDONE },
@@ -254,93 +254,93 @@ var data = [
     },
   },
   {
-    title: 'Gibkość',
+    title: "Gibkość",
     desc:
-      'Stań w&nbsp;pozycji na&nbsp;baczność, nie zginając nóg w&nbsp;kolanach. Wykonaj ruchem ciągłym powolny skłon ' +
-      'tułowia w&nbsp;przód. Nogi&nbsp;proste. Liczy się poprawne wykonanie zadania.',
-    submit: 'Zróbmy to!',
-    type: 'multi',
+      "Stań w&nbsp;pozycji na&nbsp;baczność, nie zginając nóg w&nbsp;kolanach. Wykonaj ruchem ciągłym powolny skłon " +
+      "tułowia w&nbsp;przód. Nogi&nbsp;proste. Liczy się poprawne wykonanie zadania.",
+    submit: "Zróbmy to!",
+    type: "multi",
     progressive: true,
     test: true,
-    var: 'supple',
+    var: "supple",
     marks: {
       0: true,
       1: {
-        title: 'Gibkość - Poziom minimalny',
-        desc: 'Chwyć oburącz za kostki.',
+        title: "Gibkość - Poziom minimalny",
+        desc: "Chwyć oburącz za kostki.",
         img: null,
-        type: 'radio',
+        type: "radio",
         var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       2: {
-        title: 'Gibkość - Poziom dostateczny',
-        desc: 'Dotknij palcami obu rąk palców stóp.',
+        title: "Gibkość - Poziom dostateczny",
+        desc: "Dotknij palcami obu rąk palców stóp.",
         img: null,
-        type: 'radio',
+        type: "radio",
         var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       3: {
-        title: 'Gibkość - Poziom dobry',
-        desc: 'Dotknij palcami obu rąk podłoża.',
+        title: "Gibkość - Poziom dobry",
+        desc: "Dotknij palcami obu rąk podłoża.",
         img: null,
-        type: 'radio',
+        type: "radio",
         var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       4: {
-        title: 'Gibkość - Poziom bardzo dobry',
-        desc: 'Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.',
+        title: "Gibkość - Poziom bardzo dobry",
+        desc: "Wszystkimi palcami obu rąk (szeroko rozwarte) dotknij podłoża.",
         img: null,
-        type: 'radio',
+        type: "radio",
         var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       5: {
-        title: 'Gibkość - Poziom wysoki',
-        desc: 'Dotknij obiema dłońmi podłoża.',
+        title: "Gibkość - Poziom wysoki",
+        desc: "Dotknij obiema dłońmi podłoża.",
         img: null,
-        type: 'radio',
+        type: "radio",
         var: true,
         marks: { true: DONE, false: NOTDONE },
       },
       6: {
-        title: 'Gibkość - Poziom wybitny',
-        desc: 'Dotknij głową kolan.',
+        title: "Gibkość - Poziom wybitny",
+        desc: "Dotknij głową kolan.",
         img: null,
-        type: 'radio',
+        type: "radio",
         var: true,
         marks: { true: DONE, false: NOTDONE },
       },
     },
   },
   {
-    title: 'Wytrzymałość',
+    title: "Wytrzymałość",
     desc:
-      'Spróbuj jak długo możesz biec. Próbę możesz wykonać w&nbsp;dwojaki sposób: w&nbsp;miejscu w&nbsp;tempie ok. ' +
-      '120&nbsp;kroków na&nbsp;minutę lub na&nbsp;odległość. W&nbsp;pierwszym przypadku decyduje czas trwania biegu, ' +
-      'w&nbsp;drugim pokonany dystans.',
-    submit: 'Podejmij wybór!',
+      "Spróbuj jak długo możesz biec. Próbę możesz wykonać w&nbsp;dwojaki sposób: w&nbsp;miejscu w&nbsp;tempie ok. " +
+      "120&nbsp;kroków na&nbsp;minutę lub na&nbsp;odległość. W&nbsp;pierwszym przypadku decyduje czas trwania biegu, " +
+      "w&nbsp;drugim pokonany dystans.",
+    submit: "Podejmij wybór!",
     img: null,
-    type: 'submit',
+    type: "submit",
   },
   {
-    title: 'Wytrzymałość - wybór',
-    desc: 'Jak chcesz wykonać test?',
+    title: "Wytrzymałość - wybór",
+    desc: "Jak chcesz wykonać test?",
     img: null,
-    type: 'choice',
+    type: "choice",
     choices: [
       {
-        label: 'na czas',
-        title: 'Wytrzymałość - czas',
-        desc: 'Postaraj się biegać tak długo, jak tylko potrafisz.',
+        label: "na czas",
+        title: "Wytrzymałość - czas",
+        desc: "Postaraj się biegać tak długo, jak tylko potrafisz.",
         img: null,
-        type: 'int',
+        type: "int",
         timer: 0,
         test: true,
-        var: 'stamina-time',
-        marks_split: 'gender',
+        var: "stamina-time",
+        marks_split: "gender",
         marks: {
           m: {
             0: 0,
@@ -363,17 +363,17 @@ var data = [
         },
       },
       {
-        label: 'na dystans',
-        title: 'Wytrzymałość - dystans',
+        label: "na dystans",
+        title: "Wytrzymałość - dystans",
         desc:
-          'Postaraj się pokonać tak duży dystans jak potrafisz. Do pomiaru możesz wykorzystać ' +
-          'np.&nbsp;aplikację w&nbsp;telefonie.',
+          "Postaraj się pokonać tak duży dystans jak potrafisz. Do pomiaru możesz wykorzystać " +
+          "np.&nbsp;aplikację w&nbsp;telefonie.",
         img: null,
-        type: 'int',
+        type: "int",
         timer: null,
         test: true,
-        var: 'stamina-distance',
-        marks_split: 'gender',
+        var: "stamina-distance",
+        marks_split: "gender",
         marks: {
           m: {
             0: 0,
@@ -398,15 +398,15 @@ var data = [
     ],
   },
   {
-    title: 'Siła mięśni brzucha',
+    title: "Siła mięśni brzucha",
     desc:
-      'Połóż się na plecach, z&nbsp;dowolnie ułożonymi rękami. Unieś nogi tuż nad podłoże i&nbsp;wykonuj ' +
-      'nożyce poprzeczne tak długo, jak możesz. O&nbsp;wyniku decyduje czas trwania próby.',
-    type: 'int',
+      "Połóż się na plecach, z&nbsp;dowolnie ułożonymi rękami. Unieś nogi tuż nad podłoże i&nbsp;wykonuj " +
+      "nożyce poprzeczne tak długo, jak możesz. O&nbsp;wyniku decyduje czas trwania próby.",
+    type: "int",
     timer: 0,
     test: true,
-    var: 'stomach',
-    marks_split: 'gender',
+    var: "stomach",
+    marks_split: "gender",
     marks: {
       m: {
         0: 0,
@@ -429,39 +429,39 @@ var data = [
     },
   },
   {
-    title: 'Podsumowanie',
-    desc: '',
-    submit: 'Przejdź do szczegółów',
-    type: 'summary-overall',
+    title: "Podsumowanie",
+    desc: "",
+    submit: "Przejdź do szczegółów",
+    type: "summary-overall",
     marks: {
-      0: 'Klęska pedagogiczna',
-      1: 'Minimalny',
-      2: 'Dostateczny',
-      3: 'Dobry',
-      4: 'Bardzo dobry',
-      5: 'Wysoki',
-      6: 'Wybitny',
+      0: "Klęska pedagogiczna",
+      1: "Minimalny",
+      2: "Dostateczny",
+      3: "Dobry",
+      4: "Bardzo dobry",
+      5: "Wysoki",
+      6: "Wybitny",
     },
   },
   {
-    title: 'Podsumowanie szczegółowe',
-    desc: '',
-    type: 'summary',
+    title: "Podsumowanie szczegółowe",
+    desc: "",
+    type: "summary",
     marks: {
-      0: 'Klęska pedagogiczna',
-      1: 'Minimalny',
-      2: 'Dostateczny',
-      3: 'Dobry',
-      4: 'Bardzo dobry',
-      5: 'Wysoki',
-      6: 'Wybitny',
+      0: "Klęska pedagogiczna",
+      1: "Minimalny",
+      2: "Dostateczny",
+      3: "Dobry",
+      4: "Bardzo dobry",
+      5: "Wysoki",
+      6: "Wybitny",
     },
   },
 ];
 
 String.prototype.replaceAll = function (search, replacement) {
   var target = this;
-  return target.replace(new RegExp(search, 'g'), replacement);
+  return target.replace(new RegExp(search, "g"), replacement);
 };
 
 String.prototype.protInject = function (id, value) {
@@ -470,7 +470,7 @@ String.prototype.protInject = function (id, value) {
 };
 
 function getSheet(el) {
-  while (el.parentElement.id != 'container') el = el.parentElement;
+  while (el.parentElement.id != "container") el = el.parentElement;
   return el;
 }
 
@@ -481,19 +481,19 @@ function getDynamicId(id) {
   return id + ++dynamicIds[id];
 }
 
-function prot(type, id, obj, cont = document.getElementById('container')) {
-  let prot = document.getElementById('prototype-' + type).cloneNode(true);
-  prot.setAttribute('id', id);
+function prot(type, id, obj, cont = document.getElementById("container")) {
+  let prot = document.getElementById("prototype-" + type).cloneNode(true);
+  prot.setAttribute("id", id);
   Object.keys(obj).map((x) => {
     prot.innerHTML = prot.innerHTML.protInject(x, obj[x]);
   });
   cont.prepend(prot);
-  prot.dispatchEvent(new Event('load'));
+  prot.dispatchEvent(new Event("load"));
   return prot;
 }
 
 function protSubmit(title, desc, submit) {
-  return prot('submit', getDynamicId('submit'), {
+  return prot("submit", getDynamicId("submit"), {
     title: title,
     desc: desc,
     submit: submit,
@@ -511,18 +511,18 @@ function select(el) {
 var radioOptions = [];
 
 function protRadio(title, desc, options) {
-  let id = getDynamicId('radio');
-  let p = prot('radio', id, { title: title, desc: desc });
+  let id = getDynamicId("radio");
+  let p = prot("radio", id, { title: title, desc: desc });
   translation = {};
   Object.keys(options).map((x) => {
-    let did = getDynamicId(id + '-');
+    let did = getDynamicId(id + "-");
     translation[did] = x;
     let o = prot(
-      'option',
+      "option",
       did,
       { title: options[x] },
-      p.getElementsByClassName('radio-options')[0]
-    ).getElementsByClassName('checkbox')[0];
+      p.getElementsByClassName("radio-options")[0]
+    ).getElementsByClassName("checkbox")[0];
     radioAddListener(o);
     radioOptions.push(o);
   });
@@ -530,7 +530,7 @@ function protRadio(title, desc, options) {
 }
 
 function protDesc(title, desc) {
-  return prot('desc', getDynamicId('desc'), { title: title, desc: desc });
+  return prot("desc", getDynamicId("desc"), { title: title, desc: desc });
 }
 
 var intTranslation = {};
@@ -557,44 +557,44 @@ function submit(value) {
 }
 
 function protInt(title, desc, marks) {
-  let id = getDynamicId('int');
+  let id = getDynamicId("int");
   intTranslation = marks;
-  let p = prot('int', id, { title: title, desc: desc });
-  p.getElementsByTagName('input')[0].focus();
+  let p = prot("int", id, { title: title, desc: desc });
+  p.getElementsByTagName("input")[0].focus();
   return p;
 }
 
 function protSummaryChart(title, desc, curr, max, mark, submit) {
-  let id = getDynamicId('summary-chart');
-  let p = prot('summary-chart', id, {
+  let id = getDynamicId("summary-chart");
+  let p = prot("summary-chart", id, {
     title: title,
     desc: desc,
     mark: mark,
-    id: id + 'canvas',
+    id: id + "canvas",
     submit: submit,
   });
-  let ctx = document.getElementById(id + 'canvas').getContext('2d');
-  ctx.font = '100px';
-  ctx.fillText(curr + '/' + max, 0, 10);
+  let ctx = document.getElementById(id + "canvas").getContext("2d");
+  ctx.font = "100px";
+  ctx.fillText(curr + "/" + max, 0, 10);
   return p;
 }
 
 function protSummary(title, desc, marks) {
-  let id = getDynamicId('summary');
-  let p = prot('summary', id, { title: title, desc: desc });
+  let id = getDynamicId("summary");
+  let p = prot("summary", id, { title: title, desc: desc });
   Object.keys(marks).every((x) =>
     prot(
-      'summary-mark',
-      getDynamicId(id + '-'),
+      "summary-mark",
+      getDynamicId(id + "-"),
       { name: x, mark: marks[x] },
-      p.getElementsByClassName('summary-marks')[0]
+      p.getElementsByClassName("summary-marks")[0]
     )
   );
   return p;
 }
 
-[...document.getElementsByClassName('checkbox')].map((x) => {
-  x.innerHTML = document.getElementById('prototype-checkbox').innerHTML;
+[...document.getElementsByClassName("checkbox")].map((x) => {
+  x.innerHTML = document.getElementById("prototype-checkbox").innerHTML;
 });
 
 var iterator = [-1];
@@ -623,7 +623,7 @@ function nextNow(caller, backwards = false) {
   let l, pl;
   if (backwards) {
     if (sheets.length < 3) {
-      console.log('ERR:cannot go back: last sheet');
+      console.log("ERR:cannot go back: last sheet");
       return;
     }
     l = sheets.pop();
@@ -631,7 +631,7 @@ function nextNow(caller, backwards = false) {
     pl.goBack();
   }
   if (caller && sheets.length && getSheet(caller) != sheets[sheets.length - 1])
-    throw 'not a lastSheet';
+    throw "not a lastSheet";
   let lastIterator = [...iterator];
   iterator[iterator.length - 1]++;
   let current = data[iterator[0]];
@@ -640,7 +640,7 @@ function nextNow(caller, backwards = false) {
     nextVar = current.var;
     nextTest = current.test ? current.title : null;
     switch (current.type) {
-      case 'multi':
+      case "multi":
         let marks = current.marks;
         if (current.marks_split)
           marks = current.marks[vars[current.marks_split]];
@@ -649,7 +649,7 @@ function nextNow(caller, backwards = false) {
         if (level + 1 == iterator.length) {
           if (!iterator[level]) {
             // first execution
-          } else if (vars[true] == 'true') {
+          } else if (vars[true] == "true") {
             if (nextVar) vars[nextVar] = ms[iterator[level] - 1];
             if (nextTest) tests[nextTest] = ms[iterator[level] - 1];
           } else if (current.progressive) {
@@ -662,7 +662,7 @@ function nextNow(caller, backwards = false) {
         }
         current = marks[ms[iterator[level]]];
         break;
-      case 'choice':
+      case "choice":
         if (level + 1 == iterator.length) {
           if (!iterator[level]) {
             // first execution
@@ -679,7 +679,7 @@ function nextNow(caller, backwards = false) {
     }
   }
   if (current === true) {
-    vars[true] = 'true';
+    vars[true] = "true";
     return nextNow(caller);
   }
   nextVar = current.var;
@@ -687,22 +687,22 @@ function nextNow(caller, backwards = false) {
   let marks = current.marks;
   if (current.marks_split) marks = current.marks[vars[current.marks_split]];
   switch (current.type) {
-    case 'submit':
+    case "submit":
       sheet = protSubmit(current.title, current.desc, current.submit);
       break;
-    case 'radio':
+    case "radio":
       // img
       sheet = protRadio(current.title, current.desc, marks);
       break;
-    case 'int':
+    case "int":
       sheet = protInt(current.title, current.desc, marks);
       break;
-    case 'multi':
+    case "multi":
       sheet = protSubmit(current.title, current.desc, current.submit);
       iterator.push(-1);
-      vars[true] = 'true';
+      vars[true] = "true";
       break;
-    case 'choice':
+    case "choice":
       nextVar = true;
       sheet = protRadio(
         current.title,
@@ -711,12 +711,12 @@ function nextNow(caller, backwards = false) {
       );
       iterator.push(-1);
       break;
-    case 'summary-overall':
+    case "summary-overall":
       let curr = Object.values(tests).reduce((a, b) => a + parseInt(b), 0);
       let max = Object.values(tests).length * 6;
       intTranslation = Object.assign(
         {},
-        ...vars['overall-mark'].map((x, i) => ({ [x]: i }))
+        ...vars["overall-mark"].map((x, i) => ({ [x]: i }))
       );
       let mark = intTranslate(curr);
       intTranslation = current.marks;
@@ -730,7 +730,7 @@ function nextNow(caller, backwards = false) {
         current.submit
       );
       break;
-    case 'summary':
+    case "summary":
       intTranslation = current.marks;
       sheet = protSummary(
         current.title,
@@ -765,24 +765,24 @@ next(null);
 
 function check(caller) {
   return new Promise((resolve) => {
-    caller.getElementsByClassName('check')[0].style.display = 'block';
-    caller.style.cursor = 'default';
+    caller.getElementsByClassName("check")[0].style.display = "block";
+    caller.style.cursor = "default";
     setTimeout(resolve, 1500);
   });
 }
 
 function intAddListener(self) {
   self
-    .getElementsByTagName('input')[0]
-    .addEventListener('keydown', intEventListener);
+    .getElementsByTagName("input")[0]
+    .addEventListener("keydown", intEventListener);
 }
 
 function intEventListener(event) {
-  if (event.key === 'Enter') {
+  if (event.key === "Enter") {
     event.preventDefault();
     let t = event.target;
     t.blur();
-    t.removeEventListener('keydown', intEventListener);
+    t.removeEventListener("keydown", intEventListener);
     next(
       t,
       () =>
@@ -795,17 +795,17 @@ function intEventListener(event) {
 }
 
 function radioAddListener(self) {
-  self.addEventListener('click', radioEventListener);
+  self.addEventListener("click", radioEventListener);
 }
 
 function radioEventListener(event) {
   let t = event.target;
   if (!radioOptions.includes(t)) {
-    console.log('WARN: this not in radioOptions');
+    console.log("WARN: this not in radioOptions");
     radioOptions.push(t);
   }
   radioOptions.forEach((e) => {
-    e.removeEventListener('click', radioEventListener);
+    e.removeEventListener("click", radioEventListener);
   });
   check(t).then(() => select(t.parentElement));
 }
@@ -813,13 +813,13 @@ function radioEventListener(event) {
 function threwOutNow(self) {
   return (self.moving = new Promise((resolve) => {
     let s = self.style;
-    s.transition = 'top 2s ease-in';
-    s.top = '100vh';
+    s.transition = "top 2s ease-in";
+    s.top = "100vh";
     self.ontransitionend = () => {
       self.ontransitionend = null;
-      s.transition = '';
-      s.left = ((Math.random() * 201) | 0) - 100 + 'vw';
-      s.top = '100vh';
+      s.transition = "";
+      s.left = ((Math.random() * 201) | 0) - 100 + "vw";
+      s.top = "100vh";
       resolve();
     };
   }));
@@ -827,12 +827,12 @@ function threwOutNow(self) {
 function threwInNow(self) {
   return (self.moving = new Promise((resolve) => {
     let s = self.style;
-    s.transition = 'top 2s linear, left 2s ease-out';
-    s.left = '';
-    s.top = '';
+    s.transition = "top 2s linear, left 2s ease-out";
+    s.left = "";
+    s.top = "";
     self.ontransitionend = () => {
       self.ontransitionend = null;
-      s.transition = '';
+      s.transition = "";
       resolve();
     };
   }));
@@ -847,106 +847,120 @@ function threwIn(self) {
   else return threwInNow(self);
 }
 
+let timer = 0; //for testing
 window.onload = function () {
-  let seconds = 10;
-  let tens = 0;
-  let appendTens = document.getElementById("tens");
-  let appendSeconds = document.getElementById("seconds");
   let buttonStart = document.getElementById("start");
   let buttonStop = document.getElementById("stop");
   let buttonReset = document.getElementById("reset");
   let Interval;
+  let start = Date.now();
 
-  buttonStart.onclick = function () {
-    clearInterval(Interval);
-    Interval = setInterval(startTimer, 100);
-  };
-
-  buttonStop.onclick = function () {
-    clearInterval(Interval);
-  };
-
-  buttonReset.onclick = function () {
-    clearInterval(Interval);
-    tens = "0";
-    seconds = "10";
-    appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
+  if (timer == 0) {
+    document.getElementById("timer").innerHTML = "00:00.00";
     buttonStart.onclick = function () {
+      start = Date.now();
       clearInterval(Interval);
-      Interval = setInterval(startTimer, 100);
+      Interval = setInterval(startTimer, 10);
+      buttonStart.onclick = null;
     };
-  };
 
-  //timer function
-  function startTimer() {
-    --tens;
-
-    if (tens > 0) appendTens.innerHTML = tens;
-    else {
-      --seconds;
-      appendSeconds.innerHTML = "0" + seconds;
-      tens = 9;
-      appendTens.innerHTML = 9;
-    }
-
-    if (seconds > 9) {
-      appendSeconds.innerHTML = seconds;
-    }
-
-    if (seconds == 0 && tens == 1) {
-      appendTens.innerHTML = 0;
-      beep();
-      alert("Czas się skończył");
+    buttonStop.onclick = function () {
       clearInterval(Interval);
       buttonStart.onclick = function () {
-        alert("Jeśli chcesz spróbować jeszcze raz kliknij reset");
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
       };
+    };
+
+    buttonReset.onclick = function () {
+      clearInterval(Interval);
+      document.getElementById("timer").innerHTML = "00:00.00";
+      buttonStart.onclick = function () {
+        start = Date.now();
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
+      };
+    };
+
+    function startTimer() {
+      const time = Date.now() - start;
+      const hundreds = Math.floor((time / 10) % 10);
+      const tens = Math.floor((time / 100) % 10);
+      const seconds = Math.floor((time / 1000) % 60);
+      const minutes = Math.floor((time / 1000 / 60) % 60);
+
+      if (seconds < 10 && minutes < 10)
+        document.getElementById("timer").innerHTML =
+          "0" + minutes + ":" + "0" + seconds + "." + tens + hundreds;
+      else if (seconds >= 10 && minutes < 10)
+        document.getElementById("timer").innerHTML =
+          "0" + minutes + ":" + seconds + "." + tens + hundreds;
+      else if (seconds < 10 && minutes >= 10)
+        document.getElementById("timer").innerHTML =
+          minutes + ":" + seconds + "." + tens + hundreds;
+      else
+        document.getElementById("timer").innerHTML =
+          minutes + ":" + seconds + "." + tens + hundreds;
     }
-  }
-};
+  } else if (timer == 10) {
+    document.getElementById("timer").innerHTML = "00:10.00";
 
-//stopwatch function
-window.onload = function () {
-  let seconds = 0;
-  let tens = 0;
-  let appendTens = document.getElementById("tens");
-  let appendSeconds = document.getElementById("seconds");
-  let buttonStart = document.getElementById("start");
-  let buttonStop = document.getElementById("stop");
-  let buttonReset = document.getElementById("reset");
-  let Interval;
+    buttonStart.onclick = function () {
+      start = Date.now();
+      clearInterval(Interval);
+      Interval = setInterval(startTimer, 10);
+      buttonStart.onclick = null;
+    };
 
-  buttonStart.onclick = function () {
-    clearInterval(Interval);
-    Interval = setInterval(startTimer, 100);
-  };
+    buttonStop.onclick = function () {
+      clearInterval(Interval);
+      buttonStart.onclick = function () {
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
+      };
+    };
 
-  buttonStop.onclick = function () {
-    clearInterval(Interval);
-  };
+    buttonReset.onclick = function () {
+      clearInterval(Interval);
+      document.getElementById("timer").innerHTML = "00:10.00";
+      buttonStart.onclick = function () {
+        start = Date.now();
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
+      };
+    };
 
-  buttonReset.onclick = function () {
-    clearInterval(Interval);
-    tens = "0";
-    seconds = "00";
-    appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
-  };
-
-  function startTimer() {
-    ++tens;
-
-    if (tens < 10) appendTens.innerHTML = tens;
-    else {
-      ++seconds;
-      appendSeconds.innerHTML = "0" + seconds;
-      tens = 0;
-      appendTens.innerHTML = 0;
+    function stop() {
+      clearInterval(Interval);
+      document.getElementById("timer").innerHTML = "00:00.00";
     }
 
-    if (seconds > 9) {
-      appendSeconds.innerHTML = seconds;
+    function startTimer() {
+      const time = start + 10000 - Date.now();
+      const hundreds = Math.floor((time / 10) % 10);
+      const tens = Math.floor((time / 100) % 10);
+      const seconds = Math.floor((time / 1000) % 60);
+      const minutes = Math.floor((time / 1000 / 60) % 60);
+
+      if (seconds < 10 && minutes < 10)
+        document.getElementById("timer").innerHTML =
+          "0" + minutes + ":" + "0" + seconds + "." + tens + hundreds;
+      else if (seconds >= 10 && minutes < 10)
+        document.getElementById("timer").innerHTML =
+          "0" + minutes + ":" + seconds + "." + tens + hundreds;
+      else if (seconds < 10 && minutes >= 10)
+        document.getElementById("timer").innerHTML =
+          minutes + ":" + seconds + "." + tens + hundreds;
+      else {
+        document.getElementById("timer").innerHTML =
+          minutes + ":" + seconds + "." + tens + hundreds;
+      }
+      if (time <= 1) stop();
     }
+  } else if (timer == null) {
   }
 };
