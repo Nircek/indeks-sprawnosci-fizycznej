@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: 'Sriracha', cursive;
+  font-family: "Sriracha", cursive;
   font-size: 2.5vh;
 }
 
@@ -95,7 +95,7 @@ a:active {
   top: 2%;
   left: 30%;
   width: 40%;
-  height: 6%;
+  height: 4%;
   z-index: 1;
 }
 
@@ -124,7 +124,7 @@ h1 {
   margin-top: -13%;
   margin-bottom: auto;
   font-size: 5.2vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*temporary*/
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /*temporary*/
   font-weight: 700;
 }
 h2 {
@@ -202,14 +202,14 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
   display: block;
   border: 0;
   margin: 0 auto;
   border-bottom: dotted;
   text-align: center;
-  font-family: 'Sriracha', cursive;
+  font-family: "Sriracha", cursive;
   width: 18vw;
   font-size: 3vh;
 }
@@ -218,4 +218,44 @@ input[type='number'] {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
+}
+
+.button1 {
+  border-radius: 50%;
+  width: 4vh;
+  height: 4vh;
+  font-size: 50%;
+  float: left;
+}
+
+#stopwatchTimer {
+  position: relative;
+  top: 0vh;
+  text-align: center;
+  width: 10%;
+  height: 8%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#timer {
+  font-size: 80%;
+}
+
+#start {
+  position: relative;
+  left: 100%;
+  margin-left: -90%;
+}
+
+#stop {
+  position: relative;
+  left: 100%;
+  margin-left: -60%;
+}
+
+#reset {
+  position: relative;
+  left: 100%;
+  margin-left: -30%;
 }
