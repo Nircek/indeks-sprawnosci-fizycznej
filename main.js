@@ -559,7 +559,9 @@ function submit(value) {
 function protInt(title, desc, marks) {
   let id = getDynamicId('int');
   intTranslation = marks;
+  console.log(title);
   let p = prot('int', id, { title: title, desc: desc });
+  console.log(timer);
   p.getElementsByTagName('input')[0].focus();
   return p;
 }
@@ -846,107 +848,91 @@ function threwIn(self) {
   if (self.moving) return self.moving.then(() => threwInNow(self));
   else return threwInNow(self);
 }
-
-window.onload = function () {
-  let seconds = 10;
-  let tens = 0;
-  let appendTens = document.getElementById("tens");
-  let appendSeconds = document.getElementById("seconds");
-  let buttonStart = document.getElementById("start");
-  let buttonStop = document.getElementById("stop");
-  let buttonReset = document.getElementById("reset");
+function Timer() {
+  let buttonStart = document.getElementById('start');
+  let buttonStop = document.getElementById('stop');
+  let buttonReset = document.getElementById('reset');
   let Interval;
+  let start = Date.now();
+  let time;
+  if (timer == 0) {
+    document.getElementById('timer').innerHTML = '00:00.00';
+  } else if (timer == 10) {
+    document.getElementById('timer').innerHTML = '00:10.00';
+  }
+  function startTimer() {
+    if (timer == 0) {
+      time = Date.now() - start;
+      document.getElementById('timer').innerHTML = '00:00.00';
+    } else if (timer == 10) {
+      time = start + 10000 - Date.now();
+      document.getElementById('timer').innerHTML = '00:10.00';
+    }
+    const hundreds = Math.floor((time / 10) % 10);
+    const tens = Math.floor((time / 100) % 10);
+    const seconds = Math.floor((time / 1000) % 60);
+    const minutes = Math.floor((time / 1000 / 60) % 60);
 
+    if (seconds < 10 && minutes < 10)
+      document.getElementById('timer').innerHTML =
+        '0' + minutes + ':' + '0' + seconds + '.' + tens + hundreds;
+    else if (seconds >= 10 && minutes < 10)
+      document.getElementById('timer').innerHTML =
+        '0' + minutes + ':' + seconds + '.' + tens + hundreds;
+    else if (seconds < 10 && minutes >= 10)
+      document.getElementById('timer').innerHTML =
+        minutes + ':' + seconds + '.' + tens + hundreds;
+    else
+      document.getElementById('timer').innerHTML =
+        minutes + ':' + seconds + '.' + tens + hundreds;
+    function stop() {
+      clearInterval(Interval);
+      document.getElementById('timer').innerHTML = '00:00.00';
+    }
+
+    if (timer == 10) {
+      if (time < 1) stop();
+    }
+  }
   buttonStart.onclick = function () {
+    start = Date.now();
     clearInterval(Interval);
-    Interval = setInterval(startTimer, 100);
+    Interval = setInterval(startTimer, 10);
+    buttonStart.onclick = null;
   };
 
   buttonStop.onclick = function () {
     clearInterval(Interval);
-  };
-
-  buttonReset.onclick = function () {
-    clearInterval(Interval);
-    tens = "0";
-    seconds = "10";
-    appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
     buttonStart.onclick = function () {
       clearInterval(Interval);
-      Interval = setInterval(startTimer, 100);
+      Interval = setInterval(startTimer, 10);
+      buttonStart.onclick = null;
     };
   };
 
-  //timer function
-  function startTimer() {
-    --tens;
-
-    if (tens > 0) appendTens.innerHTML = tens;
-    else {
-      --seconds;
-      appendSeconds.innerHTML = "0" + seconds;
-      tens = 9;
-      appendTens.innerHTML = 9;
-    }
-
-    if (seconds > 9) {
-      appendSeconds.innerHTML = seconds;
-    }
-
-    if (seconds == 0 && tens == 1) {
-      appendTens.innerHTML = 0;
-      beep();
-      alert("Czas się skończył");
+  if (timer == 0) {
+    document.getElementById('stopwatchTimer').classList.add('thrown-in');
+    buttonReset.onclick = function () {
       clearInterval(Interval);
+      document.getElementById('timer').innerHTML = '00:00.00';
       buttonStart.onclick = function () {
-        alert("Jeśli chcesz spróbować jeszcze raz kliknij reset");
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
       };
-    }
+    };
+  } else if (timer == 10) {
+    document.getElementById('stopwatchTimer').classList.add('thrown-in');
+    buttonReset.onclick = function () {
+      clearInterval(Interval);
+      document.getElementById('timer').innerHTML = '00:10.00';
+      buttonStart.onclick = function () {
+        start = Date.now();
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
+      };
+    };
+  } else if (timer == null) {
   }
-};
-
-//stopwatch function
-window.onload = function () {
-  let seconds = 0;
-  let tens = 0;
-  let appendTens = document.getElementById("tens");
-  let appendSeconds = document.getElementById("seconds");
-  let buttonStart = document.getElementById("start");
-  let buttonStop = document.getElementById("stop");
-  let buttonReset = document.getElementById("reset");
-  let Interval;
-
-  buttonStart.onclick = function () {
-    clearInterval(Interval);
-    Interval = setInterval(startTimer, 100);
-  };
-
-  buttonStop.onclick = function () {
-    clearInterval(Interval);
-  };
-
-  buttonReset.onclick = function () {
-    clearInterval(Interval);
-    tens = "0";
-    seconds = "00";
-    appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
-  };
-
-  function startTimer() {
-    ++tens;
-
-    if (tens < 10) appendTens.innerHTML = tens;
-    else {
-      ++seconds;
-      appendSeconds.innerHTML = "0" + seconds;
-      tens = 0;
-      appendTens.innerHTML = 0;
-    }
-
-    if (seconds > 9) {
-      appendSeconds.innerHTML = seconds;
-    }
-  }
-};
+}
