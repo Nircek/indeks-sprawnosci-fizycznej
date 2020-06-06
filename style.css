@@ -55,19 +55,19 @@ a:active {
   position: absolute;
   top: 0;
   background-color: white;
-  width: 100%;
-  max-width: 42vh;
+  width: 95%;
+  max-width: 40vh;
   height: 69vh;
   margin-left: 0.5vw;
   left: 50%;
-  margin-left: -23vh;
+  margin-left: -22.2vh;
   padding: 2vh 2vh;
   border: solid 0.3vh #eee7;
 }
 
 #container {
   position: relative;
-  width: 97%;
+  width: 95%;
   max-width: 50vh;
   height: 75vh;
   margin-right: auto;
@@ -124,7 +124,7 @@ h1 {
   margin-top: -14%;
   margin-bottom: auto;
   font-size: 4.8vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*temporary*/
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
 }
 h2 {
@@ -229,9 +229,9 @@ input[type='number'] {
   font-weight: 600;
 }
 
-#stopwatchTimer {
+.stopwatchTimer {
   position: relative;
-  top: 100vh;
+  top: 20vh;
   text-align: center;
   min-width: 25vh;
   width: 12%;
@@ -239,9 +239,8 @@ input[type='number'] {
   margin-left: auto;
   margin-right: auto;
   background-color: white;
-  padding-right: 0.5%;
-  padding-top: 0.5%;
   border: 0.3vh solid black;
+  transition: linear 2s;
 }
 
 #timer {
@@ -275,6 +274,5 @@ input[type='number'] {
 }
 
 .thrown-in {
-  transition: linear 2s;
-  /*In my opinion the optimal value for top is -11vh*/
+  top: -10.5vh;
 }

@@ -848,13 +848,45 @@ function threwIn(self) {
   if (self.moving) return self.moving.then(() => threwInNow(self));
   else return threwInNow(self);
 }
-function Timer() {
+function Timer(timer) {
   let buttonStart = document.getElementById('start');
   let buttonStop = document.getElementById('stop');
   let buttonReset = document.getElementById('reset');
   let Interval;
   let start = Date.now();
   let time;
+  if (timer == 0) {
+    document
+      .getElementsByClassName('stopwatchTimer')[0]
+      .classList.add('thrown-in');
+    buttonReset.onclick = function () {
+      clearInterval(Interval);
+      document.getElementById('timer').innerHTML = '00:00.00';
+      buttonStart.onclick = function () {
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
+      };
+    };
+  } else if (timer == 10) {
+    document
+      .getElementsByClassName('stopwatchTimer')[0]
+      .classList.add('thrown-in');
+    buttonReset.onclick = function () {
+      clearInterval(Interval);
+      document.getElementById('timer').innerHTML = '00:10.00';
+      buttonStart.onclick = function () {
+        start = Date.now();
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+        buttonStart.onclick = null;
+      };
+    };
+  } else if (timer == null) {
+    document
+      .getElementsByClassName('stopwatchTimer')[0]
+      .classList.remove('thrown-in');
+  }
   if (timer == 0) {
     document.getElementById('timer').innerHTML = '00:00.00';
   } else if (timer == 10) {
@@ -909,30 +941,4 @@ function Timer() {
       buttonStart.onclick = null;
     };
   };
-
-  if (timer == 0) {
-    document.getElementById('stopwatchTimer').classList.add('thrown-in');
-    buttonReset.onclick = function () {
-      clearInterval(Interval);
-      document.getElementById('timer').innerHTML = '00:00.00';
-      buttonStart.onclick = function () {
-        clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
-        buttonStart.onclick = null;
-      };
-    };
-  } else if (timer == 10) {
-    document.getElementById('stopwatchTimer').classList.add('thrown-in');
-    buttonReset.onclick = function () {
-      clearInterval(Interval);
-      document.getElementById('timer').innerHTML = '00:10.00';
-      buttonStart.onclick = function () {
-        start = Date.now();
-        clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
-        buttonStart.onclick = null;
-      };
-    };
-  } else if (timer == null) {
-  }
 }
