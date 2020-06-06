@@ -70,7 +70,7 @@
         </div>
       </div>
       <div class="sheet" id="prototype-summary-chart">
-        {{mark}}
+        <h2>{{mark}}</h2>
         <canvas id="{{id}}"></canvas>
         <p onclick="next()">{{submit}}</p>
       </div>
@@ -78,10 +78,9 @@
         <h2>{{title}}</h2>
         <h3>{{desc}}</h3>
         <div class="summary-marks sheet">
-          <!-- there will be pasted `prototype-summary-mark`s -->
         </div>
       </div>
-      <div id="prototype-summary-mark">{{name}} : {{mark}} <br /><br /></div>
+      <div id="prototype-summary-mark" style="padding-top: 3%;">{{name}} : {{mark}} <br /><br /></div>
     </div>
     <div id="content">
       <div class="topbar">

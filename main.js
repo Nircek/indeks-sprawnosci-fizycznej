@@ -559,7 +559,6 @@ function submit(value) {
 function protInt(title, desc, marks) {
   let id = getDynamicId('int');
   intTranslation = marks;
-  console.log(title);
   let p = prot('int', id, { title: title, desc: desc });
   console.log(timer);
   p.getElementsByTagName('input')[0].focus();
@@ -868,13 +867,15 @@ function Timer(timer) {
         buttonStart.onclick = null;
       };
     };
-  } else if (timer == 10) {
+  } else if (timer == 10 || timer == 3) {
     document
       .getElementsByClassName('stopwatchTimer')[0]
       .classList.add('thrown-in');
     buttonReset.onclick = function () {
       clearInterval(Interval);
-      document.getElementById('timer').innerHTML = '00:10.00';
+      if (timer === 10) document.getElementById('timer').innerHTML = '00:10.00';
+      else if (timer === 3)
+        document.getElementById('timer').innerHTML = '00:03.00';
       buttonStart.onclick = function () {
         start = Date.now();
         clearInterval(Interval);
@@ -891,14 +892,14 @@ function Timer(timer) {
     document.getElementById('timer').innerHTML = '00:00.00';
   } else if (timer == 10) {
     document.getElementById('timer').innerHTML = '00:10.00';
-  }
+  } else if (timer == 3)
+    document.getElementById('timer').innerHTML = '00:03.00';
   function startTimer() {
     if (timer == 0) {
       time = Date.now() - start;
       document.getElementById('timer').innerHTML = '00:00.00';
-    } else if (timer == 10) {
-      time = start + 10000 - Date.now();
-      document.getElementById('timer').innerHTML = '00:10.00';
+    } else if (timer == 10 || timer == 3) {
+      time = start + timer * 1000 - Date.now();
     }
     const hundreds = Math.floor((time / 10) % 10);
     const tens = Math.floor((time / 100) % 10);
@@ -920,9 +921,10 @@ function Timer(timer) {
     function stop() {
       clearInterval(Interval);
       document.getElementById('timer').innerHTML = '00:00.00';
+      alert('Czas minął!');
     }
 
-    if (timer == 10) {
+    if (timer == 10 || timer == 3) {
       if (time < 1) stop();
     }
   }
