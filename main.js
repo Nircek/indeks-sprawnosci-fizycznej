@@ -469,6 +469,13 @@ String.prototype.protInject = function (id, value) {
   return target.replaceAll(`{{${id}}}`, value);
 };
 
+Array.prototype.equals = function (array) {
+  return (
+    this.length == array.length &&
+    this.map((e, i) => e == array[i]).every((x) => x)
+  );
+};
+
 function getSheet(el) {
   while (el.parentElement.id != 'container') el = el.parentElement;
   return el;
@@ -560,7 +567,6 @@ function protInt(title, desc, marks) {
   let id = getDynamicId('int');
   intTranslation = marks;
   let p = prot('int', id, { title: title, desc: desc });
-  console.log(timer);
   p.getElementsByTagName('input')[0].focus();
   return p;
 }
@@ -633,6 +639,7 @@ function nextNow(caller, backwards = false) {
   }
   if (caller && sheets.length && getSheet(caller) != sheets[sheets.length - 1])
     throw 'not a lastSheet';
+  updateTimer();
   let lastIterator = [...iterator];
   iterator[iterator.length - 1]++;
   let current = data[iterator[0]];
@@ -745,17 +752,27 @@ function nextNow(caller, backwards = false) {
       );
       break;
   }
-  if (!backwards && sheets.length > 1) threwOut(sheets[sheets.length - 1]);
+  let ut = () => updateTimer([...iterator], current.timer);
+  if (!backwards)
+    if (sheets.length > 1) threwOut(sheets[sheets.length - 1]).then(ut);
+    else ut();
   let _vars = Object.assign({}, vars);
   let _tests = Object.assign({}, tests);
   sheet.goBack = () => restore(lastIterator, _vars, _tests);
   sheets.push(sheet);
   if (backwards) {
-    threwIn(pl).then(() => {
-      pl.parentNode.removeChild(pl);
-      l.parentNode.removeChild(l);
-    });
+    threwIn(pl)
+      .then(() => {
+        pl.parentNode.removeChild(pl);
+        l.parentNode.removeChild(l);
+      })
+      .then(ut);
   }
+}
+
+function updateTimer(old_iterator = null, value = null) {
+  if (!old_iterator) Timer(null);
+  else if (old_iterator.equals(iterator)) Timer(value);
 }
 
 function back() {
@@ -847,17 +864,17 @@ function threwIn(self) {
   if (self.moving) return self.moving.then(() => threwInNow(self));
   else return threwInNow(self);
 }
+
 function Timer(timer) {
-  let buttonStart = document.getElementById('start');
-  let buttonStop = document.getElementById('stop');
-  let buttonReset = document.getElementById('reset');
+  const buttonStart = document.getElementById('start');
+  const buttonStop = document.getElementById('stop');
+  const buttonReset = document.getElementById('reset');
+  const timer_block = document.getElementById('timer_block');
   let Interval;
   let start = Date.now();
   let time;
   if (timer == 0) {
-    document
-      .getElementsByClassName('stopwatchTimer')[0]
-      .classList.add('thrown-in');
+    timer_block.classList.add('thrown-in');
     buttonReset.onclick = function () {
       clearInterval(Interval);
       document.getElementById('timer').innerHTML = '00:00.00';
@@ -868,9 +885,7 @@ function Timer(timer) {
       };
     };
   } else if (timer == 10 || timer == 3) {
-    document
-      .getElementsByClassName('stopwatchTimer')[0]
-      .classList.add('thrown-in');
+    timer_block.classList.add('thrown-in');
     buttonReset.onclick = function () {
       clearInterval(Interval);
       if (timer === 10) document.getElementById('timer').innerHTML = '00:10.00';
@@ -884,9 +899,7 @@ function Timer(timer) {
       };
     };
   } else if (timer == null) {
-    document
-      .getElementsByClassName('stopwatchTimer')[0]
-      .classList.remove('thrown-in');
+    timer_block.classList.remove('thrown-in');
   }
   if (timer == 0) {
     document.getElementById('timer').innerHTML = '00:00.00';
@@ -922,6 +935,7 @@ function Timer(timer) {
       clearInterval(Interval);
       document.getElementById('timer').innerHTML = '00:00.00';
       alert('Czas minął!');
+      // dodaj tutaj jakieś miganie tego timera zamiest alerta, możesz mu zmieniać background albo coś takiego
     }
 
     if (timer == 10 || timer == 3) {

@@ -229,7 +229,7 @@ input[type='number'] {
   font-weight: 600;
 }
 
-.stopwatchTimer {
+#timer_block {
   position: relative;
   top: 20vh;
   text-align: center;
