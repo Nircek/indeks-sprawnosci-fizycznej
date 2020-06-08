@@ -77,10 +77,11 @@
       <div id="prototype-summary" class="sheet">
         <h2>{{title}}</h2>
         <h3>{{desc}}</h3>
-        <div class="summary-marks sheet">
-        </div>
+        <div class="summary-marks sheet"></div>
       </div>
-      <div id="prototype-summary-mark" style="padding-top: 3%;">{{name}} : {{mark}} <br /><br /></div>
+      <div id="prototype-summary-mark" style="padding-top: 3%;">
+        {{name}} : {{mark}} <br /><br />
+      </div>
     </div>
     <div id="content">
       <div class="topbar">
@@ -91,28 +92,17 @@
       <div id="container"></div>
       <div class="leftarrow" onclick="back()">&#x1F814;</div>
     </div>
-    <div id="timer_block">
-      <div id="timer">
-      </div>
-      <button
-        id="start"
-        class="button1"
-      >
+    <div id="timer">
+      <div id="counter"></div>
+      <button id="start">
         Start
       </button>
-      <button
-        id="stop"
-        class="button1"
-      >
+      <button id="stop">
         Stop
       </button>
-      <button
-      id="reset"
-      class="button1"
-      >
+      <button id="reset">
         Reset
       </button>
-    </div>
     </div>
   </body>
 </html>

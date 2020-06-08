@@ -752,7 +752,7 @@ function nextNow(caller, backwards = false) {
       );
       break;
   }
-  let ut = () => updateTimer([...iterator], current.timer);
+  let ut = () => updateTimerScheduled([...iterator], current.timer);
   if (!backwards)
     if (sheets.length > 1) threwOut(sheets[sheets.length - 1]).then(ut);
     else ut();
@@ -770,9 +770,9 @@ function nextNow(caller, backwards = false) {
   }
 }
 
-function updateTimer(old_iterator = null, value = null) {
-  if (!old_iterator) Timer(null);
-  else if (old_iterator.equals(iterator)) Timer(value);
+function updateTimerScheduled(old_iterator = null, value = null) {
+  if (!old_iterator) updateTimer(null);
+  else if (old_iterator.equals(iterator)) updateTimer(value);
 }
 
 function back() {
@@ -865,96 +865,110 @@ function threwIn(self) {
   else return threwInNow(self);
 }
 
-function Timer(timer) {
-  const buttonStart = document.getElementById('start');
-  const buttonStop = document.getElementById('stop');
-  const buttonReset = document.getElementById('reset');
-  const timer_block = document.getElementById('timer_block');
-  let Interval;
-  let start = Date.now();
-  let time;
-  if (timer == 0) {
-    timer_block.classList.add('thrown-in');
-    buttonReset.onclick = function () {
-      clearInterval(Interval);
-      document.getElementById('timer').innerHTML = '00:00.00';
-      buttonStart.onclick = function () {
-        clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
-        buttonStart.onclick = null;
-      };
-    };
-  } else if (timer == 10 || timer == 3) {
-    timer_block.classList.add('thrown-in');
-    buttonReset.onclick = function () {
-      clearInterval(Interval);
-      if (timer === 10) document.getElementById('timer').innerHTML = '00:10.00';
-      else if (timer === 3)
-        document.getElementById('timer').innerHTML = '00:03.00';
-      buttonStart.onclick = function () {
-        start = Date.now();
-        clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
-        buttonStart.onclick = null;
-      };
-    };
-  } else if (timer == null) {
-    timer_block.classList.remove('thrown-in');
-  }
-  if (timer == 0) {
-    document.getElementById('timer').innerHTML = '00:00.00';
-  } else if (timer == 10) {
-    document.getElementById('timer').innerHTML = '00:10.00';
-  } else if (timer == 3)
-    document.getElementById('timer').innerHTML = '00:03.00';
-  function startTimer() {
-    if (timer == 0) {
-      time = Date.now() - start;
-      document.getElementById('timer').innerHTML = '00:00.00';
-    } else if (timer == 10 || timer == 3) {
-      time = start + timer * 1000 - Date.now();
-    }
-    const hundreds = Math.floor((time / 10) % 10);
-    const tens = Math.floor((time / 100) % 10);
-    const seconds = Math.floor((time / 1000) % 60);
-    const minutes = Math.floor((time / 1000 / 60) % 60);
+function formatDelta(millis) {
+  let regex = /.*(\d{2}):(\d{2}:\d{2}\.\d{2}).*/.exec(
+    new Date(Math.abs(millis)).toISOString()
+  );
+  return (
+    (millis < 0 ? '-' : '') +
+    (regex[1] != '00' ? regex[1] + ':' : '') +
+    regex[2]
+  );
+}
 
-    if (seconds < 10 && minutes < 10)
-      document.getElementById('timer').innerHTML =
-        '0' + minutes + ':' + '0' + seconds + '.' + tens + hundreds;
-    else if (seconds >= 10 && minutes < 10)
-      document.getElementById('timer').innerHTML =
-        '0' + minutes + ':' + seconds + '.' + tens + hundreds;
-    else if (seconds < 10 && minutes >= 10)
-      document.getElementById('timer').innerHTML =
-        minutes + ':' + seconds + '.' + tens + hundreds;
-    else
-      document.getElementById('timer').innerHTML =
-        minutes + ':' + seconds + '.' + tens + hundreds;
-    function stop() {
-      clearInterval(Interval);
-      document.getElementById('timer').innerHTML = '00:00.00';
-      alert('Czas minął!');
-      // dodaj tutaj jakieś miganie tego timera zamiest alerta, możesz mu zmieniać background albo coś takiego
-    }
+const buttonStart = document.getElementById('start');
+const buttonStop = document.getElementById('stop');
+const buttonReset = document.getElementById('reset');
+const timer = document.getElementById('timer');
+const counter = document.getElementById('counter');
 
-    if (timer == 10 || timer == 3) {
-      if (time < 1) stop();
-    }
+var interval = null;
+const delay = 3500;
+
+function updateTimer(value) {
+  clearInterval(interval);
+
+  if (value == null) {
+    timer.classList.remove('thrown-in');
+    return;
+  } else timer.classList.add('thrown-in');
+
+  value *= 1000; // cast s to ms
+  let startTime, paused, time, first, timedOut;
+  let stopwatch = value === 0;
+
+  function reset() {
+    clearInterval(interval);
+    startTime = 0;
+    paused = true;
+    time = value;
+    first = true;
+    timedOut = false;
+    counter.innerText = formatDelta(time);
   }
-  buttonStart.onclick = function () {
-    start = Date.now();
-    clearInterval(Interval);
-    Interval = setInterval(startTimer, 10);
-    buttonStart.onclick = null;
+  reset();
+
+  function startAnimation() {
+    console.log('START');
+    // TODO: an animation
+  }
+  function timeoutAnimation() {
+    console.log('TIME OUT');
+    // TODO: an animation
+  }
+
+  let update = stopwatch
+    ? () => {
+        if (!paused) {
+          let now = Date.now();
+          time = now - startTime;
+          if (startTime <= now)
+            if (first) {
+              first = false;
+            }
+        }
+        counter.innerText = formatDelta(time);
+      }
+    : () => {
+        if (!paused) {
+          let now = Date.now();
+          if (startTime > now) time = now - startTime;
+          else {
+            if (first) {
+              first = false;
+              startAnimation();
+            }
+            time = startTime - now + value;
+            if (time < 0) {
+              if (!timedOut) {
+                timedOut = true;
+                timeoutAnimation();
+              }
+              if (time < delay) reset();
+            }
+          }
+        }
+        counter.innerText = formatDelta(time);
+      };
+
+  buttonStart.onclick = () => {
+    if (paused) {
+      paused = false;
+      if (startTime == 0) {
+        startTime = Date.now();
+        startTime += delay;
+      } else {
+        startTime =
+          stopwatch || time < 0 ? Date.now() - time : Date.now() - value + time;
+      }
+      clearInterval(interval);
+      interval = setInterval(update, 1000 / 45);
+    }
   };
 
-  buttonStop.onclick = function () {
-    clearInterval(Interval);
-    buttonStart.onclick = function () {
-      clearInterval(Interval);
-      Interval = setInterval(startTimer, 10);
-      buttonStart.onclick = null;
-    };
+  buttonStop.onclick = () => {
+    paused = true;
   };
+
+  buttonReset.onclick = reset;
 }
